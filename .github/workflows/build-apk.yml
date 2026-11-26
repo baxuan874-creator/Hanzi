@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Validate content working files
+        run: python3 tools/validate_level1.py
       - uses: actions/setup-java@v4
         with:
           distribution: temurin

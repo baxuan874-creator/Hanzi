@@ -4,22 +4,24 @@ Date: 2026-11-26
 Project version: 0.0.1-phase0
 
 ## Current phase and task
-- Phase 2, Task 1: xác minh và khóa đề cương HSK 3.0 (trạng thái PROVISIONAL).
+- Phase 2, Task 2: bảng làm việc 300 từ Level 1 + validator (xong, chờ xác nhận Actions).
 
 ## Completed
-- Phase 0, Phase 1: build xanh, chạy OK (5 tab, theme, Room, DataStore, chọn Sáng/Tối).
-- Phase 2 Task 1: docs/SYLLABUS_LOCK.md (syllabus_id hsk_3_0_2025_11; Level 1 = 300 từ, 246 chữ nhận mặt, 0 chữ viết, 70 ngữ pháp), tools/fetch_syllabus.sh.
+- Phase 0, Phase 1: build xanh, chạy OK. Phase 2 Task 1: SYLLABUS_LOCK.md (PROVISIONAL), fetch_syllabus.sh.
+- Phase 2 Task 2: content_work/hsk3_l1_vocab_working.csv (300 dòng, extracted_unreviewed), tools/validate_level1.py, bước validate trong workflow, docs/EXTRACTION_REPORT_L1.md, docs/ đầy đủ tài liệu dự án.
 
 ## Build and tests actually run
-- Không đổi mã app ở task này; chưa chạy build. Script fetch_syllabus.sh chưa chạy (không có Internet ở môi trường tạo file).
+- validate_level1.py chạy trên dữ liệu thật (0 lỗi, 14 cảnh báo) và trên bản sao hỏng (5 lỗi, mã thoát 1): đạt.
+- Build Gradle và workflow mới: chưa chạy ở môi trường tạo file; sẽ chạy trên Actions.
 
 ## Known issues
-- Chưa mở trực tiếp chinesetest.cn; chưa có checksum PDF. Khóa còn PROVISIONAL.
-- Số 299 vs 300 từ Level 1 ở nguồn thứ cấp chưa giải quyết.
-- PRD chưa cập nhật theo phát hiện (xem SYLLABUS_LOCK.md mục 5), chờ chủ dự án đồng ý.
+- Dữ liệu chưa được người biết tiếng Trung rà soát (cảnh báo 小朋友 pinyin).
+- Giấy phép phân phối danh sách từ chưa rõ; repo đang Public. Đề xuất chuyển Private.
+- Khóa đề cương vẫn PROVISIONAL (chưa checksum, chưa có 246 chữ / 70 ngữ pháp).
+- Phase 2 không làm thay đổi giao diện app; thay đổi nhìn thấy được bắt đầu ở Phase 3.
 
 ## Exact next task
-- Người dùng chạy tools/fetch_syllabus.sh trong Codespace và push syllabus_checksums.txt. Sau đó Phase 2, Task 2: trích danh mục Level 1 từ PDF chính thức thành bảng làm việc (chưa soạn nghĩa/ví dụ), đối chiếu số lượng 300/246/70, và viết validator cơ bản.
+- Xác nhận Actions xanh (bước "Validate content" phải qua). Sau đó Phase 2, Task 3: trích 246 chữ nhận mặt + 70 điểm ngữ pháp Level 1, thêm kiểm tra tham chiếu chéo và checksum; chưa soạn nghĩa tiếng Việt.
 
 ## Decisions that must remain unchanged
 - Android Native / Kotlin / Compose; Vietnamese-first; gamified UI; HSK 3.0 track; không AI/backend/API trả phí/login/ads/Premium; offline-first.

@@ -39,11 +39,13 @@ Cấu trúc đề cương: 任务 (nhiệm vụ), 话题 (chủ đề), 词汇, 
 ## Phát hiện cần xử lý
 1. **Có nhiều danh sách HSK 3.0 cũ lưu hành** (chuẩn 2021, ví dụ PDF năm 2024 trên một số trang). Số lượng khác bản 2025, không được dùng. Chỉ dùng bản 2025-11.
 2. **Số thứ tự (序号) khác nhau giữa các bản PDF** (ví dụ 昨天 và 做饭 đổi chỗ). Không dùng 序号 làm khóa ID; dùng (từ + cấp + từ loại).
-3. **Một trang thứ cấp ghi 299 từ cho Level 1, đề cương ghi 300.** Cần đếm lại từ PDF chính thức.
+3. **Một trang thứ cấp ghi 299 từ cho Level 1.** ĐÃ ĐỐI CHIẾU (Task 2): bản PDF "1219" liệt kê đủ 300 mục (序号 1–300); 6 mục là cụm không ghi từ loại. Con số 300 đúng theo PDF.
 4. **Level 1 không có chữ viết bắt buộc.** Màn hình viết chữ (FR-15, mức "nên có") chỉ nên là luyện tập tùy chọn, không phải yêu cầu của cấp.
 5. **Đề xuất cập nhật PRD** (chưa sửa, chờ bạn đồng ý): ghi rõ nguồn phạm vi là 《HSK 考试大纲》 2025-11 (GF0025-2021 chỉ là khung nền); đổi ngày hiệu lực "13/12/2026" thành "ngày thi chính thức đầu tiên 13/12/2026; đề cương có hiệu lực 7/2026".
 
 ## Việc cần làm để chuyển sang LOCKED
 - [ ] Chạy `tools/fetch_syllabus.sh` trong Codespace, commit `docs/syllabus_checksums.txt`.
-- [ ] Mở PDF/cổng chinesetest.cn xác nhận: 300 từ, 246 chữ nhận mặt, 70 điểm ngữ pháp ở Level 1.
+- [x] 300 từ Level 1: xác nhận từ nội dung PDF (đọc trực tiếp, chưa có checksum).
+- [ ] 246 chữ nhận mặt và 70 điểm ngữ pháp Level 1: chưa trích xuất (Task 3).
+- [ ] Đối chiếu với cổng chinesetest.cn/syllabus.
 - [ ] Người có năng lực tiếng Trung duyệt danh sách Level 1 trước khi soạn bài.

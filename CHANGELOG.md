@@ -14,3 +14,6 @@
 
 ## (docs) Phase 2 / Task 1
 - Thêm docs/SYLLABUS_LOCK.md (khóa tạm đề cương HSK 3.0 bản 2025-11) và tools/fetch_syllabus.sh (tải PDF + sinh checksum). Không đổi mã app.
+
+## (content) Phase 2 / Task 2
+- content_work/hsk3_l1_vocab_working.csv (300 từ Level 1), tools/validate_level1.py (chạy trong CI), docs/EXTRACTION_REPORT_L1.md; chép đầy đủ tài liệu dự án vào docs/ (các bản zip trước thiếu); cập nhật THIRD_PARTY_NOTICES và SYLLABUS_LOCK. Không đổi mã app.
