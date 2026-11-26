@@ -4,28 +4,25 @@ Date: 2026-11-26
 Project version: 0.0.1-phase0
 
 ## Current phase and task
-- Phase 0, Task 1: khung dự án + quy trình build trên GitHub Actions.
+- Phase 0, Task 2: Room + DataStore + package structure (xong, chờ xác nhận build Actions).
 
 ## Completed
-- Gradle (Kotlin DSL), AGP 8.5.2, Kotlin 2.0.20, Compose BOM 2024.09.00, minSdk 26, compileSdk 34.
-- App shell: MainActivity + theme skeleton (Light/Dark) + chuỗi tiếng Việt + icon gốc.
-- Workflow .github/workflows/build-apk.yml: build debug APK, upload artifact, đăng lên release "debug-latest".
-- Docs đã chép vào docs/.
+- Task 1: khung dự án, app shell, workflow build APK (đã build xanh và cài chạy OK trên máy người dùng).
+- Task 2: Room 2.6.1 (KSP 2.0.20-1.0.25), HanziDatabase v1 + CurriculumVersionEntity/Dao, DataStore 1.1.1 + SettingsRepository, AppContainer, HanziApp.
 
-## Files created
-- settings.gradle.kts, build.gradle.kts, gradle.properties, .gitignore
-- app/build.gradle.kts, app/proguard-rules.pro, app/src/main/AndroidManifest.xml
-- app/src/main/java/com/hanzijourney/app/{MainActivity.kt, ui/theme/Color.kt, ui/theme/Theme.kt}
-- app/src/main/res/{values/*, drawable/ic_launcher_foreground.xml, mipmap-anydpi-v26/ic_launcher.xml}
-- .github/workflows/build-apk.yml, CHANGELOG.md, HANDOFF.md
+## Package structure (com.hanzijourney.app)
+- data/local (Room), data/prefs (DataStore), domain/model, di (AppContainer), ui/theme.
 
 ## Build and tests actually run
-- Build: KHÔNG chạy (môi trường tạo file không có Internet/Android SDK). Build đầu tiên sẽ chạy trên GitHub Actions.
-- Tests: chưa có.
+- Task 1: build Actions xanh, APK cài chạy OK (người dùng xác nhận).
+- Task 2: KHÔNG chạy build (không có Internet/SDK). Chưa có unit test.
 
 ## Known issues
-- Chưa xác nhận build thành công; có thể cần sửa phiên bản plugin/Gradle sau khi xem log Actions.
-- Chưa có gradle wrapper (workflow dùng Gradle 8.9 cài sẵn qua setup-gradle).
+- Chưa xác nhận Task 2 build; KSP/Room là điểm dễ lỗi nhất nếu Actions đỏ.
+- Chưa có UI dùng DB/Settings; chưa có tests. Thư mục app/schemas sẽ do KSP sinh khi build.
+
+## Exact next task
+- Xác nhận Actions xanh cho Task 2 và app vẫn mở được. Sau đó Phase 1, Task 1: design tokens + typography + Navigation Compose với 5 tab (Home, Learn, Vocabulary, Review, Profile) dùng màn hình trạng thái trống thật, không nút giả.
 
 ## Decisions that must remain unchanged
 - Android Native / Kotlin / Compose; Vietnamese-first; gamified UI; HSK 3.0 track; không AI/backend/API trả phí/login/ads/Premium; offline-first.
