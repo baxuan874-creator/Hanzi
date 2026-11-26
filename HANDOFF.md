@@ -4,22 +4,23 @@ Date: 2026-11-26
 Project version: 0.0.1-phase0
 
 ## Current phase and task
-- Phase 1, Task 1: design tokens + navigation 5 tab (xong, chờ xác nhận build Actions).
+- Phase 1, Task 2: component dùng chung + chế độ sáng/tối (xong, chờ xác nhận build Actions).
 
 ## Completed
-- Phase 0 Task 1-2: khung dự án, Room, DataStore, DI (build xanh, chạy OK trên máy người dùng).
-- Phase 1 Task 1: ui/theme (Color, Type, Shape, Spacing, Theme), ui/components/EmptyState, ui/navigation (TopLevelDestination, HanziAppRoot), ui/screens (Home, Learn, Vocabulary, Review, Profile — chỉ trạng thái trống thật, không mock data).
+- Phase 0 (Task 1-2) và Phase 1 Task 1: build xanh, chạy OK trên máy người dùng.
+- Phase 1 Task 2: ui/components (HanziButton, StatusBadge, HanziProgressBar, LessonCard, LearnMap), ProfileViewModel + màn Hồ sơ có chọn giao diện Sáng/Tối/Theo hệ thống (DataStore, áp dụng toàn app qua MainActivity).
 
 ## Build and tests actually run
-- Phase 1 Task 1: KHÔNG chạy build (không có Internet/SDK). Chưa có tests.
+- Phase 1 Task 2: KHÔNG chạy build (không có Internet/SDK). Chưa có tests.
 
 ## Known issues
-- Chưa xác nhận build; điểm rủi ro: import icon (Icons.AutoMirrored.Filled.List, LocationOn) và navigation-compose 2.8.2.
-- Theme chưa đọc DarkModeSetting từ DataStore (chưa có màn Cài đặt); đang theo hệ thống.
-- Chưa có Learn Map thật, component thẻ/nút game; chưa có Settings/About & Licenses.
+- Chưa xác nhận build. Rủi ro: viewModel factory/CreationExtras, Card(onClick, enabled), LinearProgressIndicator(progress lambda).
+- Các component (HanziButton, LessonCard, HanziProgressBar, LearnMap) CHƯA được màn hình nào dùng; sẽ dùng ở Phase 3. Không có mock data theo quyết định ở Task 1.
+- Chưa có Settings đầy đủ (âm thanh, giảm chuyển động chưa có điều khiển vì chưa có tác dụng), About & Licenses.
+- Chưa có unit/UI test.
 
 ## Exact next task
-- Xác nhận Actions xanh và 5 tab chạy. Sau đó Phase 1, Task 2: component dùng chung (nút chính, thẻ bài học, thanh tiến độ, huy hiệu) + Learn Map khung node theo dữ liệu rỗng, và nối theme với DarkModeSetting.
+- Xác nhận Actions xanh; thử đổi Sáng/Tối trong tab Hồ sơ, tắt app mở lại phải giữ lựa chọn. Sau đó Phase 2, Task 1: xác minh và khóa phiên bản đề cương HSK 3.0 từ nguồn CTI (ghi version, ngày truy cập, nguồn vào docs/SYLLABUS_LOCK.md), chưa nhập từ vựng.
 
 ## Decisions that must remain unchanged
 - Android Native / Kotlin / Compose; Vietnamese-first; gamified UI; HSK 3.0 track; không AI/backend/API trả phí/login/ads/Premium; offline-first.

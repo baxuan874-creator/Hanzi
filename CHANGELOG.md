@@ -8,3 +8,6 @@
 
 ## 0.0.3-phase1 (chưa build)
 - Phase 1 / Task 1: design tokens (màu sáng/tối, spacing, shape, typography), component EmptyState, Navigation Compose với 5 tab (Trang chủ, Học, Từ vựng, Ôn tập, Hồ sơ), 5 màn hình trạng thái trống. Không dùng dữ liệu giả.
+
+## 0.0.4-phase1 (chưa build)
+- Phase 1 / Task 2: component dùng chung (HanziButton, StatusBadge, HanziProgressBar, LessonCard, LearnMap); màn Hồ sơ có lựa chọn giao diện Theo hệ thống/Sáng/Tối lưu bằng DataStore và áp dụng cho toàn app (ProfileViewModel).
