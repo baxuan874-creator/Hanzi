@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hanzi Journey</string>
+    <string name="shell_title">汉字 Journey</string>
+    <string name="shell_tagline">Học tiếng Trung. Chơi. Ghi nhớ. Thành thạo.</string>
+    <string name="shell_status">Phiên bản nền tảng (Phase 0). Các bài học sẽ được thêm ở các giai đoạn sau.</string>
+</resources>
