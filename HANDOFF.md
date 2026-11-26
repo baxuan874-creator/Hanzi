@@ -4,23 +4,22 @@ Date: 2026-11-26
 Project version: 0.0.1-phase0
 
 ## Current phase and task
-- Phase 1, Task 2: component dùng chung + chế độ sáng/tối (xong, chờ xác nhận build Actions).
+- Phase 2, Task 1: xác minh và khóa đề cương HSK 3.0 (trạng thái PROVISIONAL).
 
 ## Completed
-- Phase 0 (Task 1-2) và Phase 1 Task 1: build xanh, chạy OK trên máy người dùng.
-- Phase 1 Task 2: ui/components (HanziButton, StatusBadge, HanziProgressBar, LessonCard, LearnMap), ProfileViewModel + màn Hồ sơ có chọn giao diện Sáng/Tối/Theo hệ thống (DataStore, áp dụng toàn app qua MainActivity).
+- Phase 0, Phase 1: build xanh, chạy OK (5 tab, theme, Room, DataStore, chọn Sáng/Tối).
+- Phase 2 Task 1: docs/SYLLABUS_LOCK.md (syllabus_id hsk_3_0_2025_11; Level 1 = 300 từ, 246 chữ nhận mặt, 0 chữ viết, 70 ngữ pháp), tools/fetch_syllabus.sh.
 
 ## Build and tests actually run
-- Phase 1 Task 2: KHÔNG chạy build (không có Internet/SDK). Chưa có tests.
+- Không đổi mã app ở task này; chưa chạy build. Script fetch_syllabus.sh chưa chạy (không có Internet ở môi trường tạo file).
 
 ## Known issues
-- Chưa xác nhận build. Rủi ro: viewModel factory/CreationExtras, Card(onClick, enabled), LinearProgressIndicator(progress lambda).
-- Các component (HanziButton, LessonCard, HanziProgressBar, LearnMap) CHƯA được màn hình nào dùng; sẽ dùng ở Phase 3. Không có mock data theo quyết định ở Task 1.
-- Chưa có Settings đầy đủ (âm thanh, giảm chuyển động chưa có điều khiển vì chưa có tác dụng), About & Licenses.
-- Chưa có unit/UI test.
+- Chưa mở trực tiếp chinesetest.cn; chưa có checksum PDF. Khóa còn PROVISIONAL.
+- Số 299 vs 300 từ Level 1 ở nguồn thứ cấp chưa giải quyết.
+- PRD chưa cập nhật theo phát hiện (xem SYLLABUS_LOCK.md mục 5), chờ chủ dự án đồng ý.
 
 ## Exact next task
-- Xác nhận Actions xanh; thử đổi Sáng/Tối trong tab Hồ sơ, tắt app mở lại phải giữ lựa chọn. Sau đó Phase 2, Task 1: xác minh và khóa phiên bản đề cương HSK 3.0 từ nguồn CTI (ghi version, ngày truy cập, nguồn vào docs/SYLLABUS_LOCK.md), chưa nhập từ vựng.
+- Người dùng chạy tools/fetch_syllabus.sh trong Codespace và push syllabus_checksums.txt. Sau đó Phase 2, Task 2: trích danh mục Level 1 từ PDF chính thức thành bảng làm việc (chưa soạn nghĩa/ví dụ), đối chiếu số lượng 300/246/70, và viết validator cơ bản.
 
 ## Decisions that must remain unchanged
 - Android Native / Kotlin / Compose; Vietnamese-first; gamified UI; HSK 3.0 track; không AI/backend/API trả phí/login/ads/Premium; offline-first.

@@ -11,3 +11,6 @@
 
 ## 0.0.4-phase1 (chưa build)
 - Phase 1 / Task 2: component dùng chung (HanziButton, StatusBadge, HanziProgressBar, LessonCard, LearnMap); màn Hồ sơ có lựa chọn giao diện Theo hệ thống/Sáng/Tối lưu bằng DataStore và áp dụng cho toàn app (ProfileViewModel).
+
+## (docs) Phase 2 / Task 1
+- Thêm docs/SYLLABUS_LOCK.md (khóa tạm đề cương HSK 3.0 bản 2025-11) và tools/fetch_syllabus.sh (tải PDF + sinh checksum). Không đổi mã app.
