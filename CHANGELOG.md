@@ -26,3 +26,6 @@
 
 ## (content) Phase 2 / Task 3c
 - content_work/hsk3_l1_chars_working.csv (246 chữ nhận mặt Level 1), cập nhật script trích và báo cáo. Giải thích chênh 248/246: 店, 饺.
+
+## (content) Phase 2 / Task 4
+- content_work/hsk3_l1_structure_working.json (16 chương, 47 bài, 300 từ + 70 ngữ pháp, mỗi mục đúng một lần), tools/build_l1_structure.py (kế hoạch gốc), docs/CURRICULUM_MAP_L1.md, validator kiểm tra cấu trúc (tiên quyết, giới hạn bài, phủ đủ), CI chạy cả build_l1_structure.py. Không đổi mã app.

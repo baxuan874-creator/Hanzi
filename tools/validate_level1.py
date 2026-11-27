@@ -104,6 +104,43 @@ if GRAM.exists():
 else:
     print("PENDING: content_work/hsk3_l1_grammar_working.csv not present yet")
 
+# ---- optional: chapter/lesson structure (Phase 2 Task 4) ----
+STRUCT = PATH.with_name("hsk3_l1_structure_working.json")
+if STRUCT.exists():
+    import json
+    data = json.load(open(STRUCT, encoding="utf-8"))
+    lessons, chapters = data.get("lessons", []), data.get("chapters", [])
+    lids = [l["id"] for l in lessons]
+    if len(set(lids)) != len(lids): err("structure", "duplicate lesson ids")
+    vocab_ids = {r["id"] for r in rows}
+    gram_ids = {g["id"] for g in grows} if GRAM.exists() else set()
+    seen_v, seen_g, pos = {}, {}, {lid: i for i, lid in enumerate(lids)}
+    for l in lessons:
+        lid = l["id"]
+        for w in l["vocabulary_ids"]:
+            if w not in vocab_ids: err(lid, f"unknown vocabulary id {w}")
+            if w in seen_v: err(lid, f"{w} already introduced in {seen_v[w]}")
+            seen_v[w] = lid
+        for q in l["grammar_ids"]:
+            if gram_ids and q not in gram_ids: err(lid, f"unknown grammar id {q}")
+            if q in seen_g: err(lid, f"{q} already introduced in {seen_g[q]}")
+            seen_g[q] = lid
+        for pre in l["prerequisite_ids"]:
+            if pre not in pos: err(lid, f"unknown prerequisite {pre}")
+            elif pos[pre] >= pos[lid]: err(lid, f"prerequisite {pre} is not earlier in the course")
+        if len(l["vocabulary_ids"]) > 12: err(lid, "more than 12 new words")
+        if len(l["grammar_ids"]) > 8: err(lid, "more than 8 grammar points")
+        if not 5 <= l["estimated_minutes"] <= 10: err(lid, "estimated_minutes outside 5-10")
+        if not l.get("objectives"): err(lid, "no objectives")
+    for w in vocab_ids - set(seen_v): err("structure", f"vocabulary not assigned to any lesson: {w}")
+    for q in gram_ids - set(seen_g): err("structure", f"grammar not assigned to any lesson: {q}")
+    ch_lessons = [x for c in chapters for x in c["lesson_ids"]]
+    if sorted(ch_lessons) != sorted(lids): err("structure", "chapters and lessons do not list the same lessons")
+    if any(not c.get("checkpoint") for c in chapters): err("structure", "chapter without checkpoint")
+    print(f"Structure checked: {len(chapters)} chapters, {len(lessons)} lessons")
+else:
+    print("PENDING: content_work/hsk3_l1_structure_working.json not present yet")
+
 print(f"Rows checked: {len(rows)} (expected {EXPECTED_VOCAB})")
 for line in warnings: print(line)
 for line in errors: print(line)

@@ -16,6 +16,7 @@ jobs:
       - name: Validate content working files
         run: |
           python3 tools/selftest_extract.py
+          python3 tools/build_l1_structure.py
           python3 tools/validate_level1.py
       - uses: actions/setup-java@v4
         with:

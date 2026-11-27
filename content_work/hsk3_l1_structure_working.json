@@ -1,0 +1,1628 @@
+{
+ "curriculum_id": "hsk_3_0",
+ "level_id": "hsk3_l1",
+ "syllabus_id": "hsk_3_0_2025_11",
+ "status": "draft_unreviewed",
+ "chapters": [
+  {
+   "id": "ch_foundation",
+   "title_vi": "Khởi động: âm và chữ",
+   "official_task_refs": "—",
+   "official_topic_refs": "—",
+   "lesson_ids": [
+    "hsk3_l1_lesson_001",
+    "hsk3_l1_lesson_002",
+    "hsk3_l1_lesson_003"
+   ],
+   "checkpoint": {
+    "id": "ch_foundation_checkpoint",
+    "title_vi": "Kiểm tra chương: Khởi động: âm và chữ",
+    "covers_lesson_ids": [
+     "hsk3_l1_lesson_001",
+     "hsk3_l1_lesson_002",
+     "hsk3_l1_lesson_003"
+    ],
+    "exercise_ids": []
+   }
+  },
+  {
+   "id": "ch01_greetings",
+   "title_vi": "Chào hỏi và lịch sự",
+   "official_task_refs": "六 日常言语交往",
+   "official_topic_refs": "日常生活 / 交往",
+   "lesson_ids": [
+    "hsk3_l1_lesson_004",
+    "hsk3_l1_lesson_005",
+    "hsk3_l1_lesson_006",
+    "hsk3_l1_lesson_007"
+   ],
+   "checkpoint": {
+    "id": "ch01_greetings_checkpoint",
+    "title_vi": "Kiểm tra chương: Chào hỏi và lịch sự",
+    "covers_lesson_ids": [
+     "hsk3_l1_lesson_004",
+     "hsk3_l1_lesson_005",
+     "hsk3_l1_lesson_006",
+     "hsk3_l1_lesson_007"
+    ],
+    "exercise_ids": []
+   }
+  },
+  {
+   "id": "ch02_about_me",
+   "title_vi": "Giới thiệu bản thân",
+   "official_task_refs": "一 问答个人基本信息",
+   "official_topic_refs": "基本信息 / 个人信息",
+   "lesson_ids": [
+    "hsk3_l1_lesson_008",
+    "hsk3_l1_lesson_009",
+    "hsk3_l1_lesson_010",
+    "hsk3_l1_lesson_011",
+    "hsk3_l1_lesson_012"
+   ],
+   "checkpoint": {
+    "id": "ch02_about_me_checkpoint",
+    "title_vi": "Kiểm tra chương: Giới thiệu bản thân",
+    "covers_lesson_ids": [
+     "hsk3_l1_lesson_008",
+     "hsk3_l1_lesson_009",
+     "hsk3_l1_lesson_010",
+     "hsk3_l1_lesson_011",
+     "hsk3_l1_lesson_012"
+    ],
+    "exercise_ids": []
+   }
+  },
+  {
+   "id": "ch03_time",
+   "title_vi": "Số, ngày, giờ",
+   "official_task_refs": "二 问答事件信息",
+   "official_topic_refs": "基本信息 / 事件信息",
+   "lesson_ids": [
+    "hsk3_l1_lesson_013",
+    "hsk3_l1_lesson_014",
+    "hsk3_l1_lesson_015",
+    "hsk3_l1_lesson_016",
+    "hsk3_l1_lesson_017",
+    "hsk3_l1_lesson_018"
+   ],
+   "checkpoint": {
+    "id": "ch03_time_checkpoint",
+    "title_vi": "Kiểm tra chương: Số, ngày, giờ",
+    "covers_lesson_ids": [
+     "hsk3_l1_lesson_013",
+     "hsk3_l1_lesson_014",
+     "hsk3_l1_lesson_015",
+     "hsk3_l1_lesson_016",
+     "hsk3_l1_lesson_017",
+     "hsk3_l1_lesson_018"
+    ],
+    "exercise_ids": []
+   }
+  },
+  {
+   "id": "ch04_things",
+   "title_vi": "Đồ vật quanh ta",
+   "official_task_refs": "三 问答物品信息",
+   "official_topic_refs": "基本信息 / 物品信息",
+   "lesson_ids": [
+    "hsk3_l1_lesson_019",
+    "hsk3_l1_lesson_020",
+    "hsk3_l1_lesson_021",
+    "hsk3_l1_lesson_022",
+    "hsk3_l1_lesson_023",
+    "hsk3_l1_lesson_024"
+   ],
+   "checkpoint": {
+    "id": "ch04_things_checkpoint",
+    "title_vi": "Kiểm tra chương: Đồ vật quanh ta",
+    "covers_lesson_ids": [
+     "hsk3_l1_lesson_019",
+     "hsk3_l1_lesson_020",
+     "hsk3_l1_lesson_021",
+     "hsk3_l1_lesson_022",
+     "hsk3_l1_lesson_023",
+     "hsk3_l1_lesson_024"
+    ],
+    "exercise_ids": []
+   }
+  },
+  {
+   "id": "ch05_weather",
+   "title_vi": "Thời tiết và cảm xúc",
+   "official_task_refs": "四 问答天气",
+   "official_topic_refs": "基本信息 / 环境信息(天气)",
+   "lesson_ids": [
+    "hsk3_l1_lesson_025",
+    "hsk3_l1_lesson_026",
+    "hsk3_l1_lesson_027"
+   ],
+   "checkpoint": {
+    "id": "ch05_weather_checkpoint",
+    "title_vi": "Kiểm tra chương: Thời tiết và cảm xúc",
+    "covers_lesson_ids": [
+     "hsk3_l1_lesson_025",
+     "hsk3_l1_lesson_026",
+     "hsk3_l1_lesson_027"
+    ],
+    "exercise_ids": []
+   }
+  },
+  {
+   "id": "ch06_places",
+   "title_vi": "Nơi chốn",
+   "official_task_refs": "五 问答环境信息",
+   "official_topic_refs": "基本信息 / 环境信息",
+   "lesson_ids": [
+    "hsk3_l1_lesson_028",
+    "hsk3_l1_lesson_029",
+    "hsk3_l1_lesson_030"
+   ],
+   "checkpoint": {
+    "id": "ch06_places_checkpoint",
+    "title_vi": "Kiểm tra chương: Nơi chốn",
+    "covers_lesson_ids": [
+     "hsk3_l1_lesson_028",
+     "hsk3_l1_lesson_029",
+     "hsk3_l1_lesson_030"
+    ],
+    "exercise_ids": []
+   }
+  },
+  {
+   "id": "ch07_food",
+   "title_vi": "Ăn uống",
+   "official_task_refs": "七 问答饮食喜好 / 十五 问答中国传统饮食",
+   "official_topic_refs": "日常生活 / 饮食; 文化与传统 / 饮食文化",
+   "lesson_ids": [
+    "hsk3_l1_lesson_031",
+    "hsk3_l1_lesson_032",
+    "hsk3_l1_lesson_033"
+   ],
+   "checkpoint": {
+    "id": "ch07_food_checkpoint",
+    "title_vi": "Kiểm tra chương: Ăn uống",
+    "covers_lesson_ids": [
+     "hsk3_l1_lesson_031",
+     "hsk3_l1_lesson_032",
+     "hsk3_l1_lesson_033"
+    ],
+    "exercise_ids": []
+   }
+  },
+  {
+   "id": "ch08_travel",
+   "title_vi": "Đi lại",
+   "official_task_refs": "八 问答出行信息",
+   "official_topic_refs": "日常生活 / 交通出行",
+   "lesson_ids": [
+    "hsk3_l1_lesson_034",
+    "hsk3_l1_lesson_035"
+   ],
+   "checkpoint": {
+    "id": "ch08_travel_checkpoint",
+    "title_vi": "Kiểm tra chương: Đi lại",
+    "covers_lesson_ids": [
+     "hsk3_l1_lesson_034",
+     "hsk3_l1_lesson_035"
+    ],
+    "exercise_ids": []
+   }
+  },
+  {
+   "id": "ch09_shopping",
+   "title_vi": "Mua sắm",
+   "official_task_refs": "九 问答商品信息",
+   "official_topic_refs": "日常生活 / 购物",
+   "lesson_ids": [
+    "hsk3_l1_lesson_036"
+   ],
+   "checkpoint": {
+    "id": "ch09_shopping_checkpoint",
+    "title_vi": "Kiểm tra chương: Mua sắm",
+    "covers_lesson_ids": [
+     "hsk3_l1_lesson_036"
+    ],
+    "exercise_ids": []
+   }
+  },
+  {
+   "id": "ch10_health",
+   "title_vi": "Sức khỏe",
+   "official_task_refs": "十 告知生病、探病",
+   "official_topic_refs": "日常生活 / 医疗健康",
+   "lesson_ids": [
+    "hsk3_l1_lesson_037"
+   ],
+   "checkpoint": {
+    "id": "ch10_health_checkpoint",
+    "title_vi": "Kiểm tra chương: Sức khỏe",
+    "covers_lesson_ids": [
+     "hsk3_l1_lesson_037"
+    ],
+    "exercise_ids": []
+   }
+  },
+  {
+   "id": "ch11_leisure",
+   "title_vi": "Giải trí",
+   "official_task_refs": "十一 交流休闲活动",
+   "official_topic_refs": "日常生活 / 休闲",
+   "lesson_ids": [
+    "hsk3_l1_lesson_038"
+   ],
+   "checkpoint": {
+    "id": "ch11_leisure_checkpoint",
+    "title_vi": "Kiểm tra chương: Giải trí",
+    "covers_lesson_ids": [
+     "hsk3_l1_lesson_038"
+    ],
+    "exercise_ids": []
+   }
+  },
+  {
+   "id": "ch12_study",
+   "title_vi": "Học tập và trường học",
+   "official_task_refs": "十二 介绍学习情况 / 十三 交流学校情况、课后活动",
+   "official_topic_refs": "教育情况",
+   "lesson_ids": [
+    "hsk3_l1_lesson_039",
+    "hsk3_l1_lesson_040"
+   ],
+   "checkpoint": {
+    "id": "ch12_study_checkpoint",
+    "title_vi": "Kiểm tra chương: Học tập và trường học",
+    "covers_lesson_ids": [
+     "hsk3_l1_lesson_039",
+     "hsk3_l1_lesson_040"
+    ],
+    "exercise_ids": []
+   }
+  },
+  {
+   "id": "ch13_work",
+   "title_vi": "Công việc",
+   "official_task_refs": "十四 交流工作信息",
+   "official_topic_refs": "职场生活",
+   "lesson_ids": [
+    "hsk3_l1_lesson_041"
+   ],
+   "checkpoint": {
+    "id": "ch13_work_checkpoint",
+    "title_vi": "Kiểm tra chương: Công việc",
+    "covers_lesson_ids": [
+     "hsk3_l1_lesson_041"
+    ],
+    "exercise_ids": []
+   }
+  },
+  {
+   "id": "ch14_grammar_words",
+   "title_vi": "Từ chỉ hành động và trạng thái",
+   "official_task_refs": "(tổng hợp ngữ pháp)",
+   "official_topic_refs": "(nhiều chủ đề)",
+   "lesson_ids": [
+    "hsk3_l1_lesson_042",
+    "hsk3_l1_lesson_043",
+    "hsk3_l1_lesson_044"
+   ],
+   "checkpoint": {
+    "id": "ch14_grammar_words_checkpoint",
+    "title_vi": "Kiểm tra chương: Từ chỉ hành động và trạng thái",
+    "covers_lesson_ids": [
+     "hsk3_l1_lesson_042",
+     "hsk3_l1_lesson_043",
+     "hsk3_l1_lesson_044"
+    ],
+    "exercise_ids": []
+   }
+  },
+  {
+   "id": "ch15_sentences",
+   "title_vi": "Tổng hợp cấu trúc câu",
+   "official_task_refs": "(tổng hợp ngữ pháp)",
+   "official_topic_refs": "(nhiều chủ đề)",
+   "lesson_ids": [
+    "hsk3_l1_lesson_045",
+    "hsk3_l1_lesson_046",
+    "hsk3_l1_lesson_047"
+   ],
+   "checkpoint": {
+    "id": "ch15_sentences_checkpoint",
+    "title_vi": "Kiểm tra chương: Tổng hợp cấu trúc câu",
+    "covers_lesson_ids": [
+     "hsk3_l1_lesson_045",
+     "hsk3_l1_lesson_046",
+     "hsk3_l1_lesson_047"
+    ],
+    "exercise_ids": []
+   }
+  }
+ ],
+ "lessons": [
+  {
+   "id": "hsk3_l1_lesson_001",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch_foundation",
+   "title_vi": "Thanh điệu và pinyin đầu tiên",
+   "objectives": [
+    "Nhận ra 4 thanh điệu và thanh nhẹ"
+   ],
+   "vocabulary_ids": [],
+   "grammar_ids": [],
+   "exercise_ids": [],
+   "estimated_minutes": 5,
+   "prerequisite_ids": [],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_002",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch_foundation",
+   "title_vi": "Thanh mẫu và vận mẫu thường gặp",
+   "objectives": [
+    "Đọc được các âm tiết đơn giản"
+   ],
+   "vocabulary_ids": [],
+   "grammar_ids": [],
+   "exercise_ids": [],
+   "estimated_minutes": 5,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_001"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_003",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch_foundation",
+   "title_vi": "Nét chữ và chữ Hán đầu tiên",
+   "objectives": [
+    "Nhận biết các nét cơ bản và thứ tự nét đơn giản"
+   ],
+   "vocabulary_ids": [],
+   "grammar_ids": [],
+   "exercise_ids": [],
+   "estimated_minutes": 5,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_002"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_004",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch01_greetings",
+   "title_vi": "Xin chào",
+   "objectives": [
+    "Chào hỏi và nói lời lịch sự cơ bản"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0147",
+    "vocab_l1_0150",
+    "vocab_l1_0146",
+    "vocab_l1_0221",
+    "vocab_l1_0071",
+    "vocab_l1_0271",
+    "vocab_l1_0241",
+    "vocab_l1_0045",
+    "vocab_l1_0014",
+    "vocab_l1_0120",
+    "vocab_l1_0165",
+    "vocab_l1_0166"
+   ],
+   "grammar_ids": [
+    "gram_l1_0051"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 9,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_003"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_005",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch01_greetings",
+   "title_vi": "Chúng tôi, họ, mọi người",
+   "objectives": [
+    "Dùng đại từ nhân xưng số nhiều"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0200",
+    "vocab_l1_0204",
+    "vocab_l1_0202",
+    "vocab_l1_0201",
+    "vocab_l1_0205",
+    "vocab_l1_0203",
+    "vocab_l1_0222",
+    "vocab_l1_0148",
+    "vocab_l1_0026",
+    "vocab_l1_0124"
+   ],
+   "grammar_ids": [
+    "gram_l1_0009",
+    "gram_l1_0002"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 9,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_004"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_006",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch01_greetings",
+   "title_vi": "Là và không phải",
+   "objectives": [
+    "Nói câu có 是 và phủ định bằng 不"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0188",
+    "vocab_l1_0013"
+   ],
+   "grammar_ids": [
+    "gram_l1_0043",
+    "gram_l1_0047",
+    "gram_l1_0048",
+    "gram_l1_0053"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 7,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_005"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_007",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch01_greetings",
+   "title_vi": "的, 吗, 呢, 吧",
+   "objectives": [
+    "Dùng 的 và các trợ từ cuối câu"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0030",
+    "vocab_l1_0115",
+    "vocab_l1_0144",
+    "vocab_l1_0004"
+   ],
+   "grammar_ids": [
+    "gram_l1_0024",
+    "gram_l1_0026"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 7,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_006"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_008",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch02_about_me",
+   "title_vi": "Tên và quốc tịch",
+   "objectives": [
+    "Hỏi và nói tên, quốc tịch"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0091",
+    "vocab_l1_0182",
+    "vocab_l1_0128",
+    "vocab_l1_0170",
+    "vocab_l1_0066",
+    "vocab_l1_0289",
+    "vocab_l1_0069",
+    "vocab_l1_0290",
+    "vocab_l1_0070",
+    "vocab_l1_0181"
+   ],
+   "grammar_ids": [
+    "gram_l1_0008",
+    "gram_l1_0049"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 9,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_007"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_009",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch02_about_me",
+   "title_vi": "Tuổi và giới tính",
+   "objectives": [
+    "Hỏi và nói tuổi, giới tính"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0199",
+    "vocab_l1_0149",
+    "vocab_l1_0085",
+    "vocab_l1_0047",
+    "vocab_l1_0142",
+    "vocab_l1_0152",
+    "vocab_l1_0046"
+   ],
+   "grammar_ids": [],
+   "exercise_ids": [],
+   "estimated_minutes": 7,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_008"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_010",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch02_about_me",
+   "title_vi": "Gia đình",
+   "objectives": [
+    "Nói về các thành viên trong gia đình"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0003",
+    "vocab_l1_0114",
+    "vocab_l1_0058",
+    "vocab_l1_0092",
+    "vocab_l1_0031",
+    "vocab_l1_0123",
+    "vocab_l1_0048",
+    "vocab_l1_0153",
+    "vocab_l1_0068",
+    "vocab_l1_0086",
+    "vocab_l1_0087",
+    "vocab_l1_0263"
+   ],
+   "grammar_ids": [
+    "gram_l1_0054"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 9,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_009"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_011",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch02_about_me",
+   "title_vi": "Bạn bè và thầy cô",
+   "objectives": [
+    "Giới thiệu bạn bè, thầy cô"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0156",
+    "vocab_l1_0143",
+    "vocab_l1_0154",
+    "vocab_l1_0171",
+    "vocab_l1_0211",
+    "vocab_l1_0107",
+    "vocab_l1_0248",
+    "vocab_l1_0231",
+    "vocab_l1_0155",
+    "vocab_l1_0235"
+   ],
+   "grammar_ids": [],
+   "exercise_ids": [],
+   "estimated_minutes": 8,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_010"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_012",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch02_about_me",
+   "title_vi": "Biết làm gì",
+   "objectives": [
+    "Nói điều mình biết, có thể làm"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0082",
+    "vocab_l1_0145",
+    "vocab_l1_0102",
+    "vocab_l1_0196",
+    "vocab_l1_0197",
+    "vocab_l1_0240"
+   ],
+   "grammar_ids": [
+    "gram_l1_0004",
+    "gram_l1_0006"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 8,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_011"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_013",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch03_time",
+   "title_vi": "Số từ 0 đến 10",
+   "objectives": [
+    "Đếm và đọc số đơn giản"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0112",
+    "vocab_l1_0254",
+    "vocab_l1_0049",
+    "vocab_l1_0111",
+    "vocab_l1_0173",
+    "vocab_l1_0198",
+    "vocab_l1_0223",
+    "vocab_l1_0113",
+    "vocab_l1_0160",
+    "vocab_l1_0002",
+    "vocab_l1_0095",
+    "vocab_l1_0184"
+   ],
+   "grammar_ids": [
+    "gram_l1_0011"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 9,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_012"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_014",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch03_time",
+   "title_vi": "Số lớn, thứ tự",
+   "objectives": [
+    "Đọc số lớn và số thứ tự"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0006",
+    "vocab_l1_0162",
+    "vocab_l1_0007",
+    "vocab_l1_0255",
+    "vocab_l1_0032"
+   ],
+   "grammar_ids": [
+    "gram_l1_0001",
+    "gram_l1_0068"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 7,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_013"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_015",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch03_time",
+   "title_vi": "Hôm qua, hôm nay, ngày mai",
+   "objectives": [
+    "Nói các ngày trong tuần"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0094",
+    "vocab_l1_0130",
+    "vocab_l1_0297",
+    "vocab_l1_0207",
+    "vocab_l1_0243",
+    "vocab_l1_0244",
+    "vocab_l1_0245"
+   ],
+   "grammar_ids": [
+    "gram_l1_0045"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 8,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_014"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_016",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch03_time",
+   "title_vi": "Ngày, tháng, năm",
+   "objectives": [
+    "Nói ngày tháng năm"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0269",
+    "vocab_l1_0172",
+    "vocab_l1_0076",
+    "vocab_l1_0093",
+    "vocab_l1_0129",
+    "vocab_l1_0168"
+   ],
+   "grammar_ids": [
+    "gram_l1_0014",
+    "gram_l1_0069"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 8,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_015"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_017",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch03_time",
+   "title_vi": "Mấy giờ rồi",
+   "objectives": [
+    "Hỏi và nói giờ, gọi điện"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0033",
+    "vocab_l1_0055",
+    "vocab_l1_0056",
+    "vocab_l1_0236",
+    "vocab_l1_0185",
+    "vocab_l1_0186",
+    "vocab_l1_0232",
+    "vocab_l1_0034",
+    "vocab_l1_0024",
+    "vocab_l1_0218"
+   ],
+   "grammar_ids": [
+    "gram_l1_0070",
+    "gram_l1_0027"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 9,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_016"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_018",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch03_time",
+   "title_vi": "Các buổi trong ngày",
+   "objectives": [
+    "Nói về buổi trong ngày và sinh hoạt"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0273",
+    "vocab_l1_0275",
+    "vocab_l1_0178",
+    "vocab_l1_0291",
+    "vocab_l1_0229",
+    "vocab_l1_0215",
+    "vocab_l1_0217",
+    "vocab_l1_0005",
+    "vocab_l1_0161",
+    "vocab_l1_0194",
+    "vocab_l1_0195"
+   ],
+   "grammar_ids": [],
+   "exercise_ids": [],
+   "estimated_minutes": 9,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_017"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_019",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch04_things",
+   "title_vi": "Đồ dùng",
+   "objectives": [
+    "Gọi tên đồ vật thường gặp"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0040",
+    "vocab_l1_0190",
+    "vocab_l1_0009",
+    "vocab_l1_0295",
+    "vocab_l1_0262",
+    "vocab_l1_0189",
+    "vocab_l1_0035",
+    "vocab_l1_0036",
+    "vocab_l1_0259",
+    "vocab_l1_0023"
+   ],
+   "grammar_ids": [],
+   "exercise_ids": [],
+   "estimated_minutes": 8,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_018"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_020",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch04_things",
+   "title_vi": "Lượng từ",
+   "objectives": [
+    "Dùng lượng từ khi đếm đồ vật"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0060",
+    "vocab_l1_0010",
+    "vocab_l1_0089",
+    "vocab_l1_0287",
+    "vocab_l1_0104",
+    "vocab_l1_0105",
+    "vocab_l1_0268"
+   ],
+   "grammar_ids": [
+    "gram_l1_0012",
+    "gram_l1_0013"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 8,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_019"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_021",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch04_things",
+   "title_vi": "Đặc điểm đồ vật",
+   "objectives": [
+    "Mô tả đồ vật bằng tính từ"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0025",
+    "vocab_l1_0234",
+    "vocab_l1_0242",
+    "vocab_l1_0180",
+    "vocab_l1_0065",
+    "vocab_l1_0157",
+    "vocab_l1_0158"
+   ],
+   "grammar_ids": [],
+   "exercise_ids": [],
+   "estimated_minutes": 7,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_020"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_022",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch04_things",
+   "title_vi": "Rất, hơi, quá",
+   "objectives": [
+    "Dùng phó từ chỉ mức độ"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0079",
+    "vocab_l1_0054",
+    "vocab_l1_0206",
+    "vocab_l1_0285",
+    "vocab_l1_0265",
+    "vocab_l1_0073",
+    "vocab_l1_0074",
+    "vocab_l1_0072",
+    "vocab_l1_0075"
+   ],
+   "grammar_ids": [
+    "gram_l1_0015",
+    "gram_l1_0044"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 9,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_021"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_023",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch04_things",
+   "title_vi": "Cái này, cái kia",
+   "objectives": [
+    "Chỉ định đồ vật"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0256",
+    "vocab_l1_0258",
+    "vocab_l1_0239",
+    "vocab_l1_0257",
+    "vocab_l1_0264",
+    "vocab_l1_0266",
+    "vocab_l1_0279",
+    "vocab_l1_0136",
+    "vocab_l1_0281",
+    "vocab_l1_0138",
+    "vocab_l1_0284",
+    "vocab_l1_0141"
+   ],
+   "grammar_ids": [
+    "gram_l1_0010"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 9,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_022"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_024",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch04_things",
+   "title_vi": "Không có, cho, tìm",
+   "objectives": [
+    "Nói có, không có, cho và tìm đồ"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0122",
+    "vocab_l1_0015",
+    "vocab_l1_0121",
+    "vocab_l1_0061",
+    "vocab_l1_0278"
+   ],
+   "grammar_ids": [
+    "gram_l1_0020",
+    "gram_l1_0059"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 7,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_023"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_025",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch05_weather",
+   "title_vi": "Thời tiết",
+   "objectives": [
+    "Hỏi và nói thời tiết"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0208",
+    "vocab_l1_0109",
+    "vocab_l1_0169",
+    "vocab_l1_0267",
+    "vocab_l1_0230",
+    "vocab_l1_0251"
+   ],
+   "grammar_ids": [],
+   "exercise_ids": [],
+   "estimated_minutes": 7,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_024"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_026",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch05_weather",
+   "title_vi": "Thích và muốn",
+   "objectives": [
+    "Nói điều thích, muốn, nghĩ"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0225",
+    "vocab_l1_0233",
+    "vocab_l1_0252",
+    "vocab_l1_0096",
+    "vocab_l1_0288",
+    "vocab_l1_0057",
+    "vocab_l1_0118"
+   ],
+   "grammar_ids": [
+    "gram_l1_0005"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 8,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_025"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_027",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch05_weather",
+   "title_vi": "Con vật yêu thích",
+   "objectives": [
+    "Nói về con vật mình thích"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0001",
+    "vocab_l1_0064",
+    "vocab_l1_0119"
+   ],
+   "grammar_ids": [],
+   "exercise_ids": [],
+   "estimated_minutes": 6,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_026"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_028",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch06_places",
+   "title_vi": "Địa điểm quanh ta",
+   "objectives": [
+    "Gọi tên nơi chốn và nói ở đâu"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0250",
+    "vocab_l1_0174",
+    "vocab_l1_0019",
+    "vocab_l1_0038",
+    "vocab_l1_0051",
+    "vocab_l1_0261",
+    "vocab_l1_0191",
+    "vocab_l1_0039",
+    "vocab_l1_0052",
+    "vocab_l1_0294",
+    "vocab_l1_0272"
+   ],
+   "grammar_ids": [
+    "gram_l1_0021",
+    "gram_l1_0055",
+    "gram_l1_0056"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 10,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_027"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_029",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch06_places",
+   "title_vi": "Phương hướng",
+   "objectives": [
+    "Nói vị trí trên dưới trước sau"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0175",
+    "vocab_l1_0226",
+    "vocab_l1_0110",
+    "vocab_l1_0212",
+    "vocab_l1_0163",
+    "vocab_l1_0080",
+    "vocab_l1_0213",
+    "vocab_l1_0011",
+    "vocab_l1_0137",
+    "vocab_l1_0280"
+   ],
+   "grammar_ids": [
+    "gram_l1_0003",
+    "gram_l1_0034"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 9,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_028"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_030",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch06_places",
+   "title_vi": "Ở đâu, ở đây",
+   "objectives": [
+    "Hỏi và chỉ nơi chốn"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0282",
+    "vocab_l1_0139",
+    "vocab_l1_0133",
+    "vocab_l1_0283",
+    "vocab_l1_0140",
+    "vocab_l1_0134",
+    "vocab_l1_0131",
+    "vocab_l1_0132",
+    "vocab_l1_0135",
+    "vocab_l1_0276",
+    "vocab_l1_0277"
+   ],
+   "grammar_ids": [],
+   "exercise_ids": [],
+   "estimated_minutes": 9,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_029"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_031",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch07_food",
+   "title_vi": "Đồ ăn",
+   "objectives": [
+    "Gọi tên món ăn thường gặp"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0050",
+    "vocab_l1_0016",
+    "vocab_l1_0125",
+    "vocab_l1_0126",
+    "vocab_l1_0127",
+    "vocab_l1_0008",
+    "vocab_l1_0090",
+    "vocab_l1_0084"
+   ],
+   "grammar_ids": [],
+   "exercise_ids": [],
+   "estimated_minutes": 8,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_030"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_032",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch07_food",
+   "title_vi": "Đồ uống và trái cây",
+   "objectives": [
+    "Nói về đồ uống, trái cây"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0192",
+    "vocab_l1_0193",
+    "vocab_l1_0159",
+    "vocab_l1_0017",
+    "vocab_l1_0151",
+    "vocab_l1_0077",
+    "vocab_l1_0021"
+   ],
+   "grammar_ids": [],
+   "exercise_ids": [],
+   "estimated_minutes": 7,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_031"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_033",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch07_food",
+   "title_vi": "Bữa ăn",
+   "objectives": [
+    "Nói về ba bữa và nấu ăn"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0274",
+    "vocab_l1_0224",
+    "vocab_l1_0216",
+    "vocab_l1_0300",
+    "vocab_l1_0299"
+   ],
+   "grammar_ids": [],
+   "exercise_ids": [],
+   "estimated_minutes": 7,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_032"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_034",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch08_travel",
+   "title_vi": "Phương tiện",
+   "objectives": [
+    "Nói về phương tiện đi lại"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0020",
+    "vocab_l1_0022",
+    "vocab_l1_0083",
+    "vocab_l1_0053",
+    "vocab_l1_0098",
+    "vocab_l1_0097",
+    "vocab_l1_0298"
+   ],
+   "grammar_ids": [
+    "gram_l1_0057"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 8,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_033"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_035",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch08_travel",
+   "title_vi": "Đi và đến",
+   "objectives": [
+    "Nói đi đâu, về đâu"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0167",
+    "vocab_l1_0106",
+    "vocab_l1_0029",
+    "vocab_l1_0081",
+    "vocab_l1_0179"
+   ],
+   "grammar_ids": [
+    "gram_l1_0058"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 7,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_034"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_036",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch09_shopping",
+   "title_vi": "Mua và bán",
+   "objectives": [
+    "Hỏi giá, mua bán"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0116",
+    "vocab_l1_0117",
+    "vocab_l1_0164",
+    "vocab_l1_0078",
+    "vocab_l1_0044"
+   ],
+   "grammar_ids": [
+    "gram_l1_0022",
+    "gram_l1_0023",
+    "gram_l1_0067"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 8,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_035"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_037",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch10_health",
+   "title_vi": "Bị ốm",
+   "objectives": [
+    "Nói khi bị ốm, đi khám"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0012",
+    "vocab_l1_0183",
+    "vocab_l1_0100",
+    "vocab_l1_0260",
+    "vocab_l1_0246"
+   ],
+   "grammar_ids": [],
+   "exercise_ids": [],
+   "estimated_minutes": 7,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_036"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_038",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch11_leisure",
+   "title_vi": "Xem, nghe, hát, chơi",
+   "objectives": [
+    "Nói về hoạt động giải trí"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0099",
+    "vocab_l1_0209",
+    "vocab_l1_0018",
+    "vocab_l1_0059",
+    "vocab_l1_0214",
+    "vocab_l1_0037",
+    "vocab_l1_0101",
+    "vocab_l1_0210",
+    "vocab_l1_0088"
+   ],
+   "grammar_ids": [],
+   "exercise_ids": [],
+   "estimated_minutes": 8,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_037"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_039",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch12_study",
+   "title_vi": "Trong lớp học",
+   "objectives": [
+    "Nói về giờ học và bài học"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0247",
+    "vocab_l1_0249",
+    "vocab_l1_0103",
+    "vocab_l1_0177",
+    "vocab_l1_0228",
+    "vocab_l1_0042",
+    "vocab_l1_0043",
+    "vocab_l1_0296",
+    "vocab_l1_0219",
+    "vocab_l1_0220"
+   ],
+   "grammar_ids": [
+    "gram_l1_0007"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 9,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_038"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_040",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch12_study",
+   "title_vi": "Các cấp học",
+   "objectives": [
+    "Nói về các cấp học"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0027",
+    "vocab_l1_0028",
+    "vocab_l1_0292",
+    "vocab_l1_0293",
+    "vocab_l1_0237",
+    "vocab_l1_0238"
+   ],
+   "grammar_ids": [],
+   "exercise_ids": [],
+   "estimated_minutes": 7,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_039"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_041",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch13_work",
+   "title_vi": "Đi làm",
+   "objectives": [
+    "Nói về công việc, nơi làm việc"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0062",
+    "vocab_l1_0063",
+    "vocab_l1_0187",
+    "vocab_l1_0176",
+    "vocab_l1_0227"
+   ],
+   "grammar_ids": [],
+   "exercise_ids": [],
+   "estimated_minutes": 7,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_040"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_042",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch14_grammar_words",
+   "title_vi": "Việc đã xảy ra",
+   "objectives": [
+    "Dùng 了 cho việc đã xảy ra và thay đổi"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0108"
+   ],
+   "grammar_ids": [
+    "gram_l1_0025",
+    "gram_l1_0062",
+    "gram_l1_0063"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 6,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_041"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_043",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch14_grammar_words",
+   "title_vi": "Đang làm gì",
+   "objectives": [
+    "Nói hành động đang diễn ra"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0286"
+   ],
+   "grammar_ids": [
+    "gram_l1_0017",
+    "gram_l1_0064",
+    "gram_l1_0065",
+    "gram_l1_0066"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 7,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_042"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_044",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch14_grammar_words",
+   "title_vi": "Cũng, đều, còn, lại",
+   "objectives": [
+    "Dùng 都, 也, 还, 再"
+   ],
+   "vocabulary_ids": [
+    "vocab_l1_0041",
+    "vocab_l1_0253",
+    "vocab_l1_0067",
+    "vocab_l1_0270"
+   ],
+   "grammar_ids": [
+    "gram_l1_0016",
+    "gram_l1_0018",
+    "gram_l1_0019",
+    "gram_l1_0060",
+    "gram_l1_0061"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 8,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_043"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_045",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch15_sentences",
+   "title_vi": "Cụm từ",
+   "objectives": [
+    "Nhận biết các loại cụm từ"
+   ],
+   "vocabulary_ids": [],
+   "grammar_ids": [
+    "gram_l1_0028",
+    "gram_l1_0029",
+    "gram_l1_0030",
+    "gram_l1_0031",
+    "gram_l1_0032",
+    "gram_l1_0033"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 7,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_044"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_046",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch15_sentences",
+   "title_vi": "Thành phần câu",
+   "objectives": [
+    "Nhận biết chủ ngữ, vị ngữ, tân ngữ, định ngữ, trạng ngữ, bổ ngữ"
+   ],
+   "vocabulary_ids": [],
+   "grammar_ids": [
+    "gram_l1_0035",
+    "gram_l1_0036",
+    "gram_l1_0037",
+    "gram_l1_0038",
+    "gram_l1_0039",
+    "gram_l1_0040",
+    "gram_l1_0041",
+    "gram_l1_0042"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 8,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_045"
+   ],
+   "content_version": "0.1.0-draft"
+  },
+  {
+   "id": "hsk3_l1_lesson_047",
+   "curriculum_id": "hsk_3_0",
+   "level_id": "hsk3_l1",
+   "chapter_id": "ch15_sentences",
+   "title_vi": "Các loại câu",
+   "objectives": [
+    "Nhận biết câu vô chủ, câu hỏi chính phản, câu cảm thán"
+   ],
+   "vocabulary_ids": [],
+   "grammar_ids": [
+    "gram_l1_0046",
+    "gram_l1_0050",
+    "gram_l1_0052"
+   ],
+   "exercise_ids": [],
+   "estimated_minutes": 6,
+   "prerequisite_ids": [
+    "hsk3_l1_lesson_046"
+   ],
+   "content_version": "0.1.0-draft"
+  }
+ ]
+}
