@@ -42,6 +42,16 @@ def pages_for(pages, offset, first, last):
     return [pages[i + offset] for i in range(first, last + 1)]
 
 
+def numbered_chars(texts):
+    """Real layout (seen in l1_chars_raw.txt): one entry per line, '12. 边'. Returns [(n, char)]."""
+    out = []
+    for t in texts:
+        for line in t.splitlines():
+            m = re.match(r"^(\d+)\.\s*([\u4e00-\u9fff])\s*$", line.strip())
+            if m: out.append((int(m.group(1)), m.group(2)))
+    return out
+
+
 def single_char_tokens(texts):
     out = []
     for t in texts:
@@ -75,7 +85,10 @@ def main():
     # --- characters ---
     ctexts = pages_for(pages, off, 353, 354)
     RAW_CHARS.write_text("\n\n=====PAGE=====\n".join(ctexts), encoding="utf-8")
-    chars = single_char_tokens(ctexts)
+    numbered = numbered_chars(ctexts)
+    chars = [c for _, c in numbered] if numbered else single_char_tokens(ctexts)
+    if numbered and [n for n, _ in numbered] != list(range(1, len(numbered) + 1)):
+        print("WARNING: numbering is not contiguous from 1"); chars = []
     print(f"Single-character tokens on printed pages 353-354: {len(chars)} (expected {EXPECTED_CHARS})")
     cand = []
     if VOCAB_CSV.exists():
@@ -87,10 +100,10 @@ def main():
         print("In words but not in PDF list :", "".join(c for c in cand if c not in chars) or "-")
     if len(chars) == EXPECTED_CHARS:
         with open(CHARS_CSV, "w", newline="", encoding="utf-8") as f:
-            w = csv.writer(f); w.writerow(["id", "hanzi", "curriculum_id", "level_id", "source_ref", "review_status"])
+            w = csv.writer(f); w.writerow(["id", "syllabus_seq", "hanzi", "curriculum_id", "level_id", "source_ref", "review_status", "flags"])
             for i, ch in enumerate(chars, 1):
-                w.writerow([f"char_l1_{i:04d}", ch, "hsk_3_0", "hsk3_l1",
-                            f"hsk_3_0_2025_11/pdf1219/recognition_chars#{i}", "extracted_unreviewed"])
+                w.writerow([f"char_l1_{i:04d}", i, ch, "hsk_3_0", "hsk3_l1",
+                            f"hsk_3_0_2025_11/pdf1219/recognition_chars#{i}", "extracted_unreviewed", ""])
         print(f"WROTE {CHARS_CSV.relative_to(ROOT)}")
         rc = 0
     else:

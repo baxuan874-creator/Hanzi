@@ -42,3 +42,8 @@ Danh sách từ thuộc đề cương do 中外语言交流合作中心 phát h�
 - Cảnh báo nguồn: mục 存现句1 (1) in `所处+是+名词`, mục (2) in `处所+有+…`; có thể là lỗi in hoặc lỗi trích xuất. Giữ nguyên như nguồn.
 - Chưa có ví dụ và giải thích tiếng Việt cho điểm ngữ pháp nào; sẽ tự biên soạn ở giai đoạn soạn bài.
 - Còn lại của Task 3: 246 chữ nhận mặt (cần `l1_chars_raw.txt` hoặc ảnh kết quả của script).
+
+## Cập nhật Task 3c — chữ nhận mặt (2026-11-27)
+- Đọc `l1_chars_raw.txt` (trang in 353–354): **246 chữ, đánh số 1–246 liên tục, không trùng**, đúng con số của đề cương. File: `content_work/hsk3_l1_chars_working.csv` (`syllabus_seq` = số thứ tự trong PDF).
+- Giải thích chênh lệch 248 so với 246: **店 và 饺** nằm trong các từ Level 1 (店, 饭店, 饺子) nhưng KHÔNG có trong danh sách 246 chữ nhận mặt. Mọi chữ còn lại của 246 đều có trong 300 từ. Có thể đề cương xếp hai chữ này ở cấp cao hơn, hoặc là bất nhất của đề cương; cần người rà soát/đối chiếu cổng chinesetest.cn. Khi soạn bài vẫn dạy các từ đó, nhưng không gắn nhãn "chữ Level 1" cho 店, 饺 cho đến khi rõ.
+- Script `tools/extract_l1_from_pdf.py` đã được cập nhật để đọc đúng bố cục "số. chữ" và test lại (`selftest_extract.py` đạt).

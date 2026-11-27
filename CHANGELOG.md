@@ -23,3 +23,6 @@
 
 ## (content) Phase 2 / Task 3b
 - content_work/hsk3_l1_grammar_working.csv (70 điểm ngữ pháp Level 1), validator kiểm tra file ngữ pháp và đối chiếu từ với 300 từ, cập nhật báo cáo/notices/lock.
+
+## (content) Phase 2 / Task 3c
+- content_work/hsk3_l1_chars_working.csv (246 chữ nhận mặt Level 1), cập nhật script trích và báo cáo. Giải thích chênh 248/246: 店, 饺.

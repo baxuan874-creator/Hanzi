@@ -18,4 +18,5 @@ pages[354 + 3] = "4 吧 5 白 6 天"
 got = ex.single_char_tokens(ex.pages_for(pages, 3, 353, 354))
 assert got == ["爱", "八", "爸", "吧", "白", "天"], got      # '认读字' (3 chars) is not a single-char token
 assert ex.single_char_tokens(["爱 爱 八"]) == ["爱", "八"]    # de-duplicates
+assert ex.numbered_chars(["HSK（一级）认读字\n1. 爱\n2. 八\n353", "354\n3. 爸"]) == [(1, "爱"), (2, "八"), (3, "爸")]
 print("selftest OK")

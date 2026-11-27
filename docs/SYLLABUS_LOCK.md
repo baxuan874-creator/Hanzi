@@ -37,6 +37,7 @@ Cấu trúc đề cương: 任务 (nhiệm vụ), 话题 (chủ đề), 词汇, 
 - Thứ cấp, dùng để đối chiếu: bản sao dữ liệu cộng đồng github.com/ofou/hsk (tự nhận lấy từ API chính thức, có kiểm tra số lượng từng cấp), gushichinese.com, hskace.com, studycli.org. Không dùng làm nguồn chuẩn cuối cùng. Chưa xem giấy phép của bản sao cộng đồng nên chưa được đưa vào app.
 
 ## Phát hiện cần xử lý
+0. **店 và 饺**: nằm trong từ Level 1 nhưng không có trong 246 chữ nhận mặt Level 1 (xem docs/EXTRACTION_REPORT_L1.md).
 1. **Có nhiều danh sách HSK 3.0 cũ lưu hành** (chuẩn 2021, ví dụ PDF năm 2024 trên một số trang). Số lượng khác bản 2025, không được dùng. Chỉ dùng bản 2025-11.
 2. **Số thứ tự (序号) khác nhau giữa các bản PDF** (ví dụ 昨天 và 做饭 đổi chỗ). Không dùng 序号 làm khóa ID; dùng (từ + cấp + từ loại).
 3. **Một trang thứ cấp ghi 299 từ cho Level 1.** ĐÃ ĐỐI CHIẾU (Task 2): bản PDF "1219" liệt kê đủ 300 mục (序号 1–300); 6 mục là cụm không ghi từ loại. Con số 300 đúng theo PDF.
@@ -47,6 +48,6 @@ Cấu trúc đề cương: 任务 (nhiệm vụ), 话题 (chủ đề), 词汇, 
 - [ ] Chạy `tools/fetch_syllabus.sh` trong Codespace, commit `docs/syllabus_checksums.txt`.
 - [x] 300 từ Level 1: xác nhận từ nội dung PDF (đọc trực tiếp, chưa có checksum).
 - [x] 70 điểm ngữ pháp Level 1: đã trích từ PDF (trang 383–385), đếm ra đúng 70 theo cách đếm của dự án.
-- [ ] 246 chữ nhận mặt: chờ kết quả script (cần l1_chars_raw.txt).
+- [x] 246 chữ nhận mặt Level 1: đã trích từ PDF (trang 353–354), đủ 246, đánh số liên tục.
 - [ ] Đối chiếu với cổng chinesetest.cn/syllabus.
 - [ ] Người có năng lực tiếng Trung duyệt danh sách Level 1 trước khi soạn bài.

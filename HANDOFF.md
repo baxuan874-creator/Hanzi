@@ -4,23 +4,21 @@ Date: 2026-11-26
 Project version: 0.0.1-phase0
 
 ## Current phase and task
-- Phase 2, Task 3b: ngữ pháp Level 1 xong; còn 246 chữ nhận mặt.
+- Phase 2, Task 3 hoàn tất về dữ liệu: 300 từ, 246 chữ nhận mặt, 70 ngữ pháp Level 1 (đều extracted_unreviewed).
 
 ## Completed
-- Phase 0, Phase 1: build xanh, chạy OK. Phase 2 Task 1-2 (khóa đề cương PROVISIONAL, 300 từ, validator).
-- Task 3: script trích PDF chạy được trong Codespace (đã đọc đúng trang ngữ pháp 383-385). Task 3b: hsk3_l1_grammar_working.csv (70 dòng), validator mở rộng.
+- Phase 0, Phase 1: build xanh, chạy OK. Phase 2: khóa đề cương (PROVISIONAL), bảng từ / chữ / ngữ pháp, validator, script trích PDF.
 
 ## Build and tests actually run
-- validate_level1.py trên dữ liệu thật (300 từ + 70 ngữ pháp): 0 lỗi; selftest_extract.py đạt.
-- Build Actions cho Task 3b chưa xác nhận.
+- validate_level1.py trên cả 3 bảng: 0 lỗi. selftest_extract.py đạt. Build Actions cho Task 3b/3c chưa xác nhận.
 
 ## Known issues
-- 246 chữ nhận mặt chưa có (300 từ chứa 248 ký tự khác nhau; chênh 2 chữ chưa rõ).
-- Cách đếm 70 điểm ngữ pháp là của dự án; cần người biết tiếng Trung xác nhận. Cảnh báo nguồn: 存现句1 (1) in 所处.
-- Dữ liệu chưa được rà soát; repo nên chuyển Private; khóa đề cương còn PROVISIONAL (checksum đã tạo nếu người dùng chạy fetch_syllabus.sh).
+- 店 và 饺 có trong từ Level 1 nhưng không có trong 246 chữ nhận mặt (cần rà soát).
+- Cách đếm 70 điểm ngữ pháp là của dự án; cảnh báo nguồn: 存现句1 (1) in 所处; 小朋友 pinyin; 6 cụm không có từ loại.
+- Chưa có người biết tiếng Trung rà soát; repo Public (nên chuyển Private); khóa đề cương PROVISIONAL (chưa đối chiếu cổng chinesetest.cn, checksum nếu đã chạy fetch_syllabus.sh).
 
 ## Exact next task
-- Nhận l1_chars_raw.txt (hoặc ảnh kết quả script), hoàn tất bảng 246 chữ, đưa khóa đề cương sang LOCKED nếu đủ điều kiện. Sau đó Phase 2, Task 4: thiết kế cấu trúc chương/bài (chủ đề Level 1) từ đề cương, chưa soạn nghĩa tiếng Việt.
+- Phase 2, Task 4: đọc chủ đề/nhiệm vụ Level 1 trong đề cương (trang chủ đề, nhiệm vụ) và thiết kế cấu trúc chương/bài (gán 300 từ + 70 ngữ pháp vào bài theo chủ đề), chưa soạn nghĩa tiếng Việt/ví dụ.
 
 ## Decisions that must remain unchanged
 - Android Native / Kotlin / Compose; Vietnamese-first; gamified UI; HSK 3.0 track; không AI/backend/API trả phí/login/ads/Premium; offline-first.
