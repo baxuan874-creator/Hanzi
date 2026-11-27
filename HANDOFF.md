@@ -4,24 +4,23 @@ Date: 2026-11-26
 Project version: 0.0.1-phase0
 
 ## Current phase and task
-- Phase 2, Task 2: bảng làm việc 300 từ Level 1 + validator (xong, chờ xác nhận Actions).
+- Phase 2, Task 3b: ngữ pháp Level 1 xong; còn 246 chữ nhận mặt.
 
 ## Completed
-- Phase 0, Phase 1: build xanh, chạy OK. Phase 2 Task 1: SYLLABUS_LOCK.md (PROVISIONAL), fetch_syllabus.sh.
-- Phase 2 Task 2: content_work/hsk3_l1_vocab_working.csv (300 dòng, extracted_unreviewed), tools/validate_level1.py, bước validate trong workflow, docs/EXTRACTION_REPORT_L1.md, docs/ đầy đủ tài liệu dự án.
+- Phase 0, Phase 1: build xanh, chạy OK. Phase 2 Task 1-2 (khóa đề cương PROVISIONAL, 300 từ, validator).
+- Task 3: script trích PDF chạy được trong Codespace (đã đọc đúng trang ngữ pháp 383-385). Task 3b: hsk3_l1_grammar_working.csv (70 dòng), validator mở rộng.
 
 ## Build and tests actually run
-- validate_level1.py chạy trên dữ liệu thật (0 lỗi, 14 cảnh báo) và trên bản sao hỏng (5 lỗi, mã thoát 1): đạt.
-- Build Gradle và workflow mới: chưa chạy ở môi trường tạo file; sẽ chạy trên Actions.
+- validate_level1.py trên dữ liệu thật (300 từ + 70 ngữ pháp): 0 lỗi; selftest_extract.py đạt.
+- Build Actions cho Task 3b chưa xác nhận.
 
 ## Known issues
-- Dữ liệu chưa được người biết tiếng Trung rà soát (cảnh báo 小朋友 pinyin).
-- Giấy phép phân phối danh sách từ chưa rõ; repo đang Public. Đề xuất chuyển Private.
-- Khóa đề cương vẫn PROVISIONAL (chưa checksum, chưa có 246 chữ / 70 ngữ pháp).
-- Phase 2 không làm thay đổi giao diện app; thay đổi nhìn thấy được bắt đầu ở Phase 3.
+- 246 chữ nhận mặt chưa có (300 từ chứa 248 ký tự khác nhau; chênh 2 chữ chưa rõ).
+- Cách đếm 70 điểm ngữ pháp là của dự án; cần người biết tiếng Trung xác nhận. Cảnh báo nguồn: 存现句1 (1) in 所处.
+- Dữ liệu chưa được rà soát; repo nên chuyển Private; khóa đề cương còn PROVISIONAL (checksum đã tạo nếu người dùng chạy fetch_syllabus.sh).
 
 ## Exact next task
-- Xác nhận Actions xanh (bước "Validate content" phải qua). Sau đó Phase 2, Task 3: trích 246 chữ nhận mặt + 70 điểm ngữ pháp Level 1, thêm kiểm tra tham chiếu chéo và checksum; chưa soạn nghĩa tiếng Việt.
+- Nhận l1_chars_raw.txt (hoặc ảnh kết quả script), hoàn tất bảng 246 chữ, đưa khóa đề cương sang LOCKED nếu đủ điều kiện. Sau đó Phase 2, Task 4: thiết kế cấu trúc chương/bài (chủ đề Level 1) từ đề cương, chưa soạn nghĩa tiếng Việt.
 
 ## Decisions that must remain unchanged
 - Android Native / Kotlin / Compose; Vietnamese-first; gamified UI; HSK 3.0 track; không AI/backend/API trả phí/login/ads/Premium; offline-first.

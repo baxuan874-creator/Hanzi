@@ -17,3 +17,9 @@
 
 ## (content) Phase 2 / Task 2
 - content_work/hsk3_l1_vocab_working.csv (300 từ Level 1), tools/validate_level1.py (chạy trong CI), docs/EXTRACTION_REPORT_L1.md; chép đầy đủ tài liệu dự án vào docs/ (các bản zip trước thiếu); cập nhật THIRD_PARTY_NOTICES và SYLLABUS_LOCK. Không đổi mã app.
+
+## (content) Phase 2 / Task 3 (một phần)
+- tools/extract_l1_from_pdf.py (trích 246 chữ nhận mặt, dump trang ngữ pháp), tools/selftest_extract.py (chạy trong CI), validator kiểm tra thêm file chữ nếu có.
+
+## (content) Phase 2 / Task 3b
+- content_work/hsk3_l1_grammar_working.csv (70 điểm ngữ pháp Level 1), validator kiểm tra file ngữ pháp và đối chiếu từ với 300 từ, cập nhật báo cáo/notices/lock.

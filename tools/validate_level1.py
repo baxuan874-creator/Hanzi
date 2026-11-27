@@ -60,8 +60,51 @@ for r in rows:
 
 if seqs != list(range(1, len(seqs) + 1)): err("file", "syllabus_seq is not contiguous from 1")
 
+
+# ---- optional: recognition characters file (created by tools/extract_l1_from_pdf.py) ----
+CHARS = PATH.with_name("hsk3_l1_chars_working.csv")
+if CHARS.exists():
+    with open(CHARS, newline="", encoding="utf-8") as f:
+        crows = list(csv.DictReader(f))
+    if len(crows) != 246: err("chars", f"expected 246 recognition characters, found {len(crows)}")
+    hs = [c.get("hanzi", "") for c in crows]
+    if len(set(hs)) != len(hs): err("chars", "duplicate characters")
+    for c in crows:
+        if not re.fullmatch(r"[\u4e00-\u9fff]", c.get("hanzi", "")): err(c.get("id", "?"), f"not a single CJK character: {c.get('hanzi')!r}")
+    in_words = {ch for r in rows for ch in r.get("hanzi", "")}
+    missing = sorted(in_words - set(hs)); extra = sorted(set(hs) - in_words)
+    if missing: warn("chars", f"in the 300 words but not in the 246 list: {''.join(missing)}")
+    if extra: warn("chars", f"in the 246 list but not in any of the 300 words: {''.join(extra)}")
+    print(f"Characters checked: {len(crows)} (expected 246)")
+else:
+    print("PENDING: content_work/hsk3_l1_chars_working.csv not present yet")
+
+# ---- optional: grammar file (70 points) ----
+GRAM = PATH.with_name("hsk3_l1_grammar_working.csv")
+if GRAM.exists():
+    with open(GRAM, newline="", encoding="utf-8") as f:
+        grows = list(csv.DictReader(f))
+    if len(grows) != 70: err("grammar", f"expected 70 grammar points, found {len(grows)}")
+    gids = [g.get("id") for g in grows]
+    if len(set(gids)) != len(gids): err("grammar", "duplicate ids")
+    if [int(g["syllabus_seq"]) for g in grows] != list(range(1, len(grows) + 1)): err("grammar", "syllabus_seq not contiguous")
+    GCATS = {"语素", "词类", "短语", "句子成分", "句子的类型", "动作的态", "特殊表达法"}
+    vocab_words = {r.get("hanzi", "") for r in rows}
+    for g in grows:
+        gid = g.get("id", "?")
+        if g.get("category") not in GCATS: err(gid, f"unknown category {g.get('category')!r}")
+        if not (g.get("detail") or g.get("content") or "").strip(): err(gid, "empty detail and content")
+        if g.get("flags"): warn(gid, f"review flag: {g['flags']}")
+        if g.get("word_list") == "Y":
+            for tok in re.split(r"[、/]", g["content"].split("：")[-1]):
+                tok = re.sub(r"\d", "", tok).replace("—", "")
+                opts = {re.sub(r"[（）]", "", tok), re.sub(r"（[^）]*）", "", tok)}
+                if not (opts & vocab_words): warn(gid, f"word {tok!r} is in the grammar list but not in the 300 words")
+    print(f"Grammar points checked: {len(grows)} (expected 70)")
+else:
+    print("PENDING: content_work/hsk3_l1_grammar_working.csv not present yet")
+
 print(f"Rows checked: {len(rows)} (expected {EXPECTED_VOCAB})")
-print("PENDING (not extracted yet): 246 recognition characters, 70 grammar points")
 for line in warnings: print(line)
 for line in errors: print(line)
 print(f"{len(errors)} error(s), {len(warnings)} warning(s)")

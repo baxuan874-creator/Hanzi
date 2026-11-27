@@ -46,6 +46,7 @@ Cấu trúc đề cương: 任务 (nhiệm vụ), 话题 (chủ đề), 词汇, 
 ## Việc cần làm để chuyển sang LOCKED
 - [ ] Chạy `tools/fetch_syllabus.sh` trong Codespace, commit `docs/syllabus_checksums.txt`.
 - [x] 300 từ Level 1: xác nhận từ nội dung PDF (đọc trực tiếp, chưa có checksum).
-- [ ] 246 chữ nhận mặt và 70 điểm ngữ pháp Level 1: chưa trích xuất (Task 3).
+- [x] 70 điểm ngữ pháp Level 1: đã trích từ PDF (trang 383–385), đếm ra đúng 70 theo cách đếm của dự án.
+- [ ] 246 chữ nhận mặt: chờ kết quả script (cần l1_chars_raw.txt).
 - [ ] Đối chiếu với cổng chinesetest.cn/syllabus.
 - [ ] Người có năng lực tiếng Trung duyệt danh sách Level 1 trước khi soạn bài.
