@@ -29,3 +29,6 @@
 
 ## (content) Phase 2 / Task 4
 - content_work/hsk3_l1_structure_working.json (16 chương, 47 bài, 300 từ + 70 ngữ pháp, mỗi mục đúng một lần), tools/build_l1_structure.py (kế hoạch gốc), docs/CURRICULUM_MAP_L1.md, validator kiểm tra cấu trúc (tiên quyết, giới hạn bài, phủ đủ), CI chạy cả build_l1_structure.py. Không đổi mã app.
+
+## 0.0.5-phase2 (chưa build)
+- Phase 2 / Task 5: bộ nạp nội dung bằng Kotlin (kotlinx.serialization): ContentModels, ContentPackParser, ContentValidator, ContentImporter, AssetContentSource; content.db (Room) tách khỏi hanzi.db; test đơn vị với dữ liệu giả (ContentPackTest); workflow chạy test đơn vị trước khi build; bước đăng Release không còn làm đỏ cả build. Không đóng gói dữ liệu HSK.
