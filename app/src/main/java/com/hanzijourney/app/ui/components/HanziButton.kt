@@ -16,6 +16,6 @@ fun HanziButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifier
         enabled = enabled,
         shape = MaterialTheme.shapes.medium
     ) {
-        Text(text)
+        Text(text, style = MaterialTheme.typography.titleMedium)
     }
 }

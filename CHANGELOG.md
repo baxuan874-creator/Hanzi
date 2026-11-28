@@ -38,3 +38,6 @@
 
 ## 0.0.6-phase3 (chưa build)
 - Phase 3 / Task 1: trình học bài v1. Tab Học liệt kê bài từ content.db (bản debug tự nạp gói mẫu); màn học bài: mục tiêu, thẻ từ, ngữ pháp, bài tập (trắc nghiệm, điền chỗ trống, sắp xếp câu, nhập chữ), phản hồi có giải thích, làm lại câu sai một lần, màn kết quả. Logic LessonSession/ExerciseChecker có test đơn vị (kể cả chạy hết bài mẫu). Chưa lưu tiến độ.
+
+## 0.0.7-phase3 (chưa build)
+- Phase 3 / Task 2: trộn thứ tự đáp án (đáp án đúng không còn luôn ở ô đầu), giao diện bài học to và đỡ trống hơn (thẻ đáp án lớn, nút cao, nội dung căn giữa, thẻ từ chữ Hán lớn), dấu ✓/✗ sau khi trả lời, thanh tiến độ mới, màu container cho theme, nền trang trí ScatteredIcons (emoji rải mờ), ExerciseOptionsTest. Chưa làm ghép đôi (matching): chuyển sang Task 3.
