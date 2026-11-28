@@ -9,7 +9,7 @@
     <string name="tab_profile">Hồ sơ</string>
 
     <string name="home_title">Hôm nay</string>
-    <string name="home_empty">Chưa có bài học nào. Nội dung HSK 3.0 Level 1 sẽ được thêm ở giai đoạn sau.</string>
+    <string name="home_empty">Bạn chưa hoàn thành bài nào. Mở tab Học và làm bài đầu tiên nhé.</string>
     <string name="learn_title">Bản đồ hành trình</string>
     <string name="learn_empty">Chưa có chương hay bài học nào. Bản đồ sẽ xuất hiện khi nội dung bài học sẵn sàng.</string>
     <string name="vocabulary_title">Từ vựng</string>
@@ -17,7 +17,7 @@
     <string name="review_title">Ôn tập</string>
     <string name="review_empty">Chưa có thẻ nào đến hạn ôn. Lịch ôn sẽ bắt đầu sau khi bạn học bài đầu tiên.</string>
     <string name="profile_title">Hồ sơ</string>
-    <string name="profile_empty">XP, thành tích và cài đặt sẽ có ở các giai đoạn sau.</string>
+    <string name="profile_empty">Nhiệm vụ hằng ngày và thành tích sẽ có ở bước sau.</string>
 
     <string name="profile_appearance">Giao diện</string>
     <string name="dark_mode_system">Theo hệ thống</string>
@@ -32,7 +32,7 @@
     <string name="learn_loading">Đang tải bài học…</string>
     <string name="learn_load_error">Không nạp được nội dung: %1$s</string>
     <string name="learn_lesson_subtitle">%1$s · %2$d từ · %3$d phút</string>
-    <string name="learn_draft_banner">Bản thử nghiệm: bài mẫu chưa được người biết tiếng Trung rà soát. Chưa lưu tiến độ học.</string>
+    <string name="learn_draft_banner">Bản thử nghiệm: bài mẫu chưa được người biết tiếng Trung rà soát.</string>
 
     <string name="lesson_close">Đóng bài học</string>
     <string name="lesson_loading">Đang mở bài…</string>
@@ -57,6 +57,17 @@
     <string name="lesson_result_score">Đúng ngay lần đầu: %1$d/%2$d</string>
     <string name="lesson_result_words">Số từ đã gặp: %1$d</string>
     <string name="lesson_result_retried">Câu làm lại: %1$d</string>
+    <string name="lesson_result_xp">+%1$d XP</string>
+    <string name="lesson_result_no_xp">Bài đã học trước đó nên không cộng thêm XP.</string>
+    <string name="lesson_result_save_failed">Không lưu được tiến độ bài này. Bạn có thể học lại để thử lưu lần nữa.</string>
     <string name="lesson_result_again">Học lại</string>
     <string name="lesson_result_back">Về bản đồ</string>
+
+    <string name="progress_level">Cấp %1$d</string>
+    <string name="progress_xp">%1$d XP</string>
+    <string name="progress_to_next">Còn %1$d XP để lên cấp %2$d</string>
+    <string name="progress_max_level">Bạn đã đạt cấp cao nhất hiện có.</string>
+    <string name="progress_streak">Chuỗi ngày học: %1$d ngày</string>
+    <string name="progress_best_streak">Chuỗi dài nhất: %1$d ngày</string>
+    <string name="progress_lessons_done">Bài đã hoàn thành: %1$d</string>
 </resources>

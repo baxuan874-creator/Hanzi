@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.hanzijourney.app.data.content.ContentRepository
+import com.hanzijourney.app.data.progress.ProgressRepository
+import com.hanzijourney.app.domain.progress.LessonCompletion
 import com.hanzijourney.app.domain.lesson.Feedback
 import com.hanzijourney.app.domain.lesson.LessonContent
 import com.hanzijourney.app.domain.lesson.LessonResult
@@ -23,14 +25,24 @@ data class LessonUiState(
     val step: LessonStep? = null,
     val feedback: Feedback? = null,
     val progress: Float = 0f,
-    val result: LessonResult? = null
+    val result: LessonResult? = null,
+    val completion: LessonCompletion? = null,
+    val saveFailed: Boolean = false
 )
 
-class LessonViewModel(private val repository: ContentRepository, private val lessonId: String) : ViewModel() {
+class LessonViewModel(
+    private val repository: ContentRepository,
+    private val progress: ProgressRepository,
+    private val lessonId: String
+) : ViewModel() {
     private val _state = MutableStateFlow(LessonUiState())
     val state: StateFlow<LessonUiState> = _state.asStateFlow()
     private var content: LessonContent? = null
     private var session: LessonSession? = null
+    // The finished lesson is saved once per run; XP idempotency is also enforced in the store.
+    private var recorded = false
+    private var completion: LessonCompletion? = null
+    private var saveFailed = false
 
     init {
         viewModelScope.launch {
@@ -46,8 +58,29 @@ class LessonViewModel(private val repository: ContentRepository, private val les
     }
 
     fun submit(answer: String) { session?.submit(answer); publish() }
-    fun next() { session?.next(); publish() }
-    fun restart() { content?.let { session = LessonSession(it); publish() } }
+    fun next() { session?.next(); publish(); recordIfFinished() }
+    fun restart() {
+        content?.let {
+            session = LessonSession(it)
+            recorded = false; completion = null; saveFailed = false
+            publish()
+        }
+    }
+
+    private fun recordIfFinished() {
+        val s = session ?: return
+        if (!s.isFinished || recorded) return
+        recorded = true
+        val r = s.result()
+        viewModelScope.launch {
+            try {
+                completion = progress.completeLesson(lessonId, r.correctFirstTry, r.totalExercises)
+            } catch (e: Exception) {
+                saveFailed = true
+            }
+            publish()
+        }
+    }
 
     private fun publish() {
         val s = session ?: return
@@ -60,15 +93,17 @@ class LessonViewModel(private val repository: ContentRepository, private val les
             step = s.current,
             feedback = s.feedback,
             progress = s.progress,
-            result = if (s.isFinished) s.result() else null
+            result = if (s.isFinished) s.result() else null,
+            completion = completion,
+            saveFailed = saveFailed
         )
     }
 
     companion object {
-        fun factory(repository: ContentRepository, lessonId: String): ViewModelProvider.Factory =
+        fun factory(repository: ContentRepository, progress: ProgressRepository, lessonId: String): ViewModelProvider.Factory =
             object : ViewModelProvider.Factory {
                 @Suppress("UNCHECKED_CAST")
-                override fun <T : ViewModel> create(modelClass: Class<T>): T = LessonViewModel(repository, lessonId) as T
+                override fun <T : ViewModel> create(modelClass: Class<T>): T = LessonViewModel(repository, progress, lessonId) as T
             }
     }
 }

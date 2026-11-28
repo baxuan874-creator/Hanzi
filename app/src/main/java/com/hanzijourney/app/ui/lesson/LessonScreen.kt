@@ -35,6 +35,7 @@ import com.hanzijourney.app.HanziApp
 import com.hanzijourney.app.R
 import com.hanzijourney.app.domain.lesson.LessonResult
 import com.hanzijourney.app.domain.lesson.LessonStep
+import com.hanzijourney.app.domain.progress.LessonCompletion
 import com.hanzijourney.app.ui.components.HanziButton
 import com.hanzijourney.app.ui.components.ScatteredIcons
 import com.hanzijourney.app.ui.theme.Spacing
@@ -44,7 +45,7 @@ fun LessonScreen(lessonId: String, onClose: () -> Unit) {
     val app = LocalContext.current.applicationContext as HanziApp
     val viewModel: LessonViewModel = viewModel(
         key = lessonId,
-        factory = LessonViewModel.factory(app.container.contentRepository, lessonId)
+        factory = LessonViewModel.factory(app.container.contentRepository, app.container.progressRepository, lessonId)
     )
     val state by viewModel.state.collectAsState()
 
@@ -72,7 +73,7 @@ fun LessonScreen(lessonId: String, onClose: () -> Unit) {
                     Text(stringResource(R.string.lesson_not_found), style = MaterialTheme.typography.bodyLarge)
                     HanziButton(text = stringResource(R.string.lesson_result_back), onClick = onClose)
                 }
-                state.result != null -> ResultStep(state.result!!, onAgain = viewModel::restart, onBack = onClose)
+                state.result != null -> ResultStep(state.result!!, state.completion, state.saveFailed, onAgain = viewModel::restart, onBack = onClose)
                 step is LessonStep.Intro -> IntroStep(state.title, state.objectives, state.draftNotice, viewModel::next)
                 step is LessonStep.Vocab -> VocabStep(step, viewModel::next)
                 step is LessonStep.Grammar -> GrammarStep(step, viewModel::next)
@@ -128,7 +129,7 @@ private fun IntroStep(title: String, objectives: List<String>, draftNotice: Bool
 }
 
 @Composable
-private fun ResultStep(result: LessonResult, onAgain: () -> Unit, onBack: () -> Unit) {
+private fun ResultStep(result: LessonResult, completion: LessonCompletion?, saveFailed: Boolean, onAgain: () -> Unit, onBack: () -> Unit) {
     Column(
         modifier = Modifier.fillMaxSize().padding(horizontal = Spacing.lg, vertical = Spacing.md),
         verticalArrangement = Arrangement.spacedBy(Spacing.md)
@@ -138,6 +139,12 @@ private fun ResultStep(result: LessonResult, onAgain: () -> Unit, onBack: () -> 
             Text(stringResource(R.string.lesson_result_score, result.correctFirstTry, result.totalExercises), style = MaterialTheme.typography.titleLarge)
             Text(stringResource(R.string.lesson_result_words, result.wordsMet), style = MaterialTheme.typography.bodyLarge)
             Text(stringResource(R.string.lesson_result_retried, result.retried), style = MaterialTheme.typography.bodyLarge)
+            when {
+                saveFailed -> Text(stringResource(R.string.lesson_result_save_failed), style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.error, textAlign = TextAlign.Center)
+                completion == null -> Unit
+                completion.xpAwarded > 0 -> Text(stringResource(R.string.lesson_result_xp, completion.xpAwarded), style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary)
+                else -> Text(stringResource(R.string.lesson_result_no_xp), style = MaterialTheme.typography.bodyLarge, textAlign = TextAlign.Center)
+            }
         }
         HanziButton(text = stringResource(R.string.lesson_result_back), onClick = onBack, modifier = Modifier.fillMaxWidth().height(56.dp))
         OutlinedButton(onClick = onAgain, modifier = Modifier.fillMaxWidth().height(56.dp)) { Text(stringResource(R.string.lesson_result_again)) }

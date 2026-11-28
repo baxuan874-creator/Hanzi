@@ -10,6 +10,9 @@ import com.hanzijourney.app.data.content.ContentStore
 import com.hanzijourney.app.data.content.room.ContentDatabase
 import com.hanzijourney.app.data.content.room.RoomContentStore
 import com.hanzijourney.app.data.local.HanziDatabase
+import com.hanzijourney.app.data.progress.ProgressRepository
+import com.hanzijourney.app.data.progress.ProgressStore
+import com.hanzijourney.app.data.progress.RoomProgressStore
 import com.hanzijourney.app.data.prefs.SettingsRepository
 import com.hanzijourney.app.data.prefs.settingsDataStore
 
@@ -21,5 +24,7 @@ class AppContainer(private val context: Context) {
     val contentAssets: AssetContentSource by lazy { AssetContentSource(context) }
     val contentRepository: ContentRepository by lazy { ContentRepository(contentDatabase.contentDao()) }
     val contentLoader: ContentLoader by lazy { ContentLoader(contentAssets, contentImporter, BuildConfig.DEBUG) }
+    val progressStore: ProgressStore by lazy { RoomProgressStore(database) }
+    val progressRepository: ProgressRepository by lazy { ProgressRepository(progressStore) }
     val settingsRepository: SettingsRepository by lazy { SettingsRepository(context.settingsDataStore) }
 }

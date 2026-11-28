@@ -29,7 +29,7 @@ import com.hanzijourney.app.ui.theme.Spacing
 fun LearnScreen(onOpenLesson: (String) -> Unit) {
     val app = LocalContext.current.applicationContext as HanziApp
     val viewModel: LearnViewModel = viewModel(
-        factory = LearnViewModel.factory(app.container.contentRepository, app.container.contentLoader)
+        factory = LearnViewModel.factory(app.container.contentRepository, app.container.contentLoader, app.container.progressRepository)
     )
     val state by viewModel.state.collectAsState()
 
@@ -48,8 +48,8 @@ fun LearnScreen(onOpenLesson: (String) -> Unit) {
                     id = it.id,
                     title = it.title,
                     subtitle = stringResource(R.string.learn_lesson_subtitle, it.chapterTitle, it.wordCount, it.minutes),
-                    // Progress is not saved yet (Phase 4), so every lesson is simply available.
-                    state = LessonNodeState.AVAILABLE
+                    // Lesson locking by prerequisite is not implemented yet: unfinished lessons are simply available.
+                    state = if (it.id in s.completedIds) LessonNodeState.COMPLETED else LessonNodeState.AVAILABLE
                 )
             }
             Column(modifier = Modifier.fillMaxSize()) {

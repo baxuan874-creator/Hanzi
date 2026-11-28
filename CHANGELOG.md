@@ -45,3 +45,6 @@
 ## 0.0.8-phase3 (chưa build)
 - Phase 3 / Task 3: dạng bài ghép đôi (matching): Matching.kt, ExerciseChecker/ExerciseOptions/ContentValidator (Kotlin) và validate_pack.py (Python) hỗ trợ, màn MatchingInput (hai cột, đánh số cặp), bài mẫu 004 thêm ex_l1_0012 (12 bài tập), cập nhật/thêm test (MatchingTest, matching trong ExerciseChecker/ContentPack/ExerciseOptions). Giảm biểu tượng nền còn khoảng 6 mỗi màn, nhỏ và mờ hơn.
 
+## 0.0.9-phase4 (chưa build)
+- Phase 4 / Task 1: lưu tiến độ (Room hanzi.db v2 + MIGRATION_1_2: lesson_progress, xp_event, practice_day), ProgressStore/RoomProgressStore/ProgressRepository, XP bài đầu tiên (+20) chống cộng trùng bằng khóa sự kiện, LevelRules (bảng ngưỡng cấu hình), StreakCalculator, lưu khi hoàn thành bài (một transaction), hiển thị cấp/XP/streak ở Trang chủ + Hồ sơ, nhãn "Hoàn thành" trên bản đồ, XP ở màn kết quả. Test mới: StreakCalculatorTest, LevelRulesTest, ProgressRepositoryTest. Docs: docs/PROGRESS.md.
+
