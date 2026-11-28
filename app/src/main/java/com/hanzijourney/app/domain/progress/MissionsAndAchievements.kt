@@ -48,7 +48,8 @@ enum class Achievement(val id: String) {
     FIRST_LESSON("first_lesson"),
     WORDS_25("words_25"),
     CHAPTER_COMPLETE("chapter_complete"),
-    SEVEN_DAY_PRACTICE("seven_day_practice");
+    SEVEN_DAY_PRACTICE("seven_day_practice"),
+    REVIEWS_100("reviews_100");
 
     companion object {
         fun fromId(id: String): Achievement? = entries.firstOrNull { it.id == id }
@@ -59,19 +60,21 @@ data class AchievementContext(
     val completedLessons: Int,
     val learnedWords: Int,
     val chaptersCompleted: Int,
-    val bestStreak: Int
+    val bestStreak: Int,
+    val totalReviews: Int = 0
 )
 
-/** "100 Reviews" is added with the review feature (Phase 5); it cannot be earned before then. */
 object AchievementRules {
     const val WORDS_TARGET = 25
     const val STREAK_TARGET = 7
+    const val REVIEWS_TARGET = 100
 
     fun unlocked(c: AchievementContext): Set<Achievement> = buildSet {
         if (c.completedLessons >= 1) add(Achievement.FIRST_LESSON)
         if (c.learnedWords >= WORDS_TARGET) add(Achievement.WORDS_25)
         if (c.chaptersCompleted >= 1) add(Achievement.CHAPTER_COMPLETE)
         if (c.bestStreak >= STREAK_TARGET) add(Achievement.SEVEN_DAY_PRACTICE)
+        if (c.totalReviews >= REVIEWS_TARGET) add(Achievement.REVIEWS_100)
     }
 
     fun chaptersCompleted(catalog: ContentCatalog, completedLessonIds: Set<String>): Int =

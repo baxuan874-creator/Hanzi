@@ -38,9 +38,9 @@ Migration 1→2 và 2→3 chỉ thêm bảng, không đụng dữ liệu cũ. N�
 | 25 từ | gặp 25 từ khác nhau |
 | Hoàn thành một chương | xong mọi bài của một chương |
 | 7 ngày luyện tập | chuỗi dài nhất đạt 7 ngày liên tiếp |
-- "100 lượt ôn" chưa có vì chưa có tính năng ôn; sẽ thêm ở Phase 5.
+- "100 lượt ôn" được thêm ở Phase 5 (xem docs/REVIEW.md).
 - Thành tích không thưởng XP. Hiển thị ở Hồ sơ (kèm tiến độ cho "25 từ" và "7 ngày"), màn kết quả báo thành tích mới.
 - Bài đã học ở bản 0.0.9 (trước khi có bảng từ đã học) chưa được tính từ; học lại bài đó sẽ bù.
 
 ## Chưa làm
-XP ôn thẻ, XP checkpoint, khóa bài theo bài tiên quyết, thành tích "100 lượt ôn".
+XP checkpoint, khóa bài theo bài tiên quyết. (XP ôn thẻ và thành tích 100 lượt ôn: xem docs/REVIEW.md.)

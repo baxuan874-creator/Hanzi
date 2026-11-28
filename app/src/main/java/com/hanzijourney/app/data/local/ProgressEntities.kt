@@ -45,3 +45,16 @@ data class UserAchievementEntity(@PrimaryKey val achievementId: String, val unlo
 /** A word the user has met in a completed lesson (also the base for review items later). */
 @Entity(tableName = "learned_word")
 data class LearnedWordEntity(@PrimaryKey val vocabularyId: String, val firstSeenAt: Long)
+
+/** A learned word on the review schedule (see ReviewScheduler). lastReviewedAt is 0 until the first review. */
+@Entity(tableName = "review_item")
+data class ReviewItemEntity(
+    @PrimaryKey val vocabularyId: String,
+    val stage: Int,
+    val dueAt: Long,
+    val lastReviewedAt: Long,
+    val reviewCount: Int,
+    val lapses: Int,
+    val createdAt: Long
+)
+

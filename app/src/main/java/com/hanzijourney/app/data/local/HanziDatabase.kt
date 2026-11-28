@@ -11,6 +11,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
  * Local relational database for user data (content lives in content.db).
  * v1: CurriculumVersion. v2 (Phase 4): lesson progress, XP ledger, practice days.
  * v3 (Phase 4): daily missions, achievements, learned words.
+ * v4 (Phase 5): review schedule (review_item).
  */
 @Database(
     entities = [
@@ -20,9 +21,10 @@ import androidx.sqlite.db.SupportSQLiteDatabase
         PracticeDayEntity::class,
         DailyMissionEntity::class,
         UserAchievementEntity::class,
-        LearnedWordEntity::class
+        LearnedWordEntity::class,
+        ReviewItemEntity::class
     ],
-    version = 3,
+    version = 4,
     exportSchema = true
 )
 abstract class HanziDatabase : RoomDatabase() {
@@ -61,9 +63,27 @@ abstract class HanziDatabase : RoomDatabase() {
             }
         }
 
+        /**
+         * Adds the review schedule. Words already learned get a review item, first due 10 minutes after
+         * they were learned (so they are due right away for words learned earlier).
+         */
+        val MIGRATION_3_4 = object : Migration(3, 4) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    "CREATE TABLE IF NOT EXISTS `review_item` (`vocabularyId` TEXT NOT NULL, `stage` INTEGER NOT NULL, `dueAt` INTEGER NOT NULL, " +
+                        "`lastReviewedAt` INTEGER NOT NULL, `reviewCount` INTEGER NOT NULL, `lapses` INTEGER NOT NULL, " +
+                        "`createdAt` INTEGER NOT NULL, PRIMARY KEY(`vocabularyId`))"
+                )
+                db.execSQL(
+                    "INSERT OR IGNORE INTO `review_item` (`vocabularyId`, `stage`, `dueAt`, `lastReviewedAt`, `reviewCount`, `lapses`, `createdAt`) " +
+                        "SELECT `vocabularyId`, 0, `firstSeenAt` + 600000, 0, 0, 0, `firstSeenAt` FROM `learned_word`"
+                )
+            }
+        }
+
         fun create(context: Context): HanziDatabase =
             Room.databaseBuilder(context.applicationContext, HanziDatabase::class.java, NAME)
-                .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
+                .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
                 .build()
     }
 }

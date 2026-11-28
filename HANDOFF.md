@@ -1,14 +1,18 @@
 # HANDOFF — HANZI JOURNEY
 
 Date: 2026-11-28
-Project version: 0.0.10-phase4
+Project version: 0.0.11-phase5
 
 ## Current phase and task
-- Phase 4, Task 2 xong về mã (chưa xác nhận build): nhiệm vụ hằng ngày + thành tích. Task 1 (tiến độ/XP/cấp/streak) đã viết xong; người dùng báo Actions xanh cho Phase 3, chưa báo kết quả thử Task 1 trên máy.
+- Phase 5, Task 1 xong về mã (chưa xác nhận build): ôn tập (lịch, phiên flashcard, XP ôn, thành tích 100 lượt ôn, thẻ đến hạn ở Trang chủ). Phase 4 (Task 1–2): người dùng báo Actions xanh.
 
 ## Completed
 - Phase 0–2: xong, Actions xanh. Phase 3 Task 1 (trình học v1): Actions xanh, người dùng đã thử bài 004 trên máy (Redmi 15C).
 - Phase 3 Task 2: trộn đáp án (ExerciseOptions + ExerciseOptionsTest), giao diện lớn hơn/đỡ trống (PracticeStep, LessonScreen, LessonSteps, LessonLayout.CenteredScroll), dấu ✓/✗, thanh tiến độ tự vẽ, màu container trong Theme, nền trang trí ScatteredIcons (emoji rải mờ, theo yêu cầu người dùng; bỏ ý tưởng ảnh linh vật).
+
+## Files created / modified (Phase 5 Task 1)
+- Mới: domain/review/{ReviewScheduler,ReviewSession}.kt, ui/review/ReviewViewModel.kt, ui/components/DueReviewCard.kt, test domain/review/{ReviewSchedulerTest,ReviewSessionTest}.kt, docs/REVIEW.md.
+- Sửa: HanziDatabase (v4 + MIGRATION_3_4), ProgressEntities/ProgressDao, ProgressStore/RoomProgressStore, ProgressRepository (review API, từ mới vào lịch, helper thành tích), ProgressModels (totalReviews), XpRules, MissionsAndAchievements (REVIEWS_100), ContentRepository.vocabulary(), ReviewScreen (viết lại), HomeScreen, HanziAppRoot (goToTab), ProgressViewModel (dueCount), ProgressTexts, MissionsAndAchievementsCards, strings.xml, ProgressRepositoryTest, version 0.0.11.
 
 ## Files created / modified (Phase 4 Task 2)
 - Mới: domain/progress/MissionsAndAchievements.kt, ui/components/{ProgressTexts,MissionsAndAchievementsCards}.kt, test MissionsAndAchievementsTest.kt.
@@ -33,7 +37,8 @@ Project version: 0.0.10-phase4
 
 ## Known issues
 - Migration Room 1→2 chưa có test nâng cấp trên máy (cần instrumented test, dự kiến Phase 7); nếu app crash khi mở sau khi cài đè bản cũ, đó là chỗ đầu tiên cần xem (thử xóa dữ liệu app để xác nhận).
-- Chưa có XP ôn thẻ, XP checkpoint, khóa bài theo prerequisite, thành tích 100 lượt ôn (chờ Phase 5).
+- Chưa có XP checkpoint, khóa bài theo prerequisite.
+- Migration 3→4 (có INSERT...SELECT bù review_item từ learned_word) chưa test trên máy. Tab Từ vựng vẫn là màn trống (Phase 5 Task 2). Đánh giá ôn là tự chấm.
 - Migration 2→3 cũng chưa test trên máy. Bài học xong ở bản 0.0.9 chưa có dòng trong learned_word (học lại để bù).
 - Emoji nền phụ thuộc font emoji của máy (máy rất cũ có thể hiện ô vuông); chưa xem thực tế trên máy.
 - Chưa có listening; chưa lưu tiến độ; chưa âm thanh.
@@ -43,7 +48,7 @@ Project version: 0.0.10-phase4
 - Android Native / Kotlin / Compose; Vietnamese-first; gamified UI; HSK 3.0 track; không AI/backend/API trả phí/login/ads/Premium; offline-first.
 
 ## Exact next task
-- Xác nhận Actions xanh cho 0.0.10; cài đè, kiểm tra không crash; hoàn thành bài: màn kết quả báo XP, nhiệm vụ xong, thành tích mới; Trang chủ có thẻ Nhiệm vụ, Hồ sơ có thẻ Thành tích; đóng/mở app dữ liệu còn nguyên; học lại không cộng XP/thưởng lần hai. Sau đó Phase 5 (từ điển + ôn tập).
+- Xác nhận Actions xanh cho 0.0.11; cài đè (không crash); học bài (hoặc dùng bài đã học: từ đã học ở 0.0.10 được bù vào lịch, đến hạn ngay) rồi vào tab Ôn tập: phiên ôn chạy, hiện đáp án rồi chọn Nhớ/Chưa nhớ, kết quả +XP, đóng/mở app thì lịch còn. Trang chủ có thẻ đến hạn. Sau đó Phase 5, Task 2: tab Từ vựng (tìm kiếm Hanzi/Pinyin/nghĩa, chi tiết từ, yêu thích).
 
 ## Context for next Claude session
 Read CLAUDE.md, docs/PRD.md, docs/PHASES.md and this file before changing code.

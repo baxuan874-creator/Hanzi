@@ -14,8 +14,14 @@ import com.hanzijourney.app.domain.progress.ProgressSnapshot
 import com.hanzijourney.app.domain.progress.StreakCalculator
 import com.hanzijourney.app.domain.progress.XpEvent
 import com.hanzijourney.app.domain.progress.XpRules
+import com.hanzijourney.app.domain.review.ReviewItem
+import com.hanzijourney.app.domain.review.ReviewScheduler
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flow
 import java.time.Clock
 import java.time.Instant
 import java.time.LocalDate
@@ -59,7 +65,12 @@ class ProgressRepository(
                 XpEvent(XpRules.lessonFirstEventId(lessonId), XpRules.KIND_LESSON_FIRST, XpRules.LESSON_FIRST_COMPLETION, now, today)
             )
 
-            val newWords = vocabularyIds.distinct().count { markWordLearned(it, now) }
+            val newWords = vocabularyIds.distinct().count { id ->
+                val isNew = markWordLearned(id, now)
+                // A newly learned word joins the review schedule (first review due 10 minutes later).
+                if (isNew) createReviewItem(ReviewScheduler.newItem(id, now))
+                isNew
+            }
 
             val completedMissions = mutableListOf<DailyMission>()
             for (mission in getMissions(today)) {
@@ -83,16 +94,7 @@ class ProgressRepository(
                 }
             }
 
-            val completedIds = getCompletedLessonIds()
-            val bestStreak = StreakCalculator.compute(parseDays(getPracticeDays()), LocalDate.now(clock)).best
-            val unlockedNow = AchievementRules.unlocked(
-                AchievementContext(
-                    completedLessons = completedIds.size,
-                    learnedWords = getLearnedWordIds().size,
-                    chaptersCompleted = AchievementRules.chaptersCompleted(catalog, completedIds),
-                    bestStreak = bestStreak
-                )
-            ).filter { unlockAchievement(it.id, now) }
+            val unlockedNow = unlockEarned(now, catalog)
 
             LessonCompletion(
                 firstTime = existing == null,
@@ -101,6 +103,55 @@ class ProgressRepository(
                 newAchievements = unlockedNow
             )
         }
+    }
+
+    /** Result of one review answer. [xpAwarded] is 0 when forgotten or when this answer was already paid. */
+    data class ReviewOutcome(val xpAwarded: Int, val newAchievements: List<Achievement>)
+
+    /**
+     * Saves one review answer right away (so a session interrupted by closing the app loses nothing):
+     * moves the word on the schedule, marks today as a practice day, awards 1 XP for a remembered card
+     * (event id per session and word, so it is paid once) and checks achievements.
+     */
+    suspend fun recordReview(sessionId: String, vocabularyId: String, remembered: Boolean): ReviewOutcome {
+        val now = Instant.now(clock).toEpochMilli()
+        val today = LocalDate.now(clock).toString()
+        return store.atomically {
+            val item = getReviewItem(vocabularyId) ?: return@atomically ReviewOutcome(0, emptyList())
+            saveReviewItem(ReviewScheduler.answer(item, remembered, now))
+            markPracticeDay(today)
+            val paid = remembered && insertXpEvent(
+                XpEvent(XpRules.reviewEventId(sessionId, vocabularyId), XpRules.KIND_REVIEW, XpRules.REVIEW_REMEMBERED, now, today)
+            )
+            ReviewOutcome(if (paid) XpRules.REVIEW_REMEMBERED else 0, unlockEarned(now, null))
+        }
+    }
+
+    /** Words due for review now, most overdue first. */
+    suspend fun dueReviewItems(limit: Int = ReviewScheduler.SESSION_SIZE): List<ReviewItem> =
+        store.getDueReviewItems(Instant.now(clock).toEpochMilli(), limit)
+
+    /** Number of words due now; re-read every 30 seconds so it follows the clock while a screen is open. */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    fun observeDueCount(): Flow<Int> = flow {
+        while (true) {
+            emit(Instant.now(clock).toEpochMilli())
+            delay(30_000)
+        }
+    }.flatMapLatest { now -> store.observeDueCount(now) }
+
+    private suspend fun ProgressStore.unlockEarned(now: Long, catalog: ContentCatalog?): List<Achievement> {
+        val completedIds = getCompletedLessonIds()
+        val bestStreak = StreakCalculator.compute(parseDays(getPracticeDays()), LocalDate.now(clock)).best
+        return AchievementRules.unlocked(
+            AchievementContext(
+                completedLessons = completedIds.size,
+                learnedWords = getLearnedWordIds().size,
+                chaptersCompleted = catalog?.let { AchievementRules.chaptersCompleted(it, completedIds) } ?: 0,
+                bestStreak = bestStreak,
+                totalReviews = getTotalReviews()
+            )
+        ).filter { unlockAchievement(it.id, now) }
     }
 
     /** Plans today's missions if none exist yet. A day's missions are never re-planned once created. */
@@ -140,8 +191,9 @@ class ProgressRepository(
             base,
             store.observeLearnedWordCount(),
             store.observeMissions(today.toString()),
-            store.observeUnlockedAchievementIds()
-        ) { (totalXp, completed, days), words, missions, achievements ->
+            store.observeUnlockedAchievementIds(),
+            store.observeTotalReviews()
+        ) { (totalXp, completed, days), words, missions, achievements, reviews ->
             ProgressSnapshot(
                 totalXp = totalXp,
                 level = levelRules.info(totalXp),
@@ -149,7 +201,8 @@ class ProgressRepository(
                 completedLessonIds = completed,
                 learnedWordCount = words,
                 missions = missions,
-                unlockedAchievements = achievements.mapNotNull { Achievement.fromId(it) }.toSet()
+                unlockedAchievements = achievements.mapNotNull { Achievement.fromId(it) }.toSet(),
+                totalReviews = reviews
             )
         }
     }

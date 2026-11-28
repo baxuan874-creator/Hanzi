@@ -6,6 +6,8 @@ import com.hanzijourney.app.domain.progress.DailyMission
 import com.hanzijourney.app.domain.progress.LessonProgress
 import com.hanzijourney.app.domain.progress.MissionTypes
 import com.hanzijourney.app.domain.progress.XpEvent
+import com.hanzijourney.app.domain.review.ReviewItem
+import com.hanzijourney.app.domain.review.ReviewScheduler
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
@@ -27,6 +29,7 @@ private class FakeProgressStore : ProgressStore {
     val missions = MutableStateFlow<Map<String, DailyMission>>(emptyMap())
     val words = MutableStateFlow<Set<String>>(emptySet())
     val achievements = MutableStateFlow<Set<String>>(emptySet())
+    val reviewItems = MutableStateFlow<Map<String, ReviewItem>>(emptyMap())
 
     override suspend fun getLesson(lessonId: String) = lessons.value[lessonId]
     override suspend fun saveLesson(progress: LessonProgress) { lessons.value = lessons.value + (progress.lessonId to progress) }
@@ -51,6 +54,16 @@ private class FakeProgressStore : ProgressStore {
         achievements.value = achievements.value + achievementId
         return true
     }
+    override suspend fun getReviewItem(vocabularyId: String) = reviewItems.value[vocabularyId]
+    override suspend fun saveReviewItem(item: ReviewItem) { reviewItems.value = reviewItems.value + (item.vocabularyId to item) }
+    override suspend fun createReviewItem(item: ReviewItem): Boolean {
+        if (item.vocabularyId in reviewItems.value) return false
+        reviewItems.value = reviewItems.value + (item.vocabularyId to item)
+        return true
+    }
+    override suspend fun getDueReviewItems(now: Long, limit: Int) =
+        reviewItems.value.values.filter { it.dueAt <= now }.sortedWith(compareBy({ it.dueAt }, { it.vocabularyId })).take(limit)
+    override suspend fun getTotalReviews(): Int = reviewItems.value.values.sumOf { it.reviewCount }
     override suspend fun <T> atomically(block: suspend ProgressStore.() -> T): T = block(this)
     override fun observeCompletedLessonIds(): Flow<Set<String>> = lessons.map { it.keys }
     override fun observeTotalXp(): Flow<Int> = events.map { e -> e.values.sumOf { it.amount } }
@@ -59,6 +72,8 @@ private class FakeProgressStore : ProgressStore {
         missions.map { m -> m.values.filter { it.localDate == localDate }.sortedBy { it.id } }
     override fun observeLearnedWordCount(): Flow<Int> = words.map { it.size }
     override fun observeUnlockedAchievementIds(): Flow<Set<String>> = achievements
+    override fun observeDueCount(now: Long): Flow<Int> = reviewItems.map { m -> m.values.count { it.dueAt <= now } }
+    override fun observeTotalReviews(): Flow<Int> = reviewItems.map { m -> m.values.sumOf { it.reviewCount } }
 }
 
 class ProgressRepositoryTest {
@@ -193,6 +208,105 @@ class ProgressRepositoryTest {
             if (day < 6) assertFalse(Achievement.SEVEN_DAY_PRACTICE in last)
         }
         assertTrue(Achievement.SEVEN_DAY_PRACTICE in last)
+    }
+
+    // ---- review schedule
+
+    private val minute = 60_000L
+    private val now0 = Instant.parse("2026-11-28T05:00:00Z").toEpochMilli()
+
+    @Test fun newlyLearnedWordsJoinTheReviewSchedule() = runBlocking {
+        repo.completeLesson("l1", 12, 12, words(1..3), catalog)
+        assertEquals(setOf("w1", "w2", "w3"), store.reviewItems.value.keys)
+        val item = store.reviewItems.value.getValue("w1")
+        assertEquals(0, item.stage)
+        assertEquals(now0 + 10 * minute, item.dueAt)
+        assertTrue(repo.dueReviewItems().isEmpty()) // not due yet
+    }
+
+    @Test fun replayingALessonDoesNotResetTheSchedule() = runBlocking {
+        repo.completeLesson("l1", 12, 12, words(1..2), catalog)
+        repo.recordReview("s1", "w1", remembered = true)
+        val before = store.reviewItems.value.getValue("w1")
+        repo.completeLesson("l1", 12, 12, words(1..2), catalog)
+        assertEquals(before, store.reviewItems.value.getValue("w1"))
+    }
+
+    @Test fun dueItemsAppearWhenTheirTimeComesMostOverdueFirstAndLimited() = runBlocking {
+        repo.completeLesson("l1", 12, 12, words(1..3), catalog)
+        val later = ProgressRepository(store, clock = Clock.fixed(Instant.ofEpochMilli(now0 + 11 * minute), ZoneId.of("UTC")))
+        assertEquals(3, later.dueReviewItems().size)
+        assertEquals(2, later.dueReviewItems(limit = 2).size)
+        assertEquals(listOf("w1", "w2", "w3"), later.dueReviewItems().map { it.vocabularyId }.sorted())
+    }
+
+    @Test fun rememberingMovesTheWordUpAndAwardsOneXp() = runBlocking {
+        repo.completeLesson("l1", 12, 12, words(1..1), catalog)
+        val xpBefore = store.observeTotalXp().first()
+        val o = repo.recordReview("s1", "w1", remembered = true)
+        assertEquals(1, o.xpAwarded)
+        assertEquals(xpBefore + 1, store.observeTotalXp().first())
+        val item = store.reviewItems.value.getValue("w1")
+        assertEquals(1, item.stage)
+        assertEquals(now0 + 24 * 60 * minute, item.dueAt)
+        assertEquals(1, item.reviewCount)
+    }
+
+    @Test fun sameSessionAndWordNeverPaysTwice() = runBlocking {
+        repo.completeLesson("l1", 12, 12, words(1..1), catalog)
+        assertEquals(1, repo.recordReview("s1", "w1", true).xpAwarded)
+        assertEquals(0, repo.recordReview("s1", "w1", true).xpAwarded)
+        assertEquals(1, repo.recordReview("s2", "w1", true).xpAwarded) // a new session is a new event
+    }
+
+    @Test fun forgettingResetsTheWordAndGivesNoXp() = runBlocking {
+        repo.completeLesson("l1", 12, 12, words(1..1), catalog)
+        repo.recordReview("s1", "w1", true)
+        val xp = store.observeTotalXp().first()
+        val o = repo.recordReview("s2", "w1", remembered = false)
+        assertEquals(0, o.xpAwarded)
+        assertEquals(xp, store.observeTotalXp().first())
+        val item = store.reviewItems.value.getValue("w1")
+        assertEquals(0, item.stage)
+        assertEquals(1, item.lapses)
+        assertEquals(now0 + 10 * minute, item.dueAt)
+    }
+
+    @Test fun reviewingAnUnknownWordChangesNothing() = runBlocking {
+        val o = repo.recordReview("s1", "nope", true)
+        assertEquals(0, o.xpAwarded)
+        assertTrue(store.reviewItems.value.isEmpty())
+        assertTrue(store.events.value.isEmpty())
+    }
+
+    @Test fun reviewMarksTodayAsPracticeDay() = runBlocking {
+        repo.completeLesson("l1", 12, 12, words(1..1), catalog)
+        store.days.value = emptySet()
+        repo.recordReview("s1", "w1", true)
+        assertEquals(setOf("2026-11-28"), store.days.value)
+    }
+
+    @Test fun hundredReviewsUnlockTheAchievementOnce() = runBlocking {
+        repo.completeLesson("l1", 12, 12, words(1..10), catalog)
+        var unlockedAt = -1
+        var count = 0
+        for (session in 0 until 10) for (w in 1..10) {
+            count++
+            val o = repo.recordReview("s$session", "w$w", remembered = true)
+            if (Achievement.REVIEWS_100 in o.newAchievements) { assertEquals(-1, unlockedAt); unlockedAt = count }
+        }
+        assertEquals(100, unlockedAt)
+        assertEquals(100, repo.observeSnapshot().first().totalReviews)
+    }
+
+    @Test fun lessonXpFromReviewsIsBoundedByTheSessionSize() = runBlocking {
+        repo.completeLesson("l1", 12, 12, words(1..12), catalog)
+        val xp = store.observeTotalXp().first()
+        val due = ProgressRepository(store, clock = Clock.fixed(Instant.ofEpochMilli(now0 + 11 * minute), ZoneId.of("UTC")))
+        val batch = due.dueReviewItems()
+        assertEquals(ReviewScheduler.SESSION_SIZE, batch.size)
+        batch.forEach { due.recordReview("s1", it.vocabularyId, true) }
+        assertEquals(xp + ReviewScheduler.SESSION_SIZE, store.observeTotalXp().first())
     }
 
     // ---- snapshot

@@ -51,3 +51,6 @@
 ## 0.0.10-phase4 (chưa build)
 - Phase 4 / Task 2: nhiệm vụ hằng ngày (hoàn thành 1 bài +10 XP; học 10 từ mới +15 XP, lập theo nội dung sẵn có, mỗi ngày lập một lần, thưởng chống trả trùng), thành tích (Bài học đầu tiên, 25 từ, Hoàn thành một chương, 7 ngày luyện tập), bảng từ đã học; Room v3 + MIGRATION_2_3 (daily_mission, user_achievement, learned_word); ContentRepository.catalog(); ContentLoader có Mutex; thẻ Nhiệm vụ ở Trang chủ, thẻ Thành tích ở Hồ sơ, thông báo ở màn kết quả. Test: ProgressRepositoryTest (viết lại, 16 ca), MissionsAndAchievementsTest.
 
+## 0.0.11-phase5 (chưa build)
+- Phase 5 / Task 1: ôn tập. ReviewScheduler (10 phút/1/3/7/14 ngày), ReviewSession (nhớ lại chủ động, từ quên quay lại một lần), bảng review_item (Room v4 + MIGRATION_3_4 có bù cho từ đã học), từ mới học tự vào lịch, ProgressRepository.recordReview/dueReviewItems/observeDueCount, XP ôn (1 XP/từ nhớ, khóa chống trùng, tối đa 10/phiên), thành tích 100 lượt ôn, màn Ôn tập (flashcard hai chiều, kết quả), thẻ "từ đến hạn" ở Trang chủ, lối tắt "Ôn ngay". Test: ReviewSchedulerTest, ReviewSessionTest, thêm 10 ca ôn vào ProgressRepositoryTest. Docs: docs/REVIEW.md.
+

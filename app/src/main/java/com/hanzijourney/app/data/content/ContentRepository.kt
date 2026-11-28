@@ -46,6 +46,13 @@ class ContentRepository(private val dao: ContentDao) {
         )
     }
 
+    /** Vocabulary entries for the given ids, in the same order (unknown ids are skipped). */
+    suspend fun vocabulary(ids: List<String>): List<VocabularyDto> {
+        if (ids.isEmpty()) return emptyList()
+        val byId = dao.getVocabulary(ids).associateBy { it.id }
+        return ids.mapNotNull { byId[it]?.toDto() }
+    }
+
     suspend fun hasUnapprovedContent(): Boolean = dao.countNotApproved() > 0
 
     suspend fun loadLesson(lessonId: String): LessonContent? {

@@ -36,6 +36,10 @@ class ProgressViewModel(
     val snapshot: StateFlow<ProgressSnapshot?> = repository.observeSnapshot()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
 
+    /** Words due for review now (re-read every 30 s while subscribed). */
+    val dueCount: StateFlow<Int> = repository.observeDueCount()
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), 0)
+
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {

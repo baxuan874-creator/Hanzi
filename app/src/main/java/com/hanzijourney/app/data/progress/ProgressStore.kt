@@ -3,6 +3,7 @@ package com.hanzijourney.app.data.progress
 import com.hanzijourney.app.domain.progress.DailyMission
 import com.hanzijourney.app.domain.progress.LessonProgress
 import com.hanzijourney.app.domain.progress.XpEvent
+import com.hanzijourney.app.domain.review.ReviewItem
 import kotlinx.coroutines.flow.Flow
 
 /** Storage of user progress. Separate from the content database; implemented with Room and with a fake in tests. */
@@ -29,6 +30,14 @@ interface ProgressStore {
     /** Returns true only the first time the achievement is unlocked. */
     suspend fun unlockAchievement(achievementId: String, at: Long): Boolean
 
+    suspend fun getReviewItem(vocabularyId: String): ReviewItem?
+    suspend fun saveReviewItem(item: ReviewItem)
+
+    /** Adds the item unless the word already has one. Returns true only if it was added. */
+    suspend fun createReviewItem(item: ReviewItem): Boolean
+    suspend fun getDueReviewItems(now: Long, limit: Int): List<ReviewItem>
+    suspend fun getTotalReviews(): Int
+
     /** Runs several writes as one unit: all of them are saved, or none. */
     suspend fun <T> atomically(block: suspend ProgressStore.() -> T): T
 
@@ -38,4 +47,6 @@ interface ProgressStore {
     fun observeMissions(localDate: String): Flow<List<DailyMission>>
     fun observeLearnedWordCount(): Flow<Int>
     fun observeUnlockedAchievementIds(): Flow<Set<String>>
+    fun observeDueCount(now: Long): Flow<Int>
+    fun observeTotalReviews(): Flow<Int>
 }

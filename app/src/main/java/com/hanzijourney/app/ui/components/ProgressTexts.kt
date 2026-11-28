@@ -21,6 +21,7 @@ fun achievementName(achievement: Achievement): String = stringResource(
         Achievement.WORDS_25 -> R.string.achievement_words_25
         Achievement.CHAPTER_COMPLETE -> R.string.achievement_chapter_complete
         Achievement.SEVEN_DAY_PRACTICE -> R.string.achievement_seven_day
+        Achievement.REVIEWS_100 -> R.string.achievement_reviews_100
     }
 )
 
@@ -31,5 +32,6 @@ fun achievementHint(achievement: Achievement): String = stringResource(
         Achievement.WORDS_25 -> R.string.achievement_words_25_hint
         Achievement.CHAPTER_COMPLETE -> R.string.achievement_chapter_complete_hint
         Achievement.SEVEN_DAY_PRACTICE -> R.string.achievement_seven_day_hint
+        Achievement.REVIEWS_100 -> R.string.achievement_reviews_100_hint
     }
 )

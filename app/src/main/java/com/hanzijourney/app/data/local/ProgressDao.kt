@@ -64,4 +64,26 @@ interface ProgressDao {
 
     @Query("SELECT achievementId FROM user_achievement")
     fun observeAchievementIds(): Flow<List<String>>
+
+    @Query("SELECT * FROM review_item WHERE vocabularyId = :id")
+    suspend fun getReviewItem(id: String): ReviewItemEntity?
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun upsertReviewItem(entity: ReviewItemEntity)
+
+    /** Returns -1 when the word already has a review item. */
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertReviewItem(entity: ReviewItemEntity): Long
+
+    @Query("SELECT * FROM review_item WHERE dueAt <= :now ORDER BY dueAt ASC, vocabularyId ASC LIMIT :limit")
+    suspend fun getDueReviewItems(now: Long, limit: Int): List<ReviewItemEntity>
+
+    @Query("SELECT COUNT(*) FROM review_item WHERE dueAt <= :now")
+    fun observeDueCount(now: Long): Flow<Int>
+
+    @Query("SELECT COALESCE(SUM(reviewCount), 0) FROM review_item")
+    suspend fun getTotalReviews(): Int
+
+    @Query("SELECT COALESCE(SUM(reviewCount), 0) FROM review_item")
+    fun observeTotalReviews(): Flow<Int>
 }

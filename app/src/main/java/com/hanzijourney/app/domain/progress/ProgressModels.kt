@@ -45,5 +45,6 @@ data class ProgressSnapshot(
     val completedLessonIds: Set<String>,
     val learnedWordCount: Int,
     val missions: List<DailyMission>,
-    val unlockedAchievements: Set<Achievement>
+    val unlockedAchievements: Set<Achievement>,
+    val totalReviews: Int
 )

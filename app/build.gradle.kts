@@ -14,8 +14,8 @@ android {
         applicationId = "com.hanzijourney.app"
         minSdk = 26
         targetSdk = 34
-        versionCode = 10
-        versionName = "0.0.10-phase4"
+        versionCode = 11
+        versionName = "0.0.11-phase5"
     }
 
     buildTypes {

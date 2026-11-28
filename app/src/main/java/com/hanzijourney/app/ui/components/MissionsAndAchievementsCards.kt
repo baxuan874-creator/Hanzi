@@ -55,6 +55,7 @@ fun AchievementsCard(snapshot: ProgressSnapshot, modifier: Modifier = Modifier) 
                             unlocked -> stringResource(R.string.achievement_unlocked)
                             a == Achievement.WORDS_25 -> stringResource(R.string.achievement_progress, snapshot.learnedWordCount.coerceAtMost(AchievementRules.WORDS_TARGET), AchievementRules.WORDS_TARGET)
                             a == Achievement.SEVEN_DAY_PRACTICE -> stringResource(R.string.achievement_progress, snapshot.streak.best.coerceAtMost(AchievementRules.STREAK_TARGET), AchievementRules.STREAK_TARGET)
+                            a == Achievement.REVIEWS_100 -> stringResource(R.string.achievement_progress, snapshot.totalReviews.coerceAtMost(AchievementRules.REVIEWS_TARGET), AchievementRules.REVIEWS_TARGET)
                             else -> stringResource(R.string.achievement_locked)
                         },
                         style = MaterialTheme.typography.labelLarge

@@ -35,19 +35,22 @@ fun HanziAppRoot() {
         currentDestination?.hierarchy?.any { it.route == dest.route } == true
     }
 
+    // Switching tabs keeps each tab's state; used by the bottom bar and by shortcuts such as "Ôn ngay".
+    val goToTab: (String) -> Unit = { route ->
+        navController.navigate(route) {
+            popUpTo(navController.graph.findStartDestination().id) { saveState = true }
+            launchSingleTop = true
+            restoreState = true
+        }
+    }
+
     Scaffold(
         bottomBar = {
             if (showBottomBar) NavigationBar {
                 TopLevelDestination.entries.forEach { dest ->
                     NavigationBarItem(
                         selected = currentDestination?.hierarchy?.any { it.route == dest.route } == true,
-                        onClick = {
-                            navController.navigate(dest.route) {
-                                popUpTo(navController.graph.findStartDestination().id) { saveState = true }
-                                launchSingleTop = true
-                                restoreState = true
-                            }
-                        },
+                        onClick = { goToTab(dest.route) },
                         icon = { Icon(dest.icon, contentDescription = null) },
                         label = { Text(stringResource(dest.labelRes)) }
                     )
@@ -60,7 +63,7 @@ fun HanziAppRoot() {
             startDestination = TopLevelDestination.HOME.route,
             modifier = Modifier.padding(padding)
         ) {
-            composable(TopLevelDestination.HOME.route) { HomeScreen() }
+            composable(TopLevelDestination.HOME.route) { HomeScreen(onOpenReview = { goToTab(TopLevelDestination.REVIEW.route) }) }
             composable(TopLevelDestination.LEARN.route) {
                 LearnScreen(onOpenLesson = { id -> navController.navigate("lesson/$id") })
             }

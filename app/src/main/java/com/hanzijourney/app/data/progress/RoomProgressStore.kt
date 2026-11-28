@@ -4,6 +4,7 @@ import androidx.room.withTransaction
 import com.hanzijourney.app.data.local.DailyMissionEntity
 import com.hanzijourney.app.data.local.HanziDatabase
 import com.hanzijourney.app.data.local.LearnedWordEntity
+import com.hanzijourney.app.data.local.ReviewItemEntity
 import com.hanzijourney.app.data.local.UserAchievementEntity
 import com.hanzijourney.app.data.local.LessonProgressEntity
 import com.hanzijourney.app.data.local.PracticeDayEntity
@@ -11,6 +12,7 @@ import com.hanzijourney.app.data.local.XpEventEntity
 import com.hanzijourney.app.domain.progress.DailyMission
 import com.hanzijourney.app.domain.progress.LessonProgress
 import com.hanzijourney.app.domain.progress.XpEvent
+import com.hanzijourney.app.domain.review.ReviewItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -54,6 +56,13 @@ class RoomProgressStore(private val database: HanziDatabase) : ProgressStore {
     override suspend fun unlockAchievement(achievementId: String, at: Long): Boolean =
         dao.insertAchievement(UserAchievementEntity(achievementId, at)) != -1L
 
+    override suspend fun getReviewItem(vocabularyId: String): ReviewItem? = dao.getReviewItem(vocabularyId)?.toDomain()
+    override suspend fun saveReviewItem(item: ReviewItem) { dao.upsertReviewItem(item.toEntity()) }
+    override suspend fun createReviewItem(item: ReviewItem): Boolean = dao.insertReviewItem(item.toEntity()) != -1L
+    override suspend fun getDueReviewItems(now: Long, limit: Int): List<ReviewItem> =
+        dao.getDueReviewItems(now, limit).map { it.toDomain() }
+    override suspend fun getTotalReviews(): Int = dao.getTotalReviews()
+
     override suspend fun <T> atomically(block: suspend ProgressStore.() -> T): T =
         database.withTransaction { block(this@RoomProgressStore) }
 
@@ -67,4 +76,9 @@ class RoomProgressStore(private val database: HanziDatabase) : ProgressStore {
     override fun observeUnlockedAchievementIds(): Flow<Set<String>> = dao.observeAchievementIds().map { it.toSet() }
 
     private fun DailyMissionEntity.toDomain() = DailyMission(missionId, localDate, type, target, progress, rewardXp, completedAt)
+    override fun observeDueCount(now: Long): Flow<Int> = dao.observeDueCount(now)
+    override fun observeTotalReviews(): Flow<Int> = dao.observeTotalReviews()
+
+    private fun ReviewItemEntity.toDomain() = ReviewItem(vocabularyId, stage, dueAt, lastReviewedAt, reviewCount, lapses, createdAt)
+    private fun ReviewItem.toEntity() = ReviewItemEntity(vocabularyId, stage, dueAt, lastReviewedAt, reviewCount, lapses, createdAt)
 }

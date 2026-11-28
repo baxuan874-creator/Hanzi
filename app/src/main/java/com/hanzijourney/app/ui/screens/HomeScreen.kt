@@ -15,14 +15,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.hanzijourney.app.R
+import com.hanzijourney.app.ui.components.DueReviewCard
 import com.hanzijourney.app.ui.components.MissionsCard
 import com.hanzijourney.app.ui.components.ProgressSummaryCard
 import com.hanzijourney.app.ui.progress.ProgressViewModel
 import com.hanzijourney.app.ui.theme.Spacing
 
 @Composable
-fun HomeScreen(viewModel: ProgressViewModel = viewModel(factory = ProgressViewModel.Factory)) {
+fun HomeScreen(
+    onOpenReview: () -> Unit = {},
+    viewModel: ProgressViewModel = viewModel(factory = ProgressViewModel.Factory)
+) {
     val snapshot by viewModel.snapshot.collectAsState()
+    val dueCount by viewModel.dueCount.collectAsState()
     Column(
         modifier = Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(Spacing.md),
         verticalArrangement = Arrangement.spacedBy(Spacing.md)
@@ -30,6 +35,7 @@ fun HomeScreen(viewModel: ProgressViewModel = viewModel(factory = ProgressViewMo
         Text(stringResource(R.string.home_title), style = MaterialTheme.typography.headlineMedium)
         snapshot?.let { s ->
             ProgressSummaryCard(s)
+            DueReviewCard(dueCount, onOpenReview)
             MissionsCard(s.missions)
             if (s.completedLessonIds.isEmpty()) Text(stringResource(R.string.home_empty), style = MaterialTheme.typography.bodyLarge)
         }
