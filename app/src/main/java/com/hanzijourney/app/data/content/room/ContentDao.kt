@@ -26,6 +26,8 @@ interface ContentDao {
     @Query("SELECT * FROM chapter ORDER BY sortOrder") fun observeChapters(): Flow<List<ChapterEntity>>
     @Query("SELECT * FROM lesson WHERE chapterId = :chapterId ORDER BY sortOrder")
     fun observeLessons(chapterId: String): Flow<List<LessonEntity>>
+    @Query("SELECT * FROM lesson ORDER BY sortOrder") fun observeAllLessons(): Flow<List<LessonEntity>>
+    @Query("SELECT COUNT(*) FROM vocabulary WHERE reviewStatus != 'approved'") suspend fun countNotApproved(): Int
     @Query("SELECT * FROM lesson WHERE id = :id") suspend fun getLesson(id: String): LessonEntity?
     @Query("SELECT * FROM vocabulary WHERE id IN (:ids)") suspend fun getVocabulary(ids: List<String>): List<VocabularyEntity>
     @Query("SELECT * FROM grammar_point WHERE id IN (:ids)") suspend fun getGrammarPoints(ids: List<String>): List<GrammarPointEntity>

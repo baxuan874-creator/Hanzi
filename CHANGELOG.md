@@ -35,3 +35,6 @@
 
 ## (content) Phase 2 / Task 6
 - Bài mẫu 004 "Xin chào" tự soạn (content_authoring/lesson_004.json): 12 từ có nghĩa tiếng Việt và ví dụ, 1 điểm ngữ pháp, 11 bài tập; tools/build_pack.py, tools/validate_pack.py (kèm quy tắc chỉ dùng chữ đã học); gói content_work/packs/hsk3_l1_sample_lesson004.pack.json; Kotlin: thêm review_status draft_unreviewed, kiểm tra sentence_ordering, SamplePackTest (kiểm tra gói thật bằng validator của app); CI chạy build/validate gói. Không đổi giao diện app.
+
+## 0.0.6-phase3 (chưa build)
+- Phase 3 / Task 1: trình học bài v1. Tab Học liệt kê bài từ content.db (bản debug tự nạp gói mẫu); màn học bài: mục tiêu, thẻ từ, ngữ pháp, bài tập (trắc nghiệm, điền chỗ trống, sắp xếp câu, nhập chữ), phản hồi có giải thích, làm lại câu sai một lần, màn kết quả. Logic LessonSession/ExerciseChecker có test đơn vị (kể cả chạy hết bài mẫu). Chưa lưu tiến độ.

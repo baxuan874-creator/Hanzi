@@ -14,8 +14,8 @@ android {
         applicationId = "com.hanzijourney.app"
         minSdk = 26
         targetSdk = 34
-        versionCode = 5
-        versionName = "0.0.5-phase2"
+        versionCode = 6
+        versionName = "0.0.6-phase3"
     }
 
     buildTypes {
@@ -29,7 +29,12 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions { jvmTarget = "17" }
-    buildFeatures { compose = true }
+    buildFeatures {
+        compose = true
+        buildConfig = true
+    }
+    // Debug builds only: bundle the draft sample content pack so the lesson player can be developed.
+    sourceSets.getByName("debug").assets.srcDir("../content_work/packs")
 }
 
 ksp {

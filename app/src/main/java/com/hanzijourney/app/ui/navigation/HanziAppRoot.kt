@@ -15,7 +15,10 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.NavType
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.hanzijourney.app.ui.lesson.LessonScreen
 import com.hanzijourney.app.ui.screens.HomeScreen
 import com.hanzijourney.app.ui.screens.LearnScreen
 import com.hanzijourney.app.ui.screens.ProfileScreen
@@ -28,9 +31,13 @@ fun HanziAppRoot() {
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = backStackEntry?.destination
 
+    val showBottomBar = TopLevelDestination.entries.any { dest ->
+        currentDestination?.hierarchy?.any { it.route == dest.route } == true
+    }
+
     Scaffold(
         bottomBar = {
-            NavigationBar {
+            if (showBottomBar) NavigationBar {
                 TopLevelDestination.entries.forEach { dest ->
                     NavigationBarItem(
                         selected = currentDestination?.hierarchy?.any { it.route == dest.route } == true,
@@ -54,7 +61,18 @@ fun HanziAppRoot() {
             modifier = Modifier.padding(padding)
         ) {
             composable(TopLevelDestination.HOME.route) { HomeScreen() }
-            composable(TopLevelDestination.LEARN.route) { LearnScreen() }
+            composable(TopLevelDestination.LEARN.route) {
+                LearnScreen(onOpenLesson = { id -> navController.navigate("lesson/$id") })
+            }
+            composable(
+                route = "lesson/{lessonId}",
+                arguments = listOf(navArgument("lessonId") { type = NavType.StringType })
+            ) { entry ->
+                LessonScreen(
+                    lessonId = entry.arguments?.getString("lessonId").orEmpty(),
+                    onClose = { navController.popBackStack() }
+                )
+            }
             composable(TopLevelDestination.VOCABULARY.route) { VocabularyScreen() }
             composable(TopLevelDestination.REVIEW.route) { ReviewScreen() }
             composable(TopLevelDestination.PROFILE.route) { ProfileScreen() }

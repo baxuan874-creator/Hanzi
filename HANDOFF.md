@@ -4,23 +4,23 @@ Date: 2026-11-26
 Project version: 0.0.1-phase0
 
 ## Current phase and task
-- Phase 2, Task 6 xong (chưa xác nhận build): bài mẫu 004 + công cụ tạo/kiểm tra gói.
+- Phase 3, Task 1 xong (chưa xác nhận build): trình học bài v1 chạy bài mẫu 004 trong bản debug.
 
 ## Completed
-- Phase 0, Phase 1: build xanh, chạy OK. Phase 2 Task 1-4: khóa đề cương (PROVISIONAL), bảng 300 từ/246 chữ/70 ngữ pháp, cấu trúc 16 chương/47 bài (nháp). Task 5: bộ nạp nội dung Kotlin + 18 test (chờ xác nhận build/test trên Actions).
-- Task 6: content_authoring/lesson_004.json (nội dung tự soạn, draft_unreviewed), tools/build_pack.py, tools/validate_pack.py, content_work/packs/hsk3_l1_sample_lesson004.pack.json (12 từ, 1 ngữ pháp, 11 bài tập), Kotlin SamplePackTest + 2 test mới (ordering, draft status), cập nhật docs/CONTENT_PACK_FORMAT.md.
+- Phase 0, Phase 1: build xanh, chạy OK. Phase 2 (Task 1-6): khóa đề cương (PROVISIONAL), dữ liệu 300/246/70, cấu trúc 47 bài, bộ nạp nội dung Kotlin, bài mẫu 004 + gói JSON. Task 5-6 chờ xác nhận build/test trên Actions.
+- Phase 3 Task 1: domain/lesson (LessonSession, ExerciseChecker, LessonContent), data/content (ContentRepository, ContentLoader), ui/lesson (LessonViewModel, LessonScreen, LessonSteps, PracticeStep), ui/learn/LearnViewModel, LearnScreen dùng LearnMap + LessonCard thật, route lesson/{lessonId} ẩn thanh tab, gradle: buildConfig=true và assets debug trỏ tới content_work/packs, docs/LESSON_PLAYER.md, LessonSessionTest (ExerciseChecker, session, chạy hết bài mẫu).
 
 ## Build and tests actually run
-- Python: build_pack + validate_pack trên gói mẫu: 0 lỗi, 0 cảnh báo; kiểm thử âm (chữ chưa học, đáp án sai, ordering sai, pinyin rỗng, tiên quyết sai) bị bắt đủ 9 lỗi. validate_level1, selftest_extract, build_l1_structure: đạt.
-- Kotlin (ContentPackTest, SamplePackTest) và Gradle: CHƯA biên dịch/chạy ở môi trường tạo file; chờ Actions.
+- Python (validate_level1, build_pack, validate_pack, selftest_extract, build_l1_structure): đạt ở lần chạy trước. Mô phỏng: 11/11 bài tập của bài mẫu có đáp án hợp lệ.
+- Kotlin/Gradle (Task 5, 6, Phase 3 Task 1): CHƯA biên dịch hay chạy ở môi trường tạo file (không có Kotlin/Android SDK); kiểm tra duy nhất là cân bằng ngoặc. Actions sẽ chạy unit test + build.
 
 ## Known issues
-- Nội dung bài 004 do Claude tự soạn, chưa có người biết tiếng Trung rà soát (một số câu ví dụ rất ngắn vì chỉ được dùng 12 từ của bài: 我请你, 您请, 请问！).
-- Rủi ro biên dịch Kotlin (Task 5 và 6) như đã ghi; SamplePackTest giả định thư mục chạy test là app/ (đường dẫn ../content_work/...).
-- Chưa có gói nào trong app, chưa có UI; Room chưa test trên thiết bị. Dữ liệu: 店/饺 không có trong 246 chữ; cảnh báo nguồn (小朋友, 存现句1); repo có thể còn Public, giấy phép danh sách từ chưa rõ; khóa đề cương PROVISIONAL.
+- Rủi ro biên dịch lớn hơn do lượng code Kotlin/Compose mới chưa từng compile (FlowRow + OptIn, sourceSets debug assets, Room, serialization, test đọc file ../content_work). Nếu Actions đỏ: gửi log.
+- Trình học: chưa lưu tiến độ; chưa âm thanh; thiếu matching/listening; chưa thử trên thiết bị (giao diện chưa ai xem).
+- Bài mẫu 004 là bản nháp chưa rà soát; dữ liệu: 店/饺 ngoài 246 chữ, cảnh báo nguồn (小朋友, 存现句1); repo có thể còn Public, giấy phép danh sách từ chưa rõ; khóa đề cương PROVISIONAL. Bản release không chứa nội dung (tab Học trống) — chủ ý.
 
 ## Exact next task
-- Xác nhận Actions xanh (đặc biệt bước Run unit tests). Quyết định giấy phép/Private. Rồi Phase 3, Task 1: màn hình học bài (lesson player) đọc bài 004 từ gói mẫu — để phát triển UI, gói mẫu được đặt vào thư mục test/debug-only hoặc nạp qua cơ chế chỉ có ở bản debug, KHÔNG đóng gói trong bản release cho tới khi giấy phép rõ.
+- Xác nhận Actions xanh, cài APK debug và thử bài 004 trên máy; gửi ảnh/ghi chú lỗi giao diện. Sau đó Phase 3, Task 2: sửa lỗi/chỉnh giao diện theo phản hồi, thêm dạng bài ghép đôi (matching), rồi Phase 4 (lưu tiến độ, XP chống cộng trùng, streak).
 
 ## Decisions that must remain unchanged
 - Android Native / Kotlin / Compose; Vietnamese-first; gamified UI; HSK 3.0 track; không AI/backend/API trả phí/login/ads/Premium; offline-first.

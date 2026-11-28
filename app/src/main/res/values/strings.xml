@@ -28,4 +28,34 @@
     <string name="badge_available">Sẵn sàng</string>
     <string name="badge_completed">Hoàn thành</string>
     <string name="progress_percent">%1$d%%</string>
+
+    <string name="learn_loading">Đang tải bài học…</string>
+    <string name="learn_load_error">Không nạp được nội dung: %1$s</string>
+    <string name="learn_lesson_subtitle">%1$s · %2$d từ · %3$d phút</string>
+    <string name="learn_draft_banner">Bản thử nghiệm: bài mẫu chưa được người biết tiếng Trung rà soát. Chưa lưu tiến độ học.</string>
+
+    <string name="lesson_close">Đóng bài học</string>
+    <string name="lesson_loading">Đang mở bài…</string>
+    <string name="lesson_not_found">Không tìm thấy bài học này.</string>
+    <string name="lesson_goals">Mục tiêu bài học</string>
+    <string name="lesson_draft_notice">Nội dung bản nháp, chưa được người biết tiếng Trung rà soát.</string>
+    <string name="lesson_start">Bắt đầu</string>
+    <string name="lesson_next">Tiếp tục</string>
+    <string name="lesson_check">Kiểm tra</string>
+    <string name="lesson_example">Ví dụ</string>
+    <string name="lesson_grammar_title">Ngữ pháp</string>
+    <string name="lesson_usage_note">Lưu ý</string>
+    <string name="lesson_common_error">Dễ nhầm</string>
+    <string name="lesson_retry_label">Làm lại câu này</string>
+    <string name="lesson_correct">✓ Chính xác!</string>
+    <string name="lesson_incorrect">✗ Chưa đúng</string>
+    <string name="lesson_correct_answer">Đáp án đúng: %1$s</string>
+    <string name="lesson_ordering_hint">Chạm vào các mảnh để ghép thành câu.</string>
+    <string name="lesson_type_hint">Nhập đáp án</string>
+    <string name="lesson_result_title">Hoàn thành bài học</string>
+    <string name="lesson_result_score">Đúng ngay lần đầu: %1$d/%2$d</string>
+    <string name="lesson_result_words">Số từ đã gặp: %1$d</string>
+    <string name="lesson_result_retried">Câu làm lại: %1$d</string>
+    <string name="lesson_result_again">Học lại</string>
+    <string name="lesson_result_back">Về bản đồ</string>
 </resources>
