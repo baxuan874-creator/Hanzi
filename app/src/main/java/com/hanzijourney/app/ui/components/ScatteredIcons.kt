@@ -24,12 +24,12 @@ private fun buildScatter(seed: Int): List<Scatter> {
     val items = mutableListOf<Scatter>()
     for (row in 0 until rows) {
         for (column in 0 until columns) {
-            if (random.nextFloat() > 0.65f) continue
+            if (random.nextFloat() > 0.2f) continue
             items += Scatter(
                 glyph = Glyphs[random.nextInt(Glyphs.size)],
                 x = (column + 0.1f + random.nextFloat() * 0.5f) / columns,
                 y = (row + 0.1f + random.nextFloat() * 0.5f) / rows,
-                sizeSp = 26f + random.nextFloat() * 18f,
+                sizeSp = 22f + random.nextFloat() * 10f,
                 rotation = -25f + random.nextFloat() * 50f
             )
         }
@@ -55,7 +55,7 @@ fun ScatteredIcons(seed: Int, modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .offset(x = width * item.x, y = height * item.y)
                     .rotate(item.rotation)
-                    .alpha(0.22f)
+                    .alpha(0.12f)
             )
         }
     }

@@ -40,4 +40,33 @@ class ExerciseOptionsTest {
         assertTrue(ExerciseOptions.shuffled(ex("text", null, "a")).isEmpty())
         assertEquals(listOf("a"), ExerciseOptions.shuffled(ex("multiple_choice", listOf("a"), "a")))
     }
+
+    @Test fun matchingColumnsKeepAllPairsAndDoNotLineUp() {
+        val e = ex("matching", listOf("a|1", "b|2", "c|3"), "a|1;b|2;c|3")
+        repeat(100) { seed ->
+            val (left, right) = ExerciseOptions.matchingColumns(e, Random(seed))
+            assertEquals(3, left.size)
+            assertEquals(left.toSet(), right.toSet())
+            assertFalse(left == right)
+        }
+    }
+}
+
+class MatchingTest {
+    @Test fun parsesPairsAndRejectsBadOnes() {
+        assertEquals(MatchPair("你好", "xin chào"), Matching.parse("你好|xin chào"))
+        assertEquals(null, Matching.parse("你好"))
+        assertEquals(null, Matching.parse("|x"))
+        assertEquals(null, Matching.parse("a|b|c"))
+    }
+
+    @Test fun displayWritesOneLinePerPair() {
+        assertEquals("a – 1\nb – 2", Matching.display("a|1;b|2"))
+    }
+
+    @Test fun encodeAndNormalizeRoundTrip() {
+        val encoded = Matching.encode(listOf(MatchPair("b", "2"), MatchPair("a", "1")))
+        assertEquals("b|2;a|1", encoded)
+        assertEquals(listOf("a|1", "b|2"), Matching.normalize(encoded))
+    }
 }

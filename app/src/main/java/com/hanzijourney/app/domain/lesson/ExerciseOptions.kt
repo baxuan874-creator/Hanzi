@@ -23,4 +23,20 @@ object ExerciseOptions {
         }
         return result
     }
+
+    /**
+     * Two columns for a matching exercise. The pack lists pairs already matched, so both columns are shuffled
+     * and the right column is re-shuffled until it no longer lines up row by row with the left one (when possible).
+     */
+    fun matchingColumns(exercise: ExerciseDto, random: Random = Random.Default): Pair<List<MatchPair>, List<MatchPair>> {
+        val pairs = Matching.pairs(exercise)
+        val left = pairs.shuffled(random)
+        var right = pairs.shuffled(random)
+        var attempts = 0
+        while (pairs.size > 1 && right == left && attempts < 20) {
+            right = pairs.shuffled(random)
+            attempts++
+        }
+        return left to right
+    }
 }

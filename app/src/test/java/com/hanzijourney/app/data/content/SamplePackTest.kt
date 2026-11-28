@@ -21,7 +21,7 @@ class SamplePackTest {
         assertTrue(report.errors.toString(), report.isValid)
         assertEquals(12, pack.vocabulary.size)
         assertEquals(1, pack.grammarPoints.size)
-        assertEquals(11, pack.exercises.size)
+        assertEquals(12, pack.exercises.size)
         assertEquals(1, pack.lessons.size)
     }
 

@@ -7,6 +7,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxSize
@@ -32,9 +33,12 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.hanzijourney.app.R
+import com.hanzijourney.app.data.content.ExerciseDto
 import com.hanzijourney.app.domain.lesson.ExerciseOptions
 import com.hanzijourney.app.domain.lesson.Feedback
 import com.hanzijourney.app.domain.lesson.LessonStep
+import com.hanzijourney.app.domain.lesson.MatchPair
+import com.hanzijourney.app.domain.lesson.Matching
 import com.hanzijourney.app.ui.components.HanziButton
 import com.hanzijourney.app.ui.theme.Spacing
 
@@ -61,6 +65,8 @@ internal fun PracticeStep(
                 if (step.isRetry) Text(stringResource(R.string.lesson_retry_label), style = MaterialTheme.typography.labelMedium)
                 Text(exercise.prompt, style = MaterialTheme.typography.headlineMedium, textAlign = TextAlign.Center)
                 when {
+                    exercise.type == "matching" && Matching.pairs(exercise).size >= Matching.MIN_PAIRS ->
+                        MatchingInput(exercise, answered) { answer = it }
                     exercise.type == "sentence_ordering" && options.isNotEmpty() ->
                         OrderingInput(options, answered) { answer = it }
                     options.isEmpty() ->
@@ -84,7 +90,10 @@ internal fun PracticeStep(
                     }
                 }
             }
-            if (feedback != null) FeedbackPanel(feedback)
+            if (feedback != null) {
+                val shown = if (exercise.type == "matching") Matching.display(feedback.correctAnswer) else feedback.correctAnswer
+                FeedbackPanel(feedback, shown)
+            }
             if (!answered) {
                 HanziButton(
                     text = stringResource(R.string.lesson_check),
@@ -187,7 +196,7 @@ private fun OrderingInput(tokens: List<String>, locked: Boolean, onAnswer: (Stri
 }
 
 @Composable
-private fun FeedbackPanel(feedback: Feedback) {
+private fun FeedbackPanel(feedback: Feedback, correctAnswerText: String) {
     val container = if (feedback.correct) MaterialTheme.colorScheme.secondaryContainer else MaterialTheme.colorScheme.errorContainer
     val content = if (feedback.correct) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.onErrorContainer
     Column(
@@ -203,7 +212,83 @@ private fun FeedbackPanel(feedback: Feedback) {
             style = MaterialTheme.typography.titleLarge,
             color = content
         )
-        if (!feedback.correct) Text(stringResource(R.string.lesson_correct_answer, feedback.correctAnswer), style = MaterialTheme.typography.bodyLarge, color = content)
+        if (!feedback.correct) Text(stringResource(R.string.lesson_correct_answer, correctAnswerText), style = MaterialTheme.typography.bodyLarge, color = content)
         Text(feedback.explanationVi, style = MaterialTheme.typography.bodyLarge, color = content)
+    }
+}
+
+/** One tappable card of a matching exercise. A paired card shows its pair number, so colour is never the only signal. */
+@Composable
+private fun PairCard(text: String, number: Int?, pending: Boolean, enabled: Boolean, modifier: Modifier = Modifier, onClick: () -> Unit) {
+    val scheme = MaterialTheme.colorScheme
+    val shape = RoundedCornerShape(16.dp)
+    val background = if (number != null) scheme.primaryContainer else scheme.surface
+    val borderColor = if (number != null || pending) scheme.primary else scheme.outline
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .heightIn(min = 72.dp)
+            .clip(shape)
+            .background(background)
+            .border(BorderStroke(if (number != null || pending) 3.dp else 1.5.dp, borderColor), shape)
+            .clickable(enabled = enabled, role = Role.Button, onClick = onClick)
+            .padding(horizontal = Spacing.sm, vertical = Spacing.sm),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = if (number != null) "$number · $text" else text,
+            style = MaterialTheme.typography.titleLarge,
+            color = scheme.onSurface,
+            textAlign = TextAlign.Center
+        )
+    }
+}
+
+/**
+ * Tap a left card, then the right card it belongs to. Tap a paired card to undo that pair.
+ * The answer is only reported when every card is paired.
+ */
+@Composable
+private fun MatchingInput(exercise: ExerciseDto, locked: Boolean, onAnswer: (String) -> Unit) {
+    val columns = remember { ExerciseOptions.matchingColumns(exercise) }
+    val left = columns.first
+    val right = columns.second
+    // Each match is (left index, right index); its position in the list is the number shown on both cards.
+    var matches by remember { mutableStateOf(listOf<Pair<Int, Int>>()) }
+    var pendingLeft by remember { mutableStateOf<Int?>(null) }
+
+    fun update(next: List<Pair<Int, Int>>) {
+        matches = next
+        onAnswer(if (next.size == left.size) Matching.encode(next.map { MatchPair(left[it.first].left, right[it.second].right) }) else "")
+    }
+
+    Text(stringResource(R.string.lesson_matching_hint), style = MaterialTheme.typography.bodyLarge, textAlign = TextAlign.Center)
+    Row(horizontalArrangement = Arrangement.spacedBy(Spacing.sm), modifier = Modifier.fillMaxWidth()) {
+        Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(Spacing.sm)) {
+            left.forEachIndexed { index, pair ->
+                val matchIndex = matches.indexOfFirst { it.first == index }
+                PairCard(pair.left, number = if (matchIndex >= 0) matchIndex + 1 else null, pending = pendingLeft == index, enabled = !locked) {
+                    if (matchIndex >= 0) {
+                        update(matches.filterIndexed { i, _ -> i != matchIndex })
+                    } else {
+                        pendingLeft = if (pendingLeft == index) null else index
+                    }
+                }
+            }
+        }
+        Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(Spacing.sm)) {
+            right.forEachIndexed { index, pair ->
+                val matchIndex = matches.indexOfFirst { it.second == index }
+                PairCard(pair.right, number = if (matchIndex >= 0) matchIndex + 1 else null, pending = false, enabled = !locked) {
+                    val chosenLeft = pendingLeft
+                    if (matchIndex >= 0) {
+                        update(matches.filterIndexed { i, _ -> i != matchIndex })
+                    } else if (chosenLeft != null) {
+                        pendingLeft = null
+                        update(matches + (chosenLeft to index))
+                    }
+                }
+            }
+        }
     }
 }

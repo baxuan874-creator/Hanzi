@@ -15,7 +15,7 @@ Giới thiệu mục tiêu → từng từ mới (thẻ: chữ Hán, pinyin, ngh
 ## Chưa có (cố ý)
 - Chưa lưu tiến độ, XP, streak, lịch ôn (Phase 4–5): mọi bài đều "sẵn sàng", app không nhớ bạn đã học bài nào.
 - Chưa có âm thanh, chưa có luyện viết nét (Phase 6).
-- Chưa có ghép đôi (matching) và nghe chọn (listening_choice).
+- Chưa có nghe chọn (listening_choice). (Ghép đôi đã có từ Task 3.)
 
 ## Mã nguồn
 - Logic (kiểm thử được trên JVM): `domain/lesson/LessonSession.kt`, `ExerciseChecker.kt`.
@@ -28,3 +28,8 @@ Giới thiệu mục tiêu → từng từ mới (thẻ: chữ Hán, pinyin, ngh
 - Sau khi trả lời: thẻ đúng có dấu ✓, thẻ chọn sai có dấu ✗ (ngoài màu còn có ký hiệu); khung giải thích nằm cố định phía trên nút Tiếp tục.
 - Thanh tiến độ tự vẽ (bỏ chấm tròn thừa cuối thanh); thêm màu container vào theme sáng/tối.
 - Nền trang trí: `ui/components/ScatteredIcons.kt` rải mờ các biểu tượng emoji (đèn lồng, rồng, trà, sủi cảo, hoa đào…) ở nền mọi màn học; vị trí ngẫu nhiên nhưng cố định theo từng bước. Chỉ để trang trí: ẩn với trình đọc màn hình, không chuyển động, dùng font emoji của hệ thống (không cần file ảnh/giấy phép). Không dùng ảnh linh vật.
+
+## Task 3: ghép đôi (matching)
+- Hai cột: chạm một ô bên trái rồi chạm ô tương ứng bên phải; mỗi cặp hiện cùng một số (1, 2, 3…) ở cả hai ô nên không chỉ dựa vào màu. Chạm lại ô đã ghép để gỡ cặp đó. Nút Kiểm tra chỉ bật khi ghép hết.
+- Chấm theo tập hợp cặp (không phụ thuộc thứ tự). Nếu sai, hiện đủ các cặp đúng ("trái – phải"), mỗi cặp một dòng, kèm giải thích.
+- Biểu tượng nền thưa hơn và mờ hơn (khoảng 6 biểu tượng mỗi màn, độ mờ 12%).

@@ -1,5 +1,7 @@
 package com.hanzijourney.app.data.content
 
+import com.hanzijourney.app.domain.lesson.Matching
+
 enum class Severity { ERROR, WARNING }
 
 data class Issue(val severity: Severity, val recordId: String, val message: String)
@@ -123,6 +125,22 @@ object ContentValidator {
             if (e.type == "sentence_ordering") {
                 val tokens = e.answer.split(" ").filter { it.isNotEmpty() }
                 if (options == null || options.sorted() != tokens.sorted()) error(e.id, "sentence_ordering answer tokens must match the options")
+            }
+            if (e.type == "matching") {
+                val parsed = options.orEmpty().map { Matching.parse(it) }
+                if (options == null || options.size < Matching.MIN_PAIRS || options.size > Matching.MAX_PAIRS) {
+                    error(e.id, "matching needs ${Matching.MIN_PAIRS}-${Matching.MAX_PAIRS} pairs")
+                } else if (parsed.any { it == null }) {
+                    error(e.id, "matching option must be 'left|right'")
+                } else {
+                    val pairs = parsed.filterNotNull()
+                    if (pairs.map { it.left }.toSet().size != pairs.size || pairs.map { it.right }.toSet().size != pairs.size) {
+                        error(e.id, "matching sides must be unique")
+                    }
+                    if (Matching.normalize(e.answer) != Matching.normalize(options.joinToString(";"))) {
+                        error(e.id, "matching answer pairs must equal the options")
+                    }
+                }
             }
         }
 

@@ -41,3 +41,7 @@
 
 ## 0.0.7-phase3 (chưa build)
 - Phase 3 / Task 2: trộn thứ tự đáp án (đáp án đúng không còn luôn ở ô đầu), giao diện bài học to và đỡ trống hơn (thẻ đáp án lớn, nút cao, nội dung căn giữa, thẻ từ chữ Hán lớn), dấu ✓/✗ sau khi trả lời, thanh tiến độ mới, màu container cho theme, nền trang trí ScatteredIcons (emoji rải mờ), ExerciseOptionsTest. Chưa làm ghép đôi (matching): chuyển sang Task 3.
+
+## 0.0.8-phase3 (chưa build)
+- Phase 3 / Task 3: dạng bài ghép đôi (matching): Matching.kt, ExerciseChecker/ExerciseOptions/ContentValidator (Kotlin) và validate_pack.py (Python) hỗ trợ, màn MatchingInput (hai cột, đánh số cặp), bài mẫu 004 thêm ex_l1_0012 (12 bài tập), cập nhật/thêm test (MatchingTest, matching trong ExerciseChecker/ContentPack/ExerciseOptions). Giảm biểu tượng nền còn khoảng 6 mỗi màn, nhỏ và mờ hơn.
+

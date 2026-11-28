@@ -42,3 +42,11 @@ Ví dụ (`examples`): `{ hanzi, pinyin, meaning_vi }`. `review_status`: `extrac
 - Quy tắc soạn bài (chỉ Python kiểm tra): câu ví dụ, đề bài, lựa chọn và đáp án chỉ được dùng chữ Hán của các từ đã học ở bài này hoặc các bài trước.
 - Công cụ: `tools/build_pack.py lesson_004` ghép dữ liệu đề cương (ID, chữ, pinyin, nguồn) + cấu trúc khóa học + nội dung tự soạn trong `content_authoring/lesson_004.json` thành gói; `tools/validate_pack.py` kiểm tra gói (giống `ContentValidator.kt` cộng quy tắc chữ Hán ở trên).
 - Gói mẫu: `content_work/packs/hsk3_l1_sample_lesson004.pack.json` (bài 004 "Xin chào": 12 từ, 1 điểm ngữ pháp, 11 bài tập). Là bản nháp, chưa rà soát, **chưa đóng gói trong app**. Gói mẫu chỉ có bài 004 nên không chứa bài tiên quyết (003 Khởi động).
+
+## Cập nhật Phase 3 / Task 3: dạng bài `matching` (ghép đôi)
+- `options`: 2–5 cặp, mỗi cặp viết `trái|phải` (ví dụ `"你好|xin chào"`). Hai phía mỗi bên không được trùng nhau.
+- `answer`: chính các cặp đó nối bằng `;` (ví dụ `"你好|xin chào;谢谢|cảm ơn"`). Thứ tự không quan trọng khi chấm.
+- Kotlin (`ContentValidator`) và Python (`validate_pack.py`) cùng kiểm tra: số cặp, định dạng `trái|phải`, phía trái/phải không trùng, đáp án khớp đúng với `options`.
+- App tự trộn cả hai cột mỗi lần hiện câu, và đảm bảo hai cột không xếp sẵn thẳng hàng.
+- Bài mẫu 004 có thêm `ex_l1_0012` (ghép 4 từ), tổng 12 bài tập.
+

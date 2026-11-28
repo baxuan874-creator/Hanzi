@@ -127,6 +127,14 @@ def validate(pack, require_approved=False, allowed=None):
         if e.get("type") == "sentence_ordering":
             toks = [t for t in e.get("answer", "").split(" ") if t]
             if not opts or sorted(opts) != sorted(toks): err(i, "sentence_ordering answer tokens must match the options")
+        if e.get("type") == "matching":
+            ps = [o.split("|") for o in opts or []]
+            if not opts or len(opts) < 2 or len(opts) > 5: err(i, "matching needs 2-5 pairs")
+            elif any(len(x) != 2 or not x[0].strip() or not x[1].strip() for x in ps): err(i, "matching option must be 'left|right'")
+            else:
+                if len({x[0].strip() for x in ps}) != len(ps) or len({x[1].strip() for x in ps}) != len(ps): err(i, "matching sides must be unique")
+                ans = sorted(t.strip() for t in e.get("answer", "").split(";") if t.strip())
+                if ans != sorted(o.strip() for o in opts): err(i, "matching answer pairs must equal the options")
         for label, text in (("prompt", e.get("prompt")), ("answer", e.get("answer")), ("explanation", e.get("explanation_vi"))):
             hanzi_rule(i, label, text)
         for o in opts or []: hanzi_rule(i, "option", o)

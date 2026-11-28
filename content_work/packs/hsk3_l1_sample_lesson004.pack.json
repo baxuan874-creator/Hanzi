@@ -50,6 +50,7 @@
     "ex_l1_0003",
     "ex_l1_0004",
     "ex_l1_0005",
+    "ex_l1_0012",
     "ex_l1_0006",
     "ex_l1_0007",
     "ex_l1_0008",
@@ -434,6 +435,26 @@
     "nǐ",
     "wǒ"
    ],
+   "lesson_id": "hsk3_l1_lesson_004"
+  },
+  {
+   "id": "ex_l1_0012",
+   "type": "matching",
+   "prompt": "Ghép chữ Hán với nghĩa tiếng Việt",
+   "options": [
+    "你好|xin chào",
+    "谢谢|cảm ơn",
+    "再见|tạm biệt",
+    "对不起|xin lỗi"
+   ],
+   "answer": "你好|xin chào;谢谢|cảm ơn;再见|tạm biệt;对不起|xin lỗi",
+   "explanation_vi": "你好 = xin chào, 谢谢 = cảm ơn, 再见 = tạm biệt, 对不起 = xin lỗi.",
+   "difficulty": 2,
+   "skill_tags": [
+    "vocabulary",
+    "reading"
+   ],
+   "source_ref": "editorial_lesson_004",
    "lesson_id": "hsk3_l1_lesson_004"
   },
   {

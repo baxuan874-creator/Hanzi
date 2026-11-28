@@ -48,6 +48,16 @@ class ExerciseCheckerTest {
         assertFalse(ExerciseChecker.isCorrect(e, "b"))
     }
 
+    @Test fun matchingAcceptsPairsInAnyOrderButNotWrongPairs() {
+        val e = exercise("e", "matching", listOf("a|1", "b|2"), "a|1;b|2")
+        assertTrue(ExerciseChecker.isCorrect(e, "a|1;b|2"))
+        assertTrue(ExerciseChecker.isCorrect(e, "b|2;a|1"))
+        assertTrue(ExerciseChecker.isCorrect(e, " b | 2 ; a | 1 "))
+        assertFalse(ExerciseChecker.isCorrect(e, "a|2;b|1"))
+        assertFalse(ExerciseChecker.isCorrect(e, ""))
+        assertFalse(ExerciseChecker.isCorrect(e, "a|1"))
+    }
+
     @Test fun orderingIgnoresExtraSpacesButNotOrder() {
         val e = exercise("e", "sentence_ordering", listOf("x", "y"), "x y")
         assertTrue(ExerciseChecker.isCorrect(e, "x y"))
@@ -154,14 +164,14 @@ class SampleLessonRunThroughTest {
     @Test fun everyExerciseOfTheSampleLessonCanBeAnsweredCorrectly() {
         val (s, steps) = runThrough(wrongFirst = false)
         val r = s.result()
-        assertEquals(11, r.totalExercises); assertEquals(11, r.correctFirstTry); assertEquals(12, r.wordsMet)
-        assertEquals(1 + 12 + 1 + 11, steps)
+        assertEquals(12, r.totalExercises); assertEquals(12, r.correctFirstTry); assertEquals(12, r.wordsMet)
+        assertEquals(1 + 12 + 1 + 12, steps)
     }
 
     @Test fun oneWrongAnswerAddsOneRetryStep() {
         val (s, steps) = runThrough(wrongFirst = true)
         val r = s.result()
-        assertEquals(10, r.correctFirstTry); assertEquals(1, r.retried)
-        assertEquals(1 + 12 + 1 + 11 + 1, steps)
+        assertEquals(11, r.correctFirstTry); assertEquals(1, r.retried)
+        assertEquals(1 + 12 + 1 + 12 + 1, steps)
     }
 }

@@ -51,6 +51,7 @@
     <string name="lesson_incorrect">✗ Chưa đúng</string>
     <string name="lesson_correct_answer">Đáp án đúng: %1$s</string>
     <string name="lesson_ordering_hint">Chạm vào các mảnh để ghép thành câu.</string>
+    <string name="lesson_matching_hint">Chạm một ô bên trái, rồi chạm ô tương ứng bên phải. Chạm lại ô đã ghép để gỡ.</string>
     <string name="lesson_type_hint">Nhập đáp án</string>
     <string name="lesson_result_title">Hoàn thành bài học</string>
     <string name="lesson_result_score">Đúng ngay lần đầu: %1$d/%2$d</string>

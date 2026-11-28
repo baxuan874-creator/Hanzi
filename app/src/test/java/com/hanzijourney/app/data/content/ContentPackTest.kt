@@ -129,6 +129,21 @@ class ContentValidatorTest {
         assertTrue(errors(p.copy(exercises = p.exercises + good)).isEmpty())
     }
 
+    @Test fun validatesMatchingExercises() {
+        val p = pack()
+        val good = ExerciseDto(
+            id = "e4", lessonId = "l1", type = "matching", prompt = "Ghép", options = listOf("a|1", "b|2"),
+            answer = "a|1;b|2", explanationVi = "Giải thích", difficulty = 1, sourceRef = "test_fixture"
+        )
+        assertTrue(errors(p.copy(exercises = p.exercises + good)).isEmpty())
+        val wrongAnswer = good.copy(answer = "a|2;b|1")
+        assertTrue(errors(p.copy(exercises = p.exercises + wrongAnswer)).any { it.contains("matching answer pairs") })
+        val badOption = good.copy(options = listOf("a|1", "b"), answer = "a|1;b")
+        assertTrue(errors(p.copy(exercises = p.exercises + badOption)).any { it.contains("left|right") })
+        val sameSide = good.copy(options = listOf("a|1", "b|1"), answer = "a|1;b|1")
+        assertTrue(errors(p.copy(exercises = p.exercises + sameSide)).any { it.contains("sides must be unique") })
+    }
+
     @Test fun acceptsDraftUnreviewedStatus() {
         val p = pack()
         val draft = p.vocabulary[0].copy(reviewStatus = "draft_unreviewed")
