@@ -35,3 +35,10 @@ Ví dụ (`examples`): `{ hanzi, pinyin, meaning_vi }`. `review_status`: `extrac
 - Chưa có chỗ nào trong app gọi bộ nạp (chưa có gói nội dung).
 - Chưa kiểm thử Room trên thiết bị (cần test thiết bị); test đơn vị chỉ chạy phần phân tích, kiểm tra và logic nạp với kho giả.
 - Chưa có công cụ chuyển các file CSV/JSON làm việc trong `content_work/` thành gói theo định dạng này (cần thêm nghĩa tiếng Việt, ví dụ, bài tập).
+
+## Cập nhật Task 6
+- `review_status` có thêm `draft_unreviewed` = nội dung do Claude tự biên soạn, đang chờ người biết tiếng Trung rà soát. Bản phát hành (`requireApproved = true`) chỉ nhận `approved`.
+- Quy ước `sentence_ordering`: `options` là các mảnh câu, `answer` là các mảnh đó nối bằng dấu cách theo thứ tự đúng (ví dụ `"好 再见"`). Cả Kotlin và Python kiểm tra danh sách mảnh trong đáp án trùng với `options`.
+- Quy tắc soạn bài (chỉ Python kiểm tra): câu ví dụ, đề bài, lựa chọn và đáp án chỉ được dùng chữ Hán của các từ đã học ở bài này hoặc các bài trước.
+- Công cụ: `tools/build_pack.py lesson_004` ghép dữ liệu đề cương (ID, chữ, pinyin, nguồn) + cấu trúc khóa học + nội dung tự soạn trong `content_authoring/lesson_004.json` thành gói; `tools/validate_pack.py` kiểm tra gói (giống `ContentValidator.kt` cộng quy tắc chữ Hán ở trên).
+- Gói mẫu: `content_work/packs/hsk3_l1_sample_lesson004.pack.json` (bài 004 "Xin chào": 12 từ, 1 điểm ngữ pháp, 11 bài tập). Là bản nháp, chưa rà soát, **chưa đóng gói trong app**. Gói mẫu chỉ có bài 004 nên không chứa bài tiên quyết (003 Khởi động).

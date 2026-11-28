@@ -14,7 +14,7 @@ data class ValidationReport(val issues: List<Issue>) {
 object ContentValidator {
     private val toneMarks = "āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ".toSet()
     private val cjk = Regex("^[\u4e00-\u9fff]+$")
-    private val reviewStatuses = setOf("extracted_unreviewed", "reviewed", "approved")
+    private val reviewStatuses = setOf("extracted_unreviewed", "draft_unreviewed", "reviewed", "approved")
     private val choiceTypes = setOf("multiple_choice", "listening_choice")
     val exerciseTypes = setOf(
         "multiple_choice", "matching", "listening_choice", "sentence_ordering",
@@ -119,6 +119,10 @@ object ContentValidator {
                 if (e.type in choiceTypes && e.answer !in options) error(e.id, "answer is not one of the options")
             } else if (e.type in choiceTypes) {
                 error(e.id, "${e.type} needs options")
+            }
+            if (e.type == "sentence_ordering") {
+                val tokens = e.answer.split(" ").filter { it.isNotEmpty() }
+                if (options == null || options.sorted() != tokens.sorted()) error(e.id, "sentence_ordering answer tokens must match the options")
             }
         }
 

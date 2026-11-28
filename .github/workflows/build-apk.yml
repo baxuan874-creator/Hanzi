@@ -18,6 +18,8 @@ jobs:
           python3 tools/selftest_extract.py
           python3 tools/build_l1_structure.py
           python3 tools/validate_level1.py
+          python3 tools/build_pack.py lesson_004
+          python3 tools/validate_pack.py content_work/packs/hsk3_l1_sample_lesson004.pack.json
       - uses: actions/setup-java@v4
         with:
           distribution: temurin

@@ -1,0 +1,368 @@
+{
+ "lesson_id": "hsk3_l1_lesson_004",
+ "status": "draft_unreviewed (authored by Claude; needs review by a Chinese-language speaker)",
+ "objectives": [
+  "Chào hỏi bằng 你好 và 您好",
+  "Nói cảm ơn, xin lỗi và đáp lại",
+  "Nói tạm biệt, dùng 请 và 请问 để nhờ và hỏi lịch sự"
+ ],
+ "words": {
+  "你好": {
+   "word_type": "phrase",
+   "topic_id": "greetings",
+   "meaning_vi": "xin chào",
+   "examples": [
+    {
+     "hanzi": "你好！",
+     "pinyin": "nǐ hǎo!",
+     "meaning_vi": "Xin chào!"
+    }
+   ]
+  },
+  "您": {
+   "word_type": "pronoun",
+   "topic_id": "greetings",
+   "meaning_vi": "ngài, bạn (cách nói lịch sự)",
+   "examples": [
+    {
+     "hanzi": "您好！",
+     "pinyin": "nín hǎo!",
+     "meaning_vi": "Xin chào (lịch sự)!"
+    }
+   ]
+  },
+  "你": {
+   "word_type": "pronoun",
+   "topic_id": "greetings",
+   "meaning_vi": "bạn",
+   "examples": [
+    {
+     "hanzi": "谢谢你！",
+     "pinyin": "xièxie nǐ!",
+     "meaning_vi": "Cảm ơn bạn!"
+    }
+   ]
+  },
+  "我": {
+   "word_type": "pronoun",
+   "topic_id": "greetings",
+   "meaning_vi": "tôi",
+   "examples": [
+    {
+     "hanzi": "我请你。",
+     "pinyin": "wǒ qǐng nǐ.",
+     "meaning_vi": "Tôi mời bạn."
+    }
+   ]
+  },
+  "好": {
+   "word_type": "adjective",
+   "topic_id": "greetings",
+   "meaning_vi": "tốt, khỏe, được",
+   "examples": [
+    {
+     "hanzi": "好，再见！",
+     "pinyin": "hǎo, zàijiàn!",
+     "meaning_vi": "Được, tạm biệt!"
+    }
+   ]
+  },
+  "再见": {
+   "word_type": "verb",
+   "topic_id": "greetings",
+   "meaning_vi": "tạm biệt",
+   "examples": [
+    {
+     "hanzi": "再见！",
+     "pinyin": "zàijiàn!",
+     "meaning_vi": "Tạm biệt!"
+    }
+   ]
+  },
+  "谢谢": {
+   "word_type": "verb",
+   "topic_id": "greetings",
+   "meaning_vi": "cảm ơn",
+   "examples": [
+    {
+     "hanzi": "谢谢！",
+     "pinyin": "xièxie!",
+     "meaning_vi": "Cảm ơn!"
+    }
+   ]
+  },
+  "对不起": {
+   "word_type": "verb",
+   "topic_id": "greetings",
+   "meaning_vi": "xin lỗi",
+   "examples": [
+    {
+     "hanzi": "对不起！",
+     "pinyin": "duìbuqǐ!",
+     "meaning_vi": "Xin lỗi!"
+    }
+   ]
+  },
+  "不客气": {
+   "word_type": "phrase",
+   "topic_id": "greetings",
+   "meaning_vi": "đừng khách sáo, không có gì",
+   "examples": [
+    {
+     "hanzi": "不客气。",
+     "pinyin": "bú kèqi.",
+     "meaning_vi": "Đừng khách sáo."
+    }
+   ]
+  },
+  "没关系": {
+   "word_type": "phrase",
+   "topic_id": "greetings",
+   "meaning_vi": "không sao",
+   "examples": [
+    {
+     "hanzi": "没关系。",
+     "pinyin": "méi guānxi.",
+     "meaning_vi": "Không sao."
+    }
+   ]
+  },
+  "请": {
+   "word_type": "verb",
+   "topic_id": "greetings",
+   "meaning_vi": "xin mời, làm ơn",
+   "examples": [
+    {
+     "hanzi": "您请。",
+     "pinyin": "nín qǐng.",
+     "meaning_vi": "Mời ngài."
+    }
+   ]
+  },
+  "请问": {
+   "word_type": "verb",
+   "topic_id": "greetings",
+   "meaning_vi": "xin hỏi, cho tôi hỏi",
+   "examples": [
+    {
+     "hanzi": "请问！",
+     "pinyin": "qǐngwèn!",
+     "meaning_vi": "Xin hỏi!"
+    }
+   ]
+  }
+ },
+ "grammar": {
+  "gram_l1_0051": {
+   "pattern": "请 + ……（nói lịch sự）",
+   "explanation_vi": "Câu cầu khiến dùng để mời hoặc nhờ ai làm gì. Thêm 请 ở đầu câu để nói lịch sự hơn.",
+   "usage_note_vi": "Ở bài này chỉ làm quen với 请 và 请问; câu đầy đủ sẽ học ở các bài sau.",
+   "common_error_vi": "请 không chỉ có nghĩa “làm ơn”, còn có nghĩa “mời” (ví dụ 我请你).",
+   "examples": [
+    {
+     "hanzi": "您请。",
+     "pinyin": "nín qǐng.",
+     "meaning_vi": "Mời ngài."
+    },
+    {
+     "hanzi": "请问！",
+     "pinyin": "qǐngwèn!",
+     "meaning_vi": "Xin hỏi!"
+    }
+   ]
+  }
+ },
+ "exercises": [
+  {
+   "id": "ex_l1_0001",
+   "type": "multiple_choice",
+   "prompt": "你好 có nghĩa là gì?",
+   "answer": "xin chào",
+   "explanation_vi": "你好 là lời chào thông dụng nhất.",
+   "difficulty": 1,
+   "skill_tags": [
+    "vocabulary",
+    "reading"
+   ],
+   "source_ref": "editorial_lesson_004",
+   "options": [
+    "xin chào",
+    "tạm biệt",
+    "cảm ơn"
+   ]
+  },
+  {
+   "id": "ex_l1_0002",
+   "type": "multiple_choice",
+   "prompt": "再见 có nghĩa là gì?",
+   "answer": "tạm biệt",
+   "explanation_vi": "再见 dùng khi chia tay.",
+   "difficulty": 1,
+   "skill_tags": [
+    "vocabulary",
+    "reading"
+   ],
+   "source_ref": "editorial_lesson_004",
+   "options": [
+    "tạm biệt",
+    "xin lỗi",
+    "không sao"
+   ]
+  },
+  {
+   "id": "ex_l1_0003",
+   "type": "multiple_choice",
+   "prompt": "Chọn chữ Hán cho “cảm ơn”:",
+   "answer": "谢谢",
+   "explanation_vi": "谢谢 nghĩa là cảm ơn. 对不起 là xin lỗi, 再见 là tạm biệt.",
+   "difficulty": 1,
+   "skill_tags": [
+    "vocabulary",
+    "reading"
+   ],
+   "source_ref": "editorial_lesson_004",
+   "options": [
+    "谢谢",
+    "对不起",
+    "再见"
+   ]
+  },
+  {
+   "id": "ex_l1_0004",
+   "type": "multiple_choice",
+   "prompt": "Chọn chữ Hán cho “xin lỗi”:",
+   "answer": "对不起",
+   "explanation_vi": "对不起 nghĩa là xin lỗi. 没关系 là lời đáp “không sao”.",
+   "difficulty": 1,
+   "skill_tags": [
+    "vocabulary",
+    "reading"
+   ],
+   "source_ref": "editorial_lesson_004",
+   "options": [
+    "对不起",
+    "没关系",
+    "不客气"
+   ]
+  },
+  {
+   "id": "ex_l1_0005",
+   "type": "multiple_choice",
+   "prompt": "Pinyin của 您 là gì?",
+   "answer": "nín",
+   "explanation_vi": "您 đọc là nín (thanh 2). nǐ là 你, wǒ là 我.",
+   "difficulty": 2,
+   "skill_tags": [
+    "pinyin"
+   ],
+   "source_ref": "editorial_lesson_004",
+   "options": [
+    "nín",
+    "nǐ",
+    "wǒ"
+   ]
+  },
+  {
+   "id": "ex_l1_0006",
+   "type": "fill_blank",
+   "prompt": "谢谢！——___。",
+   "answer": "不客气",
+   "explanation_vi": "Khi ai đó nói 谢谢 (cảm ơn), ta đáp 不客气 (đừng khách sáo).",
+   "difficulty": 1,
+   "skill_tags": [
+    "vocabulary",
+    "reading"
+   ],
+   "source_ref": "editorial_lesson_004",
+   "options": [
+    "不客气",
+    "对不起",
+    "再见"
+   ]
+  },
+  {
+   "id": "ex_l1_0007",
+   "type": "fill_blank",
+   "prompt": "对不起！——___。",
+   "answer": "没关系",
+   "explanation_vi": "Khi ai đó nói 对不起 (xin lỗi), ta đáp 没关系 (không sao).",
+   "difficulty": 1,
+   "skill_tags": [
+    "vocabulary",
+    "reading"
+   ],
+   "source_ref": "editorial_lesson_004",
+   "options": [
+    "没关系",
+    "不客气",
+    "请问"
+   ]
+  },
+  {
+   "id": "ex_l1_0008",
+   "type": "sentence_ordering",
+   "prompt": "Sắp xếp thành câu “Cảm ơn bạn!”",
+   "answer": "谢谢 你",
+   "explanation_vi": "Thứ tự đúng là 谢谢你！ (cảm ơn + bạn).",
+   "difficulty": 2,
+   "skill_tags": [
+    "output"
+   ],
+   "source_ref": "editorial_lesson_004",
+   "options": [
+    "你",
+    "谢谢"
+   ]
+  },
+  {
+   "id": "ex_l1_0009",
+   "type": "sentence_ordering",
+   "prompt": "Sắp xếp thành câu “Được, tạm biệt!”",
+   "answer": "好 再见",
+   "explanation_vi": "Thứ tự đúng là 好，再见！",
+   "difficulty": 2,
+   "skill_tags": [
+    "output"
+   ],
+   "source_ref": "editorial_lesson_004",
+   "options": [
+    "再见",
+    "好"
+   ]
+  },
+  {
+   "id": "ex_l1_0010",
+   "type": "multiple_choice",
+   "prompt": "Nói với thầy cô hoặc người lớn tuổi, nên dùng 你 hay 您?",
+   "answer": "您",
+   "explanation_vi": "您 là cách nói lịch sự, dùng với người lớn tuổi hoặc người mình kính trọng.",
+   "difficulty": 2,
+   "skill_tags": [
+    "vocabulary",
+    "usage"
+   ],
+   "source_ref": "editorial_lesson_004",
+   "options": [
+    "您",
+    "你"
+   ]
+  },
+  {
+   "id": "ex_l1_0011",
+   "type": "multiple_choice",
+   "prompt": "请问 dùng khi nào?",
+   "answer": "Khi muốn hỏi ai đó điều gì",
+   "explanation_vi": "请问 nghĩa là “xin hỏi”, dùng để mở lời lịch sự trước khi hỏi.",
+   "difficulty": 2,
+   "skill_tags": [
+    "usage"
+   ],
+   "source_ref": "editorial_lesson_004",
+   "options": [
+    "Khi muốn hỏi ai đó điều gì",
+    "Khi chào tạm biệt",
+    "Khi xin lỗi"
+   ]
+  }
+ ]
+}

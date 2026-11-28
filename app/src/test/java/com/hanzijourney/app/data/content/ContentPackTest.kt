@@ -118,6 +118,23 @@ class ContentValidatorTest {
         assertTrue(errors(p.copy(exercises = listOf(bad, p.exercises[1]))).any { it.contains("not one of the options") })
     }
 
+    @Test fun detectsSentenceOrderingMismatch() {
+        val p = pack()
+        val ordering = ExerciseDto(
+            id = "e3", lessonId = "l1", type = "sentence_ordering", prompt = "Sắp xếp", options = listOf("你", "好"),
+            answer = "好 好", explanationVi = "Giải thích", difficulty = 1, sourceRef = "test_fixture"
+        )
+        assertTrue(errors(p.copy(exercises = p.exercises + ordering)).any { it.contains("sentence_ordering answer tokens") })
+        val good = ordering.copy(answer = "你 好")
+        assertTrue(errors(p.copy(exercises = p.exercises + good)).isEmpty())
+    }
+
+    @Test fun acceptsDraftUnreviewedStatus() {
+        val p = pack()
+        val draft = p.vocabulary[0].copy(reviewStatus = "draft_unreviewed")
+        assertTrue(errors(p.copy(vocabulary = listOf(draft) + p.vocabulary.drop(1))).isEmpty())
+    }
+
     @Test fun detectsBadPrerequisite() {
         val p = pack()
         val bad = p.lessons[1].copy(prerequisiteIds = listOf("l2"))

@@ -32,3 +32,6 @@
 
 ## 0.0.5-phase2 (chưa build)
 - Phase 2 / Task 5: bộ nạp nội dung bằng Kotlin (kotlinx.serialization): ContentModels, ContentPackParser, ContentValidator, ContentImporter, AssetContentSource; content.db (Room) tách khỏi hanzi.db; test đơn vị với dữ liệu giả (ContentPackTest); workflow chạy test đơn vị trước khi build; bước đăng Release không còn làm đỏ cả build. Không đóng gói dữ liệu HSK.
+
+## (content) Phase 2 / Task 6
+- Bài mẫu 004 "Xin chào" tự soạn (content_authoring/lesson_004.json): 12 từ có nghĩa tiếng Việt và ví dụ, 1 điểm ngữ pháp, 11 bài tập; tools/build_pack.py, tools/validate_pack.py (kèm quy tắc chỉ dùng chữ đã học); gói content_work/packs/hsk3_l1_sample_lesson004.pack.json; Kotlin: thêm review_status draft_unreviewed, kiểm tra sentence_ordering, SamplePackTest (kiểm tra gói thật bằng validator của app); CI chạy build/validate gói. Không đổi giao diện app.
