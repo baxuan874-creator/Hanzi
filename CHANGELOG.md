@@ -48,3 +48,6 @@
 ## 0.0.9-phase4 (chưa build)
 - Phase 4 / Task 1: lưu tiến độ (Room hanzi.db v2 + MIGRATION_1_2: lesson_progress, xp_event, practice_day), ProgressStore/RoomProgressStore/ProgressRepository, XP bài đầu tiên (+20) chống cộng trùng bằng khóa sự kiện, LevelRules (bảng ngưỡng cấu hình), StreakCalculator, lưu khi hoàn thành bài (một transaction), hiển thị cấp/XP/streak ở Trang chủ + Hồ sơ, nhãn "Hoàn thành" trên bản đồ, XP ở màn kết quả. Test mới: StreakCalculatorTest, LevelRulesTest, ProgressRepositoryTest. Docs: docs/PROGRESS.md.
 
+## 0.0.10-phase4 (chưa build)
+- Phase 4 / Task 2: nhiệm vụ hằng ngày (hoàn thành 1 bài +10 XP; học 10 từ mới +15 XP, lập theo nội dung sẵn có, mỗi ngày lập một lần, thưởng chống trả trùng), thành tích (Bài học đầu tiên, 25 từ, Hoàn thành một chương, 7 ngày luyện tập), bảng từ đã học; Room v3 + MIGRATION_2_3 (daily_mission, user_achievement, learned_word); ContentRepository.catalog(); ContentLoader có Mutex; thẻ Nhiệm vụ ở Trang chủ, thẻ Thành tích ở Hồ sơ, thông báo ở màn kết quả. Test: ProgressRepositoryTest (viết lại, 16 ca), MissionsAndAchievementsTest.
+

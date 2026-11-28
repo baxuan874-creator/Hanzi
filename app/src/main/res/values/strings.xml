@@ -17,8 +17,7 @@
     <string name="review_title">Ôn tập</string>
     <string name="review_empty">Chưa có thẻ nào đến hạn ôn. Lịch ôn sẽ bắt đầu sau khi bạn học bài đầu tiên.</string>
     <string name="profile_title">Hồ sơ</string>
-    <string name="profile_empty">Nhiệm vụ hằng ngày và thành tích sẽ có ở bước sau.</string>
-
+    
     <string name="profile_appearance">Giao diện</string>
     <string name="dark_mode_system">Theo hệ thống</string>
     <string name="dark_mode_light">Sáng</string>
@@ -70,4 +69,25 @@
     <string name="progress_streak">Chuỗi ngày học: %1$d ngày</string>
     <string name="progress_best_streak">Chuỗi dài nhất: %1$d ngày</string>
     <string name="progress_lessons_done">Bài đã hoàn thành: %1$d</string>
+
+    <string name="missions_title">Nhiệm vụ hôm nay</string>
+    <string name="missions_none">Chưa có nhiệm vụ hôm nay. Nhiệm vụ chỉ được tạo từ nội dung đã có trong app.</string>
+    <string name="mission_complete_lesson">Hoàn thành 1 bài học</string>
+    <string name="mission_new_words">Học %1$d từ mới</string>
+    <string name="mission_done">Đã xong · +%1$d XP</string>
+    <string name="mission_open">%1$d/%2$d · thưởng +%3$d XP</string>
+    <string name="achievements_title">Thành tích</string>
+    <string name="achievement_unlocked">Đã đạt</string>
+    <string name="achievement_locked">Chưa đạt</string>
+    <string name="achievement_progress">Chưa đạt · %1$d/%2$d</string>
+    <string name="achievement_first_lesson">Bài học đầu tiên</string>
+    <string name="achievement_first_lesson_hint">Hoàn thành một bài học.</string>
+    <string name="achievement_words_25">25 từ</string>
+    <string name="achievement_words_25_hint">Gặp 25 từ khác nhau trong các bài đã học.</string>
+    <string name="achievement_chapter_complete">Hoàn thành một chương</string>
+    <string name="achievement_chapter_complete_hint">Hoàn thành mọi bài trong một chương.</string>
+    <string name="achievement_seven_day">7 ngày luyện tập</string>
+    <string name="achievement_seven_day_hint">Học 7 ngày liên tiếp.</string>
+    <string name="lesson_result_mission">Nhiệm vụ hoàn thành: %1$s (+%2$d XP)</string>
+    <string name="lesson_result_achievement">Thành tích mới: %1$s</string>
 </resources>

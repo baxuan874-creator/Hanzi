@@ -1,14 +1,18 @@
 # HANDOFF — HANZI JOURNEY
 
 Date: 2026-11-28
-Project version: 0.0.9-phase4
+Project version: 0.0.10-phase4
 
 ## Current phase and task
-- Phase 4, Task 1 xong về mã (chưa xác nhận build): lưu tiến độ, XP chống cộng trùng, cấp độ, streak. Phase 3 (Task 1–3) đã xong, Actions xanh.
+- Phase 4, Task 2 xong về mã (chưa xác nhận build): nhiệm vụ hằng ngày + thành tích. Task 1 (tiến độ/XP/cấp/streak) đã viết xong; người dùng báo Actions xanh cho Phase 3, chưa báo kết quả thử Task 1 trên máy.
 
 ## Completed
 - Phase 0–2: xong, Actions xanh. Phase 3 Task 1 (trình học v1): Actions xanh, người dùng đã thử bài 004 trên máy (Redmi 15C).
 - Phase 3 Task 2: trộn đáp án (ExerciseOptions + ExerciseOptionsTest), giao diện lớn hơn/đỡ trống (PracticeStep, LessonScreen, LessonSteps, LessonLayout.CenteredScroll), dấu ✓/✗, thanh tiến độ tự vẽ, màu container trong Theme, nền trang trí ScatteredIcons (emoji rải mờ, theo yêu cầu người dùng; bỏ ý tưởng ảnh linh vật).
+
+## Files created / modified (Phase 4 Task 2)
+- Mới: domain/progress/MissionsAndAchievements.kt, ui/components/{ProgressTexts,MissionsAndAchievementsCards}.kt, test MissionsAndAchievementsTest.kt.
+- Sửa: HanziDatabase (v3 + MIGRATION_2_3), ProgressEntities/ProgressDao, ProgressStore/RoomProgressStore, ProgressRepository (completeLesson nhận vocabularyIds + catalog; ensureTodayMissions), ProgressModels, ContentRepository (catalog), ContentLoader (Mutex), LessonViewModel, LessonScreen, ProgressViewModel, HomeScreen, ProfileScreen, strings.xml, ProgressRepositoryTest (viết lại), version 0.0.10.
 
 ## Files created / modified (Phase 4 Task 1)
 - Mới: domain/progress/{ProgressModels,XpRules,LevelRules,StreakCalculator}.kt, data/progress/{ProgressStore,ProgressRepository,RoomProgressStore}.kt, data/local/{ProgressEntities,ProgressDao}.kt, ui/progress/ProgressViewModel.kt, ui/components/ProgressSummaryCard.kt, 3 file test, docs/PROGRESS.md.
@@ -29,7 +33,8 @@ Project version: 0.0.9-phase4
 
 ## Known issues
 - Migration Room 1→2 chưa có test nâng cấp trên máy (cần instrumented test, dự kiến Phase 7); nếu app crash khi mở sau khi cài đè bản cũ, đó là chỗ đầu tiên cần xem (thử xóa dữ liệu app để xác nhận).
-- Chưa có nhiệm vụ ngày, thành tích, XP ôn thẻ, khóa bài theo prerequisite.
+- Chưa có XP ôn thẻ, XP checkpoint, khóa bài theo prerequisite, thành tích 100 lượt ôn (chờ Phase 5).
+- Migration 2→3 cũng chưa test trên máy. Bài học xong ở bản 0.0.9 chưa có dòng trong learned_word (học lại để bù).
 - Emoji nền phụ thuộc font emoji của máy (máy rất cũ có thể hiện ô vuông); chưa xem thực tế trên máy.
 - Chưa có listening; chưa lưu tiến độ; chưa âm thanh.
 - Bài mẫu 004 là bản nháp chưa rà soát; bài sắp xếp câu chỉ 2 mảnh nên quá dễ (cần nội dung dài hơn khi soạn bài thật); 店/饺 ngoài 246 chữ; khóa đề cương PROVISIONAL; repo có thể còn Public; giấy phép danh sách từ chưa rõ.
@@ -38,7 +43,7 @@ Project version: 0.0.9-phase4
 - Android Native / Kotlin / Compose; Vietnamese-first; gamified UI; HSK 3.0 track; không AI/backend/API trả phí/login/ads/Premium; offline-first.
 
 ## Exact next task
-- Xác nhận Actions xanh cho 0.0.9; cài đè APK cũ (kiểm tra không crash), hoàn thành một bài, đóng hẳn app, mở lại: XP/cấp/streak/nhãn Hoàn thành phải còn; học lại bài: không cộng XP. Sau đó Phase 4, Task 2: nhiệm vụ hằng ngày + thành tích.
+- Xác nhận Actions xanh cho 0.0.10; cài đè, kiểm tra không crash; hoàn thành bài: màn kết quả báo XP, nhiệm vụ xong, thành tích mới; Trang chủ có thẻ Nhiệm vụ, Hồ sơ có thẻ Thành tích; đóng/mở app dữ liệu còn nguyên; học lại không cộng XP/thưởng lần hai. Sau đó Phase 5 (từ điển + ôn tập).
 
 ## Context for next Claude session
 Read CLAUDE.md, docs/PRD.md, docs/PHASES.md and this file before changing code.

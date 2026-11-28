@@ -25,6 +25,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.runtime.collectAsState
 import com.hanzijourney.app.R
 import com.hanzijourney.app.domain.model.DarkModeSetting
+import com.hanzijourney.app.ui.components.AchievementsCard
 import com.hanzijourney.app.ui.components.ProgressSummaryCard
 import com.hanzijourney.app.ui.profile.ProfileViewModel
 import com.hanzijourney.app.ui.progress.ProgressViewModel
@@ -42,7 +43,10 @@ fun ProfileScreen(
         verticalArrangement = Arrangement.spacedBy(Spacing.md)
     ) {
         Text(stringResource(R.string.profile_title), style = MaterialTheme.typography.headlineMedium)
-        progress?.let { ProgressSummaryCard(it) }
+        progress?.let {
+            ProgressSummaryCard(it)
+            AchievementsCard(it)
+        }
         Card(modifier = Modifier.fillMaxWidth(), shape = MaterialTheme.shapes.large) {
             Column(modifier = Modifier.padding(Spacing.md)) {
                 Text(stringResource(R.string.profile_appearance), style = MaterialTheme.typography.titleMedium)
@@ -70,6 +74,5 @@ fun ProfileScreen(
                 }
             }
         }
-        Text(stringResource(R.string.profile_empty), style = MaterialTheme.typography.bodyLarge)
     }
 }

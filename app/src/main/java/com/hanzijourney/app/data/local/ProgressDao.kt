@@ -29,4 +29,39 @@ interface ProgressDao {
 
     @Query("SELECT localDate FROM practice_day")
     fun observePracticeDays(): Flow<List<String>>
+
+    @Query("SELECT lessonId FROM lesson_progress")
+    suspend fun getCompletedLessonIds(): List<String>
+
+    @Query("SELECT localDate FROM practice_day")
+    suspend fun getPracticeDays(): List<String>
+
+    @Query("SELECT * FROM daily_mission WHERE localDate = :localDate ORDER BY missionId")
+    suspend fun getMissions(localDate: String): List<DailyMissionEntity>
+
+    @Query("SELECT * FROM daily_mission WHERE localDate = :localDate ORDER BY missionId")
+    fun observeMissions(localDate: String): Flow<List<DailyMissionEntity>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun upsertMission(entity: DailyMissionEntity)
+
+    /** Returns -1 when the word was already learned. */
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertLearnedWord(entity: LearnedWordEntity): Long
+
+    @Query("SELECT vocabularyId FROM learned_word")
+    suspend fun getLearnedWordIds(): List<String>
+
+    @Query("SELECT COUNT(*) FROM learned_word")
+    fun observeLearnedWordCount(): Flow<Int>
+
+    /** Returns -1 when the achievement was already unlocked. */
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertAchievement(entity: UserAchievementEntity): Long
+
+    @Query("SELECT achievementId FROM user_achievement")
+    suspend fun getAchievementIds(): List<String>
+
+    @Query("SELECT achievementId FROM user_achievement")
+    fun observeAchievementIds(): Flow<List<String>>
 }

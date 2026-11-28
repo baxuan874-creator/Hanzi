@@ -26,3 +26,22 @@ data class XpEventEntity(
 /** One row per local day (yyyy-MM-dd) with any practice; streaks are computed from these rows. */
 @Entity(tableName = "practice_day")
 data class PracticeDayEntity(@PrimaryKey val localDate: String)
+
+/** A daily mission. Target and reward are stored with the row, so later rule changes never alter past days. */
+@Entity(tableName = "daily_mission")
+data class DailyMissionEntity(
+    @PrimaryKey val missionId: String,
+    val localDate: String,
+    val type: String,
+    val target: Int,
+    val progress: Int,
+    val rewardXp: Int,
+    val completedAt: Long?
+)
+
+@Entity(tableName = "user_achievement")
+data class UserAchievementEntity(@PrimaryKey val achievementId: String, val unlockedAt: Long)
+
+/** A word the user has met in a completed lesson (also the base for review items later). */
+@Entity(tableName = "learned_word")
+data class LearnedWordEntity(@PrimaryKey val vocabularyId: String, val firstSeenAt: Long)

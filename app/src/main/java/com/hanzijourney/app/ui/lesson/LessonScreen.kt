@@ -38,6 +38,8 @@ import com.hanzijourney.app.domain.lesson.LessonStep
 import com.hanzijourney.app.domain.progress.LessonCompletion
 import com.hanzijourney.app.ui.components.HanziButton
 import com.hanzijourney.app.ui.components.ScatteredIcons
+import com.hanzijourney.app.ui.components.achievementName
+import com.hanzijourney.app.ui.components.missionTitle
 import com.hanzijourney.app.ui.theme.Spacing
 
 @Composable
@@ -144,6 +146,12 @@ private fun ResultStep(result: LessonResult, completion: LessonCompletion?, save
                 completion == null -> Unit
                 completion.xpAwarded > 0 -> Text(stringResource(R.string.lesson_result_xp, completion.xpAwarded), style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary)
                 else -> Text(stringResource(R.string.lesson_result_no_xp), style = MaterialTheme.typography.bodyLarge, textAlign = TextAlign.Center)
+            }
+            completion?.completedMissions?.forEach { m ->
+                Text(stringResource(R.string.lesson_result_mission, missionTitle(m), m.rewardXp), style = MaterialTheme.typography.titleMedium, textAlign = TextAlign.Center)
+            }
+            completion?.newAchievements?.forEach { a ->
+                Text(stringResource(R.string.lesson_result_achievement, achievementName(a)), style = MaterialTheme.typography.titleMedium, textAlign = TextAlign.Center)
             }
         }
         HanziButton(text = stringResource(R.string.lesson_result_back), onClick = onBack, modifier = Modifier.fillMaxWidth().height(56.dp))

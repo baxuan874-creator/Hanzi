@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.hanzijourney.app.R
+import com.hanzijourney.app.ui.components.MissionsCard
 import com.hanzijourney.app.ui.components.ProgressSummaryCard
 import com.hanzijourney.app.ui.progress.ProgressViewModel
 import com.hanzijourney.app.ui.theme.Spacing
@@ -29,6 +30,7 @@ fun HomeScreen(viewModel: ProgressViewModel = viewModel(factory = ProgressViewMo
         Text(stringResource(R.string.home_title), style = MaterialTheme.typography.headlineMedium)
         snapshot?.let { s ->
             ProgressSummaryCard(s)
+            MissionsCard(s.missions)
             if (s.completedLessonIds.isEmpty()) Text(stringResource(R.string.home_empty), style = MaterialTheme.typography.bodyLarge)
         }
     }

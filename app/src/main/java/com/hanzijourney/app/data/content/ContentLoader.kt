@@ -1,6 +1,8 @@
 package com.hanzijourney.app.data.content
 
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 
 sealed interface LoadStatus {
@@ -18,9 +20,12 @@ class ContentLoader(
     private val importer: ContentImporter,
     private val debugBuild: Boolean
 ) {
-    suspend fun ensureLoaded(): LoadStatus {
-        val raw = withContext(Dispatchers.IO) { assets.readPack(SAMPLE_PACK_ASSET) } ?: return LoadStatus.NoPackBundled
-        return LoadStatus.Done(importer.import(raw, requireApproved = !debugBuild))
+    // Home and Learn may both ask for the import at start-up; run it one at a time.
+    private val mutex = Mutex()
+
+    suspend fun ensureLoaded(): LoadStatus = mutex.withLock {
+        val raw = withContext(Dispatchers.IO) { assets.readPack(SAMPLE_PACK_ASSET) } ?: return@withLock LoadStatus.NoPackBundled
+        LoadStatus.Done(importer.import(raw, requireApproved = !debugBuild))
     }
 
     companion object {

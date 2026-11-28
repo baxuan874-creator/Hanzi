@@ -20,7 +20,14 @@ data class XpEvent(
     val localDate: String
 )
 
-data class LessonCompletion(val firstTime: Boolean, val xpAwarded: Int)
+data class LessonCompletion(
+    val firstTime: Boolean,
+    val xpAwarded: Int,
+    /** Daily missions this lesson just completed (their XP is already in the ledger). */
+    val completedMissions: List<DailyMission> = emptyList(),
+    /** Achievements unlocked by this lesson. */
+    val newAchievements: List<Achievement> = emptyList()
+)
 
 data class LevelInfo(
     val level: Int,
@@ -35,5 +42,8 @@ data class ProgressSnapshot(
     val totalXp: Int,
     val level: LevelInfo,
     val streak: Streak,
-    val completedLessonIds: Set<String>
+    val completedLessonIds: Set<String>,
+    val learnedWordCount: Int,
+    val missions: List<DailyMission>,
+    val unlockedAchievements: Set<Achievement>
 )

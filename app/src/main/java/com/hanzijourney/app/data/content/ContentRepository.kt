@@ -8,6 +8,8 @@ import com.hanzijourney.app.data.content.room.VocabularyEntity
 import com.hanzijourney.app.domain.lesson.LessonContent
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.first
+import com.hanzijourney.app.domain.progress.ContentCatalog
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.json.Json
@@ -33,6 +35,16 @@ class ContentRepository(private val dao: ContentDao) {
                 )
             }
         }
+
+    /** What exists in the imported content, used to plan daily missions and check chapter achievements. */
+    suspend fun catalog(): ContentCatalog {
+        val lessons = dao.observeAllLessons().first()
+        return ContentCatalog(
+            lessonIds = lessons.map { it.id }.toSet(),
+            chapterLessons = lessons.groupBy { it.chapterId }.mapValues { (_, ls) -> ls.map { it.id }.toSet() },
+            wordIds = lessons.flatMap { json.decodeFromString(strings, it.vocabularyIdsJson) }.toSet()
+        )
+    }
 
     suspend fun hasUnapprovedContent(): Boolean = dao.countNotApproved() > 0
 

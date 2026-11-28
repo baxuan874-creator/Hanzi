@@ -10,15 +10,19 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 /**
  * Local relational database for user data (content lives in content.db).
  * v1: CurriculumVersion. v2 (Phase 4): lesson progress, XP ledger, practice days.
+ * v3 (Phase 4): daily missions, achievements, learned words.
  */
 @Database(
     entities = [
         CurriculumVersionEntity::class,
         LessonProgressEntity::class,
         XpEventEntity::class,
-        PracticeDayEntity::class
+        PracticeDayEntity::class,
+        DailyMissionEntity::class,
+        UserAchievementEntity::class,
+        LearnedWordEntity::class
     ],
-    version = 2,
+    version = 3,
     exportSchema = true
 )
 abstract class HanziDatabase : RoomDatabase() {
@@ -44,9 +48,22 @@ abstract class HanziDatabase : RoomDatabase() {
             }
         }
 
+        /** Adds missions, achievements and learned words without touching existing data. */
+        val MIGRATION_2_3 = object : Migration(2, 3) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    "CREATE TABLE IF NOT EXISTS `daily_mission` (`missionId` TEXT NOT NULL, `localDate` TEXT NOT NULL, `type` TEXT NOT NULL, " +
+                        "`target` INTEGER NOT NULL, `progress` INTEGER NOT NULL, `rewardXp` INTEGER NOT NULL, `completedAt` INTEGER, " +
+                        "PRIMARY KEY(`missionId`))"
+                )
+                db.execSQL("CREATE TABLE IF NOT EXISTS `user_achievement` (`achievementId` TEXT NOT NULL, `unlockedAt` INTEGER NOT NULL, PRIMARY KEY(`achievementId`))")
+                db.execSQL("CREATE TABLE IF NOT EXISTS `learned_word` (`vocabularyId` TEXT NOT NULL, `firstSeenAt` INTEGER NOT NULL, PRIMARY KEY(`vocabularyId`))")
+            }
+        }
+
         fun create(context: Context): HanziDatabase =
             Room.databaseBuilder(context.applicationContext, HanziDatabase::class.java, NAME)
-                .addMigrations(MIGRATION_1_2)
+                .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
                 .build()
     }
 }

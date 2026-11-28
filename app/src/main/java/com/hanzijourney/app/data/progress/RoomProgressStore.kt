@@ -1,10 +1,14 @@
 package com.hanzijourney.app.data.progress
 
 import androidx.room.withTransaction
+import com.hanzijourney.app.data.local.DailyMissionEntity
 import com.hanzijourney.app.data.local.HanziDatabase
+import com.hanzijourney.app.data.local.LearnedWordEntity
+import com.hanzijourney.app.data.local.UserAchievementEntity
 import com.hanzijourney.app.data.local.LessonProgressEntity
 import com.hanzijourney.app.data.local.PracticeDayEntity
 import com.hanzijourney.app.data.local.XpEventEntity
+import com.hanzijourney.app.domain.progress.DailyMission
 import com.hanzijourney.app.domain.progress.LessonProgress
 import com.hanzijourney.app.domain.progress.XpEvent
 import kotlinx.coroutines.flow.Flow
@@ -33,10 +37,34 @@ class RoomProgressStore(private val database: HanziDatabase) : ProgressStore {
         dao.insertPracticeDay(PracticeDayEntity(localDate))
     }
 
+    override suspend fun getCompletedLessonIds(): Set<String> = dao.getCompletedLessonIds().toSet()
+    override suspend fun getPracticeDays(): Set<String> = dao.getPracticeDays().toSet()
+
+    override suspend fun getMissions(localDate: String): List<DailyMission> = dao.getMissions(localDate).map { it.toDomain() }
+    override suspend fun saveMission(mission: DailyMission) {
+        dao.upsertMission(
+            DailyMissionEntity(mission.id, mission.localDate, mission.type, mission.target, mission.progress, mission.rewardXp, mission.completedAt)
+        )
+    }
+
+    override suspend fun markWordLearned(vocabularyId: String, at: Long): Boolean =
+        dao.insertLearnedWord(LearnedWordEntity(vocabularyId, at)) != -1L
+    override suspend fun getLearnedWordIds(): Set<String> = dao.getLearnedWordIds().toSet()
+
+    override suspend fun unlockAchievement(achievementId: String, at: Long): Boolean =
+        dao.insertAchievement(UserAchievementEntity(achievementId, at)) != -1L
+
     override suspend fun <T> atomically(block: suspend ProgressStore.() -> T): T =
         database.withTransaction { block(this@RoomProgressStore) }
 
     override fun observeCompletedLessonIds(): Flow<Set<String>> = dao.observeCompletedLessonIds().map { it.toSet() }
     override fun observeTotalXp(): Flow<Int> = dao.observeTotalXp()
     override fun observePracticeDays(): Flow<Set<String>> = dao.observePracticeDays().map { it.toSet() }
+
+    override fun observeMissions(localDate: String): Flow<List<DailyMission>> =
+        dao.observeMissions(localDate).map { list -> list.map { it.toDomain() } }
+    override fun observeLearnedWordCount(): Flow<Int> = dao.observeLearnedWordCount()
+    override fun observeUnlockedAchievementIds(): Flow<Set<String>> = dao.observeAchievementIds().map { it.toSet() }
+
+    private fun DailyMissionEntity.toDomain() = DailyMission(missionId, localDate, type, target, progress, rewardXp, completedAt)
 }

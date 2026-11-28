@@ -74,7 +74,13 @@ class LessonViewModel(
         val r = s.result()
         viewModelScope.launch {
             try {
-                completion = progress.completeLesson(lessonId, r.correctFirstTry, r.totalExercises)
+                completion = progress.completeLesson(
+                    lessonId = lessonId,
+                    correctFirstTry = r.correctFirstTry,
+                    totalExercises = r.totalExercises,
+                    vocabularyIds = content?.vocabulary?.map { it.id }.orEmpty(),
+                    catalog = repository.catalog()
+                )
             } catch (e: Exception) {
                 saveFailed = true
             }
